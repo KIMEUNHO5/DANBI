@@ -11,13 +11,17 @@ import {
   TextInput
 } from "react-native";
 
-const App = ({navigation}) => {
+const SpecificationScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text>DANBI LOGO</Text>
             </View>
             <View style={styles.setting}>
+                <Image
+                    style={styles.userLogo}
+                    source={require('../Source/person_inactivated.png')}
+                />
                 <View style={styles.user}>
                     <Text>HEUN</Text>
                 </View>
@@ -43,33 +47,36 @@ const App = ({navigation}) => {
     );
 }
 
-export default App;
+export default SpecificationScreen;
+
 const styles = StyleSheet.create({
     container : {
         flex: 1,
     },
     header : {
-        flex: 3,
+        flex: 1.5,
         flexDirection: "row",
         backgroundColor : "#F5F5F5",
         alignItems: "center",
         justifyContent : "center",
     },
     setting : {
-        flex: 2,
-        backgroundColor: "red",
-        justifyContent: "center",
-        flexDirection: "row",
+        flex: 1,
+        alignItems: "center",
         paddingHorizontal: 20,
+        backgroundColor: "red",
+    },
+    userLogo : {
+        width: 30,
+        height: 30,
+
     },
     user : {
-      flex: 2,
       justifyContent: "center",
       flexDirection: "row",
       paddingHorizontal: 20,
     },
     edit : {
-        flex: 2,
         justifyContent: "center",
         flexDirection: "row",
         paddingHorizontal: 20,
@@ -81,26 +88,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     waterStatus : {
-        flex: 3,
+        flex: 5,
         justifyContent: "center",
         flexDirection: "row",
         paddingHorizontal: 20,
     },
     stamp : {
-        flex: 1,
+        backgroundColor: "blue",
         justifyContent: "center",
         flexDirection: "row",
         paddingHorizontal: 20,
     },
     line : {
-        flex: 1,
         backgroundColor: "green",
         justifyContent: "center",
         flexDirection: "row",
         paddingHorizontal: 20,
     },
     record : {
-        flex: 5,
+        flex: 4,
         backgroundColor: "pink",
         justifyContent: "center",
         flexDirection: "row",
