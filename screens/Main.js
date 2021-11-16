@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import {Image} from 'react-native';
 import { Header } from "react-native/Libraries/NewAppScreen";
@@ -10,7 +10,11 @@ const mainScreen = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.header}>
-                <Image style={styles.logo} source={require('../Source/DANBI_Logo+Name.png')} />
+                <Image style={styles.logo_DANBI} source={require('../Source/DANBI_LogoName.png')} />
+                <Image style={styles.logo_My} source={require('../Source/mytab_icon.png')}></Image>
+            </View>
+            <View style={styles.body}>
+                <View style={styles.memberList}><Text>here</Text></View>
             </View>
         </View>
     );
@@ -23,18 +27,35 @@ export default mainScreen;
 const styles = StyleSheet.create({
     container : {
         flex: 1,
-        backgroundColor: "white"
-
     },
     header : {
+        flex : 1,
         flexDirection:"row",
-        marginTop: 100,
-        justifyContent:"center"
+        backgroundColor : "#F5F5F5",
+        alignItems: "center",
+        justifyContent : "center",
     },
-    logo: {
-        width: 120,
-        height: 140,
-        marginTop: 10,
-        resizeMode: "contain",
+    body : {
+        flex : 5,
+        justifyContent : "center",
+        alignItems: "center",
+    },
+    logo_DANBI: {
+        width: 200,
+        height: 100,
+        justifyContent : "center",
       },
+    logo_My: {
+        width: 40,
+        height: 100,
+        resizeMode: "contain",
+
+      },
+    memberList :{
+        flex :1,
+        backgroundColor : "red",
+        marginVertical: 20,
+        marginHorizontal: 30
+
+    }
 });
