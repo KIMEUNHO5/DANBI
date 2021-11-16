@@ -16,6 +16,7 @@ import SignupScreen from "./screens/Signup";
 import entryScreen from "./screens/entry";
 import ForgotIdScreen from "./screens/ForgotId";
 import ForgotPwScreen from "./screens/ForgotPassword";
+import SpecificationScreen from "./screens/SpecificationScreen";
 
 
 //React Navigation Setup
@@ -55,6 +56,10 @@ function HomeScreen({ navigation }) {
         title="Go to find Password"
         onPress={() => navigation.navigate('ForgotPw')}
       />
+      <Button
+        title="Go to Spec."
+        onPress={() => navigation.navigate('Spec')}
+      />
     </View>
   );
 }
@@ -73,6 +78,7 @@ const App = () => {
         <Stack.Screen name="Entry" component={entryScreen} />
         <Stack.Screen name="ForgotId" component={ForgotIdScreen} />
         <Stack.Screen name="ForgotPw" component={ForgotPwScreen} />
+        <Stack.Screen name="Spec" component={SpecificationScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
