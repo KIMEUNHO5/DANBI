@@ -11,6 +11,7 @@ const Stack = createStackNavigator();
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import mainScreen from "./screens/Main";
+import RegistrationScreen from "./screens/RegistrationScreen";
 
 
 //React Navigation Setup
@@ -29,6 +30,10 @@ function HomeScreen({ navigation }) {
         title="Go to Main"
         onPress={() => navigation.navigate('Main')}
       />
+      <Button
+        title="Go to Reg."
+        onPress={() => navigation.navigate('Reg')}
+      />
     </View>
   );
 }
@@ -42,6 +47,7 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Main" component={mainScreen}/>
+        <Stack.Screen name="Reg" component={RegistrationScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
