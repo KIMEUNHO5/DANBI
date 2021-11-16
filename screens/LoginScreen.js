@@ -51,26 +51,32 @@ const LoginScreen = ({ navigation }) => {
             style={styles.Input}
           />             
         </View>
-        <TouchableOpacity
-          style={styles.LoginButton}>
-            <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}
-            >Login</Text>
+        <TouchableOpacity style={styles.LoginButton}>
+            <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
+              Login
+            </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
         <View style = {{flexDirection:"row", justifyContent:"space-evenly", margin: 20,}}>
-          <Image
-          style={styles.login_btn}
-          source={require('../Source/btn_google.png')}
-          />
-          <Image
-          style={styles.login_btn}
-          source={require('../Source/btn_naver.png')}
-          />
-          <Image
-          style={styles.login_btn}
-          source={require('../Source/btn_kakao.png')}
-          />
+          <TouchableOpacity onPress={signInAsync}>
+            <Image
+            style={styles.login_btn}
+            source={require('../Source/btn_google.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+            style={styles.login_btn}
+            source={require('../Source/btn_naver.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+            style={styles.login_btn}
+            source={require('../Source/btn_kakao.png')}
+            />
+          </TouchableOpacity>         
         </View>
         <View style={styles.signcontainer}>
           <View style = {styles.sign}>
