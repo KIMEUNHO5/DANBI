@@ -3,12 +3,13 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {DrawerActions} from 'react-navigation-drawer';
 
-class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
 
-  render() {
+const MyTabScreen = ({navigation}) => {
+    class Home extends Component {
+        constructor(props) {
+          super(props)
+        }
+    render() {
     return (
       <View style={styles.container}>
         <TouchableOpacity
@@ -29,6 +30,8 @@ class Home extends Component {
     )
   }
 }
+}
+    
 
 const styles = StyleSheet.create({
   container: {
@@ -42,4 +45,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default MyTabScreen;
