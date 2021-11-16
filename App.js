@@ -18,6 +18,8 @@ import SignupScreen from "./screens/Signup";
 //React Navigation Setup
 import { NavigationContainer } from "@react-navigation/native";
 
+
+
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
