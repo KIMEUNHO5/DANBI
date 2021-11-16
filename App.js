@@ -18,6 +18,7 @@ import entryScreen from "./screens/entry";
 import ForgotIdScreen from "./screens/ForgotId";
 import ForgotPwScreen from "./screens/ForgotPassword";
 import SpecificationScreen from "./screens/SpecificationScreen";
+import StampCalendar from "./screens/StampCalendar";
 
 
 //React Navigation Setup
@@ -65,6 +66,11 @@ function HomeScreen({ navigation }) {
         title="Go to Spec."
         onPress={() => navigation.navigate('Spec')}
       />
+      <Button 
+        title="Go to Calend"
+        onPress={() => navigation.navigate('Calend')}
+      />
+
     </View>
   );
 }
@@ -85,6 +91,7 @@ const App = () => {
         <Stack.Screen name="ForgotId" component={ForgotIdScreen} />
         <Stack.Screen name="ForgotPw" component={ForgotPwScreen} />
         <Stack.Screen name="Spec" component={SpecificationScreen} />
+        <Stack.Screen name="Calend" component={StampCalendar} />
       </Stack.Navigator>
     </NavigationContainer>
   );
