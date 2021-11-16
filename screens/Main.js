@@ -1,25 +1,55 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import {Image} from 'react-native';
-import { Header } from "react-native/Libraries/NewAppScreen";
+
+const DATA = [
+    {
+      id: '1',
+      title: '수쟁이',
+      img: require('../Source/person_activated.png')
+    },
+    {
+      id: '2',
+      title: 'Second Item',
+      img: require('../Source/person_activated.png')
+    },
+    {
+      id: '3',
+      title: 'Third Item',
+      img: require('../Source/person_activated.png')
+    },
+  ];
+  
+  const Item = ({ title, img }) => (
+    <View style={styles.item}>
+      <Text>{title}</Text>
+      <Image source = {img}></Image>
+    </View>
+  );
 
 
 const mainScreen = ({navigation}) => {
+    const renderItem = ({ item }) => <Item title={item.title} />;
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.header}>
                 <Image style={styles.logo_DANBI} source={require('../Source/DANBI_LogoName.png')} />
-              
+                <Image style={styles.logo_My} source={require('../Source/mytab_icon_new.png')}></Image>
             </View>
             <View style={styles.body}>
-                <View style={styles.memberList}><Text>here</Text></View>
+                <View style={styles.memberListbg}>
+                <SafeAreaView style={styles.memberList}>
+                    <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
+                </SafeAreaView>
+                    
+                </View>
             </View>
         </View>
     );
 }
-/* <Image style={styles.logo_My} source={require('../Source/mytab_icon.png')}></Image> */
+/*  */
 
 export default mainScreen;
 const styles = StyleSheet.create({
@@ -30,30 +60,44 @@ const styles = StyleSheet.create({
         flex : 1,
         flexDirection:"row",
         backgroundColor : "#F5F5F5",
-        alignItems: "center",
-        justifyContent : "center",
-    },
-    body : {
-        flex : 5,
-        justifyContent : "center",
-        alignItems: "center",
+
     },
     logo_DANBI: {
         width: 200,
         height: 100,
         justifyContent : "center",
+        alignContent : "center"
       },
     logo_My: {
         width: 40,
         height: 100,
         resizeMode: "contain",
+        marginRight :10
 
       },
-    memberList :{
-        flex :1,
-        backgroundColor : "red",
-        marginVertical: 20,
-        marginHorizontal: 30
-
-    }
+    body : {
+        flex : 5,
+        justifyContent : "center",
+        alignItems: "center",
+    },
+    memberListbg :{
+        flex: 1,
+        width: 300,
+        marginVertical: 5,
+        marginHorizontal: 20,
+        padding: 10,
+        backgroundColor: "#DEEFFF",
+        borderRadius: 10,
+    },
+    item: {
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        padding: 20,
+        marginVertical: 8,
+      },
+    memberList: {
+        flexDirection: 'row',
+        alignItems: "center",
+        justifyContent: 'space-between',
+        borderBottomColor: "#bbb",
+    },
 });
