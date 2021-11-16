@@ -12,11 +12,11 @@ import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import mainScreen from "./screens/Main";
 import RegistrationScreen from "./screens/RegistrationScreen";
+import SignupScreen from "./screens/Signup";
 
 
 //React Navigation Setup
 import { NavigationContainer } from "@react-navigation/native";
-import { useNavigation } from '@react-navigation/native';
 
 function HomeScreen({ navigation }) {
   return (
@@ -34,6 +34,10 @@ function HomeScreen({ navigation }) {
         title="Go to Reg."
         onPress={() => navigation.navigate('Reg')}
       />
+      <Button
+        title="Go to Signup"
+        onPress={() => navigation.navigate('Signup')}
+      />
     </View>
   );
 }
@@ -48,6 +52,7 @@ const App = () => {
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Main" component={mainScreen}/>
         <Stack.Screen name="Reg" component={RegistrationScreen} />
+        <Stack.Screen name="Signup" component={SignupScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
