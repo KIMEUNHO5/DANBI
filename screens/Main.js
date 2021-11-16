@@ -10,7 +10,7 @@ const mainScreen = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.header}>
-                <Image style={styles.logo} source={require('../Source/DANBI_Logo+Name.png')} />
+                <Image style={styles.logo} source={require('../Source/DANBI_LogoName.png')} />
             </View>
         </View>
     );
