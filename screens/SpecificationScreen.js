@@ -8,14 +8,19 @@ import {
   Image, 
   ScrollView, 
   Button,
-  TextInput
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+  FlatList,
 } from "react-native";
+
 
 const SpecificationScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text>DANBI LOGO</Text>
+                <Image
+                    style={styles.headLogo} source={require('../Source/DANBI_LogoName.png')} />
             </View>
             <View style={styles.setting}>
                 <View style={styles.user}>
@@ -25,22 +30,31 @@ const SpecificationScreen = ({navigation}) => {
                     />
                     <Text>HEUN</Text>
                 </View>
-                <Image 
-                    style={styles.edit}
-                    source={require('../Source/edit.png')}
-                />
+                    <TouchableOpacity>
+                        <Image 
+                            style={styles.edit}
+                            source={require('../Source/edit.png')}
+                        />
+                    </TouchableOpacity>
             </View>
             <View style={styles.body}>
                 <View style={styles.waterStatus}>
-                    <Text>water status</Text>
+                    <Image
+                        style={styles.intakeImage}
+                        source={require('../Source/waterIntakePicTest.png')}
+                    />
                 </View>
-                <Image
-                    style={styles.stamp}
-                    source={require('../Source/stamp.png')}
-                />
+                <TouchableOpacity>
+                    <Image
+                        style={styles.stamp}
+                        source={require('../Source/stamp.png')}
+                    />
+                </TouchableOpacity>
             </View>
             <View style={styles.record}>
-                <Text>Record</Text>
+                <View style={styles.recordTable}>
+ 
+                </View>
             </View>
         </View>
     );
@@ -53,19 +67,25 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header : {
-        flex: 1.5,
+        flex: 1,
         flexDirection: "row",
         backgroundColor : "#F5F5F5",
         alignItems: "center",
         justifyContent : "center",
     },
+    headLogo : {
+        width: 200,
+        height: 100,
+        justifyContent: "center",
+        alignContent: "center"
+    },
     setting : {
+        backgroundColor: "white",
         flex: 1,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 20,
-        backgroundColor: "red",
     },
     userLogo : {
         flexDirection: "row",
@@ -84,9 +104,10 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     body : {
+        backgroundColor: "white",
         flex: 7,
-        backgroundColor: "yellow",
         alignItems: "center",
+        justifyContent: "center",
         paddingHorizontal: 20,
         borderColor: "black",
         borderBottomWidth: 2,
@@ -95,7 +116,14 @@ const styles = StyleSheet.create({
         flex: 5,
         flexDirection: "row",
         justifyContent: "center",
+        alignItems: "center",
         paddingHorizontal: 20,
+    },
+    intakeImage : {
+        flexDirection: "row",
+        width: 250,
+        height: 250,
+        resizeMode: "contain",
     },
     stamp : {
         alignSelf: "stretch",
@@ -105,10 +133,19 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     record : {
+        backgroundColor: "white",
         flex: 4,
-        backgroundColor: "pink",
+        alignItems: "center",
         justifyContent: "center",
-        flexDirection: "row",
-        paddingHorizontal: 20,
-    }
+
+    },
+    recordTable : {
+        flex: 1,
+        width: 300,
+        marginVertical: 5,
+        marginHorizontal: 20,
+        padding: 10,
+        backgroundColor: "#C1C1C1",
+        borderRadius: 10,
+    },
 });
