@@ -40,10 +40,12 @@ const LoginScreen = ({ navigation }) => {
       </View>
       <View style={styles.InputAndButton}>
         <View style={styles.Inputcontainer}>
-          <TextInput
-            placeholder={"Email"}
-            style={styles.Input}
-          /> 
+          <View>
+            <TextInput
+              placeholder={"Email"}
+              style={styles.Input}
+            /> 
+          </View>
           <TextInput
             placeholder={"Password"}
             style={styles.Input}
@@ -55,13 +57,34 @@ const LoginScreen = ({ navigation }) => {
             >Login</Text>
         </TouchableOpacity>
       </View>
-      
-      <Button title="Login with Google" onPress={signInAsync} />
-      
-
+      <View style={styles.footer}>
+        <View style = {{flexDirection:"row", justifyContent:"space-evenly", margin: 20,}}>
+          <Image
+          style={styles.login_btn}
+          source={require('../Source/btn_google.png')}
+          />
+          <Image
+          style={styles.login_btn}
+          source={require('../Source/btn_naver.png')}
+          />
+          <Image
+          style={styles.login_btn}
+          source={require('../Source/btn_kakao.png')}
+          />
+        </View>
+        <View style={styles.signcontainer}>
+          <View style = {styles.sign}>
+            <Button title="ID 찾기" />
+            <Button title="비밀번호 찾기"/>
+            <Button title="회원가입"/>
+          </View>
+        </View>
+      </View>
     </View>
+    
   );
 };
+
 
 export default LoginScreen;
 
@@ -97,22 +120,52 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 30,
-    backgroundColor: "orange",
+    //backgroundColor: "orange",
     marginBottom: 70,
   },
   Inputcontainer:{
     flexDirection: "column",
   },
   Input:{
+    borderBottomColor: "#C1C1C1",
+    borderBottomWidth: 3,
     fontSize: 18,
+    height: 30,
+    width: 180,
+    marginTop: 13,
   },
   LoginButton:{
     width: 85,
     height: 90,
     alignItems:"center",
     justifyContent:"center",
-    backgroundColor: "#7E7E7E",
+    backgroundColor: "#C1C1C1",
     padding: 10,
     borderRadius: 10,
   },
+  footer:{
+    height:170,
+    width:"100%",
+    position: 'absolute', 
+    bottom: 30,
+    borderTopColor: "#C1C1C1",
+    borderTopWidth: 3,
+  },
+  login_btn:{
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
+  signcontainer:{
+    width:"100%",
+    position: 'absolute', 
+    bottom: 0,
+  },
+  sign:{
+    justifyContent: 'flex-end',
+    justifyContent:"space-evenly",
+    flexDirection: "row",
+  },
+  
+  
 });
