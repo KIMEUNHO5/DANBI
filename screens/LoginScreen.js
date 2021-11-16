@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, ColorPropType } from "react-native";
+import { StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, ColorPropType, TouchableWithoutFeedback, Keyboard } from "react-native";
 import * as Google from "expo-google-app-auth";
 //import logo from './Source/DANBI_Logo.png'; 
 
@@ -23,7 +23,8 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
       <Image
         style={styles.logo}
         source={require('../Source/DANBI_Logo.png')}
@@ -44,11 +45,13 @@ const LoginScreen = ({ navigation }) => {
             <TextInput
               placeholder={"Email"}
               style={styles.Input}
+              keyboardType="email-address"
             /> 
           </View>
           <TextInput
             placeholder={"Password"}
             style={styles.Input}
+            returnKeyType="done"
           />             
         </View>
         <TouchableOpacity style={styles.LoginButton}>
@@ -87,6 +90,8 @@ const LoginScreen = ({ navigation }) => {
         </View>
       </View>
     </View>
+    </TouchableWithoutFeedback>
+    
     
   );
 };
