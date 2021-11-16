@@ -18,27 +18,26 @@ const SpecificationScreen = ({navigation}) => {
                 <Text>DANBI LOGO</Text>
             </View>
             <View style={styles.setting}>
-                <Image
-                    style={styles.userLogo}
-                    source={require('../Source/person_inactivated.png')}
-                />
                 <View style={styles.user}>
+                    <Image
+                        style={styles.userLogo}
+                        source={require('../Source/person_inactivated.png')}
+                    />
                     <Text>HEUN</Text>
                 </View>
-                <View style={styles.edit}>
-                    <Text>edit</Text>
-                </View>
+                <Image 
+                    style={styles.edit}
+                    source={require('../Source/edit.png')}
+                />
             </View>
             <View style={styles.body}>
                 <View style={styles.waterStatus}>
                     <Text>water status</Text>
                 </View>
-                <View style={styles.stamp}>
-                    <Text>stamp</Text>
-                </View>
-                <View style={styles.line}>
-                    <Text>line</Text>
-                </View>
+                <Image
+                    style={styles.stamp}
+                    source={require('../Source/stamp.png')}
+                />
             </View>
             <View style={styles.record}>
                 <Text>Record</Text>
@@ -62,48 +61,48 @@ const styles = StyleSheet.create({
     },
     setting : {
         flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 20,
         backgroundColor: "red",
     },
     userLogo : {
-        width: 30,
-        height: 30,
-
+        flexDirection: "row",
+        width: 50,
+        height: 50,
+        resizeMode: "contain",
     },
     user : {
-      justifyContent: "center",
-      flexDirection: "row",
-      paddingHorizontal: 20,
+        flexDirection: "row",
+        alignItems: "center",
     },
     edit : {
-        justifyContent: "center",
         flexDirection: "row",
-        paddingHorizontal: 20,
+        width: 20,
+        height: 20,
+        resizeMode: "contain",
     },
     body : {
-        flex: 5,
+        flex: 7,
         backgroundColor: "yellow",
-        justifyContent : "center",
         alignItems: "center",
+        paddingHorizontal: 20,
+        borderColor: "black",
+        borderBottomWidth: 2,
     },
     waterStatus : {
         flex: 5,
-        justifyContent: "center",
         flexDirection: "row",
+        justifyContent: "center",
         paddingHorizontal: 20,
     },
     stamp : {
-        backgroundColor: "blue",
-        justifyContent: "center",
-        flexDirection: "row",
-        paddingHorizontal: 20,
-    },
-    line : {
-        backgroundColor: "green",
-        justifyContent: "center",
-        flexDirection: "row",
-        paddingHorizontal: 20,
+        alignSelf: "stretch",
+        width: 40,
+        height: 40,
+        paddingBottom: 60,
+        resizeMode: "contain",
     },
     record : {
         flex: 4,
