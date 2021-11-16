@@ -8,7 +8,7 @@ const mainScreen = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.header}>
-                <Text>Hello!</Text>
+                <Image style={styles.logo} source={require('../Source/DANBI_Logo.png')} />
             </View>
         </View>
     );
@@ -28,5 +28,11 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         marginTop: 100,
         justifyContent:"center"
-    }
+    },
+    logo: {
+        width: 120,
+        height: 140,
+        marginTop: 10,
+        resizeMode: "contain",
+      },
 });
