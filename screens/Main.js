@@ -11,7 +11,7 @@ const mainScreen = ({navigation}) => {
             <StatusBar style="auto" />
             <View style={styles.header}>
                 <Image style={styles.logo_DANBI} source={require('../Source/DANBI_LogoName.png')} />
-                <Image style={styles.logo_My} source={require('../Source/mytab_icon.png')}></Image>
+              
             </View>
             <View style={styles.body}>
                 <View style={styles.memberList}><Text>here</Text></View>
@@ -19,10 +19,8 @@ const mainScreen = ({navigation}) => {
         </View>
     );
 }
+/* <Image style={styles.logo_My} source={require('../Source/mytab_icon.png')}></Image> */
 
-/*
-<Image source={require('assets\icon.png')} />
-*/
 export default mainScreen;
 const styles = StyleSheet.create({
     container : {
