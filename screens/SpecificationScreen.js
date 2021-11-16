@@ -44,12 +44,14 @@ const SpecificationScreen = ({navigation}) => {
                         source={require('../Source/waterIntakePicTest.png')}
                     />
                 </View>
-                <TouchableOpacity>
-                    <Image
-                        style={styles.stamp}
-                        source={require('../Source/stamp.png')}
-                    />
-                </TouchableOpacity>
+                <View style={styles.stampcontainer}>
+                    <TouchableOpacity>
+                        <Image
+                            style={styles.stamp}
+                            source={require('../Source/stamp.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
             <View style={styles.record}>
                 <View style={styles.recordTable}>
@@ -125,8 +127,10 @@ const styles = StyleSheet.create({
         height: 250,
         resizeMode: "contain",
     },
+    stampcontainer:{
+        alignSelf:"stretch",
+    },
     stamp : {
-        alignSelf: "stretch",
         width: 40,
         height: 40,
         paddingBottom: 60,
