@@ -42,18 +42,17 @@ const DATA = [
   ];
   
   const Item = ({ title, img }) => (
-    <View style={styles.item}>
+    <DataView>
         <Image source = {img}></Image>
         <Text>{title}</Text>
-
-    </View>
+    </DataView>
   );
 
 
 const mainScreen = ({navigation}) => {
     const renderItem = ({ item }) => {return (
         <TouchableOpacity>
-            <View style={{flexDirection:'row'}}>
+            <View style={ styles.item}>
                 <Image style={styles.itemImg} source={item.img} ></Image>
                 <Text style={styles.itemName}>{item.name}</Text>
             </View>
@@ -68,8 +67,13 @@ const mainScreen = ({navigation}) => {
             </View>
             <View style={styles.body}>
                 <View style={styles.memberListbg}>
-                    <SafeAreaView style={styles.memberList}>
+                    <SafeAreaView style>
                         <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
+                        <View style={styles.pluscontainer}>
+                            <TouchableOpacity>
+                                <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
+                            </TouchableOpacity>
+                        </View>
                     </SafeAreaView> 
                 </View>
             </View>
@@ -112,6 +116,7 @@ const styles = StyleSheet.create({
     },
     memberListbg :{
         width: 300,
+        height: 550,
         marginVertical: 30,
         marginHorizontal: 30,
         padding: 10,
@@ -122,27 +127,34 @@ const styles = StyleSheet.create({
     },
     item: {
         borderBottomWidth: StyleSheet.hairlineWidth,
-        padding: 20,
-        marginVertical: 8,
-      },
-    memberList: {
-        flexDirection: 'row',
-        alignItems: "center",
-        justifyContent: 'space-between',
-        borderBottomColor: "#bbb",
+        padding: 10,
+        flexDirection:'row'
     },
     itemImg :{
-        backgroundColor: "red",
-        width:120,
-        height:100,
+        //backgroundColor: "red",
+        width:50,
+        height:50,
         resizeMode:'cover',
-        marginRight:8,
+        marginRight:10,
+        resizeMode: "contain",
     },
     itemName :{
-        backgroundColor :"blue",
-        fontSize:30,
+        //backgroundColor :"blue",
+        fontSize:20,
+        fontWeight: "900",
         justifyContent :"center",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        padding: 30,
+        marginTop:15,
+        marginHorizontal:10,
+    },
+    pluscontainer:{
+        //backgroundColor:"red",
+        height:40,
+        justifyContent:"center",
+        alignItems:"center",
+    },
+    plusicon:{
+        height:30,
+        width:30,
+        resizeMode: "contain",
     },
 });
