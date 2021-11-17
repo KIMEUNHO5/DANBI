@@ -14,21 +14,47 @@ import {
   FlatList,
 } from "react-native";
 
+const DATA = [
+    {
+         id: '1',
+         name: '1st log',
+    },
+    {
+        id: '2',
+        name: '2nd log',
+    },
+    {
+        id: '3',
+        name: '3rd log',
+    },
+  ];
+
+const Item = ({ title }) => (
+    <DataView>
+        <Text>{title}</Text>
+    </DataView>
+  );
 
 const SpecificationScreen = ({navigation}) => {
+    const renderItem = ({ item }) => {return (
+        <TouchableOpacity>
+            <View style={ styles.item}>
+                <Text style={styles.itemName}>{item.name}</Text>
+            </View>
+        </TouchableOpacity>
+    );}
+
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image
-                    style={styles.headLogo} source={require('../Source/DANBI_LogoName.png')} />
-            </View>
             <View style={styles.setting}>
                 <View style={styles.user}>
                     <Image
                         style={styles.userLogo}
                         source={require('../Source/person_inactivated.png')}
                     />
+                    <View style={styles.username}>
                     <Text>HEUN</Text>
+                    </View>
                 </View>
                     <TouchableOpacity>
                         <Image 
@@ -55,7 +81,14 @@ const SpecificationScreen = ({navigation}) => {
             </View>
             <View style={styles.record}>
                 <View style={styles.recordTable}>
- 
+                    <SafeAreaView style>
+                        <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
+                        <View style={styles.pluscontainer}>
+                            <TouchableOpacity>
+                                <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView> 
                 </View>
             </View>
         </View>
@@ -67,19 +100,7 @@ export default SpecificationScreen;
 const styles = StyleSheet.create({
     container : {
         flex: 1,
-    },
-    header : {
-        flex: 1,
-        flexDirection: "row",
-        backgroundColor : "white",
-        alignItems: "center",
-        justifyContent : "center",
-    },
-    headLogo : {
-        width: 200,
-        height: 100,
-        justifyContent: "center",
-        alignContent: "center"
+        backgroundColor: "white",
     },
     setting : {
         backgroundColor: "white",
@@ -87,17 +108,23 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+        marginTop: 20,
         paddingHorizontal: 20,
     },
     userLogo : {
         flexDirection: "row",
-        width: 50,
-        height: 50,
+        width: 30,
+        height: 30,
         resizeMode: "contain",
     },
     user : {
         flexDirection: "row",
         alignItems: "center",
+    },
+    username : {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingLeft: 5,
     },
     edit : {
         flexDirection: "row",
@@ -141,15 +168,39 @@ const styles = StyleSheet.create({
         flex: 4,
         alignItems: "center",
         justifyContent: "center",
-
+        marginBottom: 20,
     },
     recordTable : {
         flex: 1,
         width: 300,
-        marginVertical: 5,
-        marginHorizontal: 20,
+        marginTop: 20,
+        marginBottom: 20,
         padding: 10,
         backgroundColor: "#C1C1C1",
         borderRadius: 10,
+    },
+    item : {
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        padding: 10,
+        flexDirection:'row',
+    },
+    itemName : {
+        width: 250,
+        height: 20,
+        fontSize: 13,
+        fontWeight: "900",
+        justifyContent: "center",
+        paddingLeft: 10,
+        marginTop: 5,
+    },
+    pluscontainer:{
+        height: 40,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    plusicon:{
+        height: 20,
+        width: 20,
+        resizeMode: "contain",
     },
 });

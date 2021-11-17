@@ -12,7 +12,11 @@
   "dependencies": {
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-native-community/masked-view": "^0.1.11",
+<<<<<<< HEAD
     "@react-native-picker/picker": "2.1.0",
+=======
+    "@react-native-picker/picker": "^2.2.0",
+>>>>>>> b5c030a2f5c31d64f6abe821288e61bbc3b9bf95
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/drawer": "^6.1.8",
     "@react-navigation/material-top-tabs": "^6.0.6",
@@ -29,6 +33,7 @@
     "react-datepicker": "^4.3.0",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-calendars": "^1.1268.0",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-modal-datetime-picker": "^13.0.0",
     "react-native-pager": "^0.0.3",
