@@ -1,34 +1,47 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
-import { StatusBar } from 'expo-status-bar';
-import {Image} from 'react-native';
-import { Header } from "react-native/Libraries/NewAppScreen";
+import {
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem
+} from '@react-navigation/drawer' ;
+import Login from './LoginScreen';
+import Signup from './Signup';
+const Drawer =createDrawerNavigator();
 
-
-const MyTabScreen = ({navigation}) => {
+const CustomDrawerContent =(props) =>{
+    const doLogout =() =>{
+        console.log("logout");
+    }
     return (
-        <View style={styles.container}>
-            <Image
-                style={styles.entryimage}
-                source={require('../Source/entry.png')}
-            />
-        </View>
-    );
+        <DrawerContentScrollView{...props}>
+            <DrawerItemList{...props}>
+            <DrawerItem>
+                label="로그아웃"
+                onPress={doLogout}
+            </DrawerItem></DrawerItemList>
+        </DrawerContentScrollView>
+    )
+}
+const MyTabScreen = ({navigation}) => {
+  return (
+      <Drawer.Navigator 
+        initialRouteName="Home"
+        drawerType="front"
+        drawerPosition="left"
+        drawerContentOptions={{
+            activeTintColor: 'blue',
+            activeBackgroundColor :'yellow'
+        }}
+        drwaerStyle={{
+            backgroundColor:'#c6cbef',
+            width:200
+        }}
+      drawerContent={props => <CustomDrawerContent{...props}></CustomDrawerContent>}>
+        <Drawer.Screen name="Login" component={Login} options={{drawerLabel :'로그아웃'}}/>
+        <Drawer.Screen name="Signup" component={Signup} options={{drawerLabel :'계정삭제'}}/>
+      </Drawer.Navigator>
+  );
 }
 
-/*
-<Image source={require('assets\icon.png')} />
-*/
-export default MyTabScreen;
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor:"#FFFFFF",
-        alignItems: "center",
-        justifyContent : "center",
-    },
-    entryimage:{
-        width:"100%",
-        resizeMode: "contain",
-    },
-});
+export default MyTabScreen; 

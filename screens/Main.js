@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     },
     logo_DANBI: {
         flex : 10,
-        backgroundColor: "green",
+        //backgroundColor: "green",
         resizeMode: "cover", 
         height: 130,
         alignContent : "center",
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
       },
     logo_My: {
         flex : 1,
-        backgroundColor :"red",
+        //backgroundColor :"red",
         height: 130,
         resizeMode: "contain",
         marginRight :10
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
         //backgroundColor: "red",
         width:50,
         height:50,
-        resizeMode:'cover',
         marginRight:10,
         resizeMode: "contain",
     },
