@@ -28,7 +28,7 @@ const DATA = [
         name: '3rd log',
     },
   ];
-  
+
 const Item = ({ title }) => (
     <DataView>
         <Text>{title}</Text>
@@ -46,10 +46,6 @@ const SpecificationScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image
-                    style={styles.headLogo} source={require('../Source/DANBI_LogoName.png')} />
-            </View>
             <View style={styles.setting}>
                 <View style={styles.user}>
                     <Image
@@ -104,19 +100,7 @@ export default SpecificationScreen;
 const styles = StyleSheet.create({
     container : {
         flex: 1,
-    },
-    header : {
-        flex: 1,
-        flexDirection: "row",
-        backgroundColor : "white",
-        alignItems: "center",
-        justifyContent : "center",
-    },
-    headLogo : {
-        width: 200,
-        height: 100,
-        justifyContent: "center",
-        alignContent: "center"
+        backgroundColor: "white",
     },
     setting : {
         backgroundColor: "white",
@@ -124,6 +108,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+        marginTop: 20,
         paddingHorizontal: 20,
     },
     userLogo : {
@@ -183,7 +168,7 @@ const styles = StyleSheet.create({
         flex: 4,
         alignItems: "center",
         justifyContent: "center",
-
+        marginBottom: 20,
     },
     recordTable : {
         flex: 1,
