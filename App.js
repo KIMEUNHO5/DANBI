@@ -85,12 +85,26 @@ const App = () => {
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Main" component={mainScreen}/>
         <Stack.Screen name="MyTab" component={MyTabScreen}/>
-        <Stack.Screen name="Reg" component={RegistrationScreen} />
+        <Stack.Screen 
+        name="Reg" 
+        component={RegistrationScreen}
+        options={{
+          headerTitle : () => (
+            <Image style = {{ width:100, height : 100 }} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+        }} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Entry" component={entryScreen} />
         <Stack.Screen name="ForgotId" component={ForgotIdScreen} />
         <Stack.Screen name="ForgotPw" component={ForgotPwScreen} />
-        <Stack.Screen name="Spec" component={SpecificationScreen} />
+        <Stack.Screen 
+        name="Spec" 
+        component={SpecificationScreen} 
+        options={{
+          headerTitle : () => (
+            <Image style = {{ width:100, height : 100 }} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+        }} />
         <Stack.Screen name="Calend" component={StampCalendar} />
       </Stack.Navigator>
     </NavigationContainer>

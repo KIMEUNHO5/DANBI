@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import RNPickerSelect from 'react-native-picker-select';
 import { 
   StyleSheet, 
   Text, 
@@ -76,6 +77,12 @@ function Registration_person () {
     hideSleepTimePicker();
     onChangeText_sleep(sleepDate.format("a/p hh:mm"));
   };
+
+  const [text_cycle, setText_cycle] = useState("");
+  const onChangeText_cycle = (value) => {
+      console.warn(value)
+      setText_cycle(value);
+  }
   
 
   return (
@@ -96,10 +103,13 @@ function Registration_person () {
             <View style={styles.inputTag}>
               <Text style={styles.contentText}>체중</Text>
             </View>
-            <TextInput 
-            style={styles.inputField}
-            placeholder = "Weight"
-            placeholderTextcolor = "gray"/>
+            <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
+                <TextInput 
+                placeholder = "Weight"
+                placeholderTextColor = "gray"
+                keyboardType="number-pad"/>
+                <Text>kg</Text>
+            </View>
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
@@ -149,28 +159,49 @@ function Registration_person () {
             <View style={styles.inputTag}>
               <Text style={styles.contentText}>선호 물 온도</Text>
             </View>
-            <TextInput 
-            style={styles.inputField}
-            placeholder = "Water Temperature"
-            placeholderTextColor = "gray"/>
+            <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
+                <TextInput 
+                placeholder = "Water Temperature"
+                placeholderTextColor = "gray"
+                keyboardType="number-pad"/>
+                <Text>°C</Text>
+            </View>
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
               <Text style={styles.contentText}>목표 수분 섭취량</Text>
             </View>
-            <TextInput 
-            style={styles.inputField}
-            placeholder = "Water Intake Goal"
-            placeholderTextColor = "gray"/>
+            <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
+                <TextInput 
+                placeholder = "Water Intake Goal"
+                placeholderTextColor = "gray"
+                keyboardType="number-pad"/>
+                <Text>mL</Text>
+            </View>
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
               <Text style={styles.contentText}>수분 섭취 주기</Text>
             </View>
-            <TextInput 
-            style={styles.inputField}
-            placeholder = "Water Intake Cycle"
-            placeholderTextColor = "gray"/>
+
+            <TouchableOpacity
+            style={styles.inputField}>
+                <RNPickerSelect
+                placeholder={{
+                    label:"Water Intake Cycle",
+                    color : "gray",
+                }}
+                value={text_cycle}
+                onValueChange={(value)=>onChangeText_cycle(value)}
+                items={[
+                    {label : '30분', value : 30},
+                    {label : '1시간', value : 60},
+                    {label : '1시간 30분', value : 90},
+                    {label : '2시간', value : 120},
+                    {label : '2시간 30분', value : 150},
+                    {label : '3시간', value : 180},
+                ]}/>
+            </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
             <Button title="등록"/>

@@ -84,6 +84,12 @@ function Registration_pet() {
       setText_type(value);
   }
 
+  const [text_cycle, setText_cycle] = useState("");
+  const onChangeText_cycle = (value) => {
+      console.warn(value)
+      setText_cycle(value);
+  }
+
   
 
   return (
@@ -126,7 +132,8 @@ function Registration_pet() {
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
                 placeholder = "Weight"
-                placeholderTextColor = "gray"/>
+                placeholderTextColor = "gray"
+                keyboardType="number-pad"/>
                 <Text>kg</Text>
             </View>
           </View>
@@ -176,23 +183,38 @@ function Registration_pet() {
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
-              <Text style={styles.contentText}>목표 수분 섭취량</Text>
+              <Text style={styles.contentText}>목표 급수량</Text>
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
-                placeholder = "Water Intake Goal"
-                placeholderTextColor = "gray"/>
-                <Text>L</Text>
+                placeholder = "Water Supply Goal"
+                placeholderTextColor = "gray"
+                keyboardType="number-pad"/>
+                <Text>mL</Text>
             </View>
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
-              <Text style={styles.contentText}>수분 섭취 주기</Text>
+              <Text style={styles.contentText}>급수 주기</Text>
             </View>
-            <TextInput 
-            style={styles.inputField}
-            placeholder = "Water Intake Cycle"
-            placeholderTextColor = "gray"/>
+            <TouchableOpacity
+            style={styles.inputField}>
+                <RNPickerSelect
+                placeholder={{
+                    label:"Water Supply Cycle",
+                    color : "gray",
+                }}
+                value={text_cycle}
+                onValueChange={(value)=>onChangeText_cycle(value)}
+                items={[
+                    {label : '30분', value : 30},
+                    {label : '1시간', value : 60},
+                    {label : '1시간 30분', value : 90},
+                    {label : '2시간', value : 120},
+                    {label : '2시간 30분', value : 150},
+                    {label : '3시간', value : 180},
+                ]}/>
+            </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
             <Button title="등록" />

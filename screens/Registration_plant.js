@@ -43,7 +43,6 @@ Number.prototype.zf = function(len){return this.toString().zf(len);};
 
 function Registration_plant() {
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
-  const placeholder = "시간을 입력해주세요";
   const [text, onChangeText] = useState("");
 
   const showTimePicker = () => {
@@ -64,6 +63,29 @@ function Registration_plant() {
   const onChangeText_type = (value) => {
       console.warn(value)
       setText_type(value);
+  };
+
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [text_date, onChangeText_date] = useState("");
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm_date = (date) => {
+    console.warn("A date has been picked: ", date);
+    hideDatePicker();
+    onChangeText_date(date.format("yyyy/MM/dd"))
+  };
+
+  const [text_cycle, setText_cycle] = useState("");
+  const onChangeText_cycle = (value) => {
+      console.warn(value)
+      setText_cycle(value);
   }
 
 
@@ -113,10 +135,23 @@ function Registration_plant() {
                         <View style={styles.inputTag}>
                         <Text style={styles.contentText}>마지막 급수일</Text>
                         </View>
-                        <TextInput 
-                        style={styles.inputField}
-                        placeholder = "Last Water Supply Date"
-                        placeholderTextColor = "gray"/>
+
+                        <TouchableOpacity onPress={showDatePicker} style={styles.inputField}>
+                          <TextInput
+                          pointerEvent="none"
+                          placeholder="Last Water Supply Date"
+                          placeholderTextColor="gray"
+                          editable={false}
+                          value={text_date}
+                          />
+                          <DateTimePickerModal
+                          headerTextIOS = "Last Water Supply Date"
+                          isVisible={isDatePickerVisible}
+                          mode="date"
+                          onConfirm={handleConfirm_date}
+                          onCancel={hideDatePicker}
+                          />
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.eachLine}>
                         <View style={styles.inputTag}>
@@ -131,7 +166,6 @@ function Registration_plant() {
                         value={text}
                         />
                         <DateTimePickerModal
-                        headerTextIOS={placeholder}
                         isVisible={isTimePickerVisible}
                         mode="time"
                         onConfirm={handleConfirm}
@@ -144,19 +178,60 @@ function Registration_plant() {
                         <View style={styles.inputTag}>
                         <Text style={styles.contentText}>급수량</Text>
                         </View>
-                        <TextInput 
-                        style={styles.inputField}
-                        placeholder = "Amount of Water Supply"
-                        placeholderTextColor = "gray"/>
+                        <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
+                            <TextInput 
+                            placeholder = "Water Supply Amount"
+                            placeholderTextColor = "gray"
+                            keyboardType="number-pad"/>
+                            <Text>mL</Text>
+                        </View>
                     </View>
                     <View style={styles.eachLine}>
                         <View style={styles.inputTag}>
                         <Text style={styles.contentText}>급수 주기</Text>
                         </View>
-                        <TextInput 
-                        style={styles.inputField}
-                        placeholder = "Water Supply Cycle"
-                        placeholderTextColor = "gray"/>
+                        <TouchableOpacity
+                        style={styles.inputField}>
+                            <RNPickerSelect
+                            placeholder={{
+                                label:"Water Supply Cycle",
+                                color : "gray",
+                            }}
+                            value={text_cycle}
+                            onValueChange={(value)=>onChangeText_cycle(value)}
+                            items={[
+                                {label : '1일', value : 1},
+                                {label : '2일', value : 2},
+                                {label : '3일', value : 3},
+                                {label : '4일', value : 4},
+                                {label : '5일', value : 5},
+                                {label : '6일', value : 6},
+                                {label : '7일', value : 7},
+                                {label : '8일', value : 8},
+                                {label : '9일', value : 9},
+                                {label : '10일', value : 10},
+                                {label : '11일', value : 11},
+                                {label : '12일', value : 12},
+                                {label : '13일', value : 13},
+                                {label : '14일', value : 14},
+                                {label : '15일', value : 15},
+                                {label : '16일', value : 16},
+                                {label : '17일', value : 17},
+                                {label : '18일', value : 18},
+                                {label : '19일', value : 19},
+                                {label : '20일', value : 20},
+                                {label : '21일', value : 21},
+                                {label : '22일', value : 22},
+                                {label : '23일', value : 23},
+                                {label : '24일', value : 24},
+                                {label : '25일', value : 25},
+                                {label : '26일', value : 26},
+                                {label : '27일', value : 27},
+                                {label : '28일', value : 28},
+                                {label : '29일', value : 29},
+                                {label : '30일', value : 30},
+                            ]}/>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.eachLine}>
                         <Button title="등록" />
