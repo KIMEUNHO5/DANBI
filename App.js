@@ -80,32 +80,108 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Main" component={mainScreen}/>
-        <Stack.Screen name="MyTab" component={MyTabScreen}/>
+        <Stack.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}  />
+        <Stack.Screen 
+        name="Login" 
+        component={LoginScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
+        <Stack.Screen 
+        name="Profile" 
+        component={ProfileScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
+        <Stack.Screen 
+        name="Main" 
+        component={mainScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}  />
+        <Stack.Screen 
+        name="MyTab" 
+        component={MyTabScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}  />
         <Stack.Screen 
         name="Reg" 
         component={RegistrationScreen}
         options={{
+          headerStyle:{
+            height:100
+          },
           headerTitle : () => (
-            <Image style = {{ width:100, height : 100 }} source = {require('./Source/DANBI_LogoName.png')}/>
+            <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="Entry" component={entryScreen} />
-        <Stack.Screen name="ForgotId" component={ForgotIdScreen} />
-        <Stack.Screen name="ForgotPw" component={ForgotPwScreen} />
+        <Stack.Screen 
+        name="Signup" 
+        component={SignupScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
+        <Stack.Screen 
+        name="Entry" 
+        component={entryScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
+        <Stack.Screen 
+        name="ForgotId" 
+        component={ForgotIdScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
+        <Stack.Screen 
+        name="ForgotPw" 
+        component={ForgotPwScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
         <Stack.Screen 
         name="Spec" 
         component={SpecificationScreen} 
         options={{
+          headerStyle:{
+            height:100
+          },
           headerTitle : () => (
-            <Image style = {{ width:100, height : 100 }} source = {require('./Source/DANBI_LogoName.png')}/>
+            <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }} />
-        <Stack.Screen name="Calend" component={StampCalendar} />
+        <Stack.Screen 
+        name="Calend" 
+        component={StampCalendar}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }}   />
       </Stack.Navigator>
     </NavigationContainer>
   );
