@@ -1,7 +1,11 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity, Pressable, Image } from "react-native";
 import { StatusBar } from 'expo-status-bar';
-import {Image} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Login from './LoginScreen';
+import Signup from './Signup';
+import ChangePW from './ChangePW';
 
 const DATA = [
     {
@@ -41,15 +45,20 @@ const DATA = [
     },
   ];
   
-  const Item = ({ title, img }) => (
-    <DataView>
-        <Image source = {img}></Image>
-        <Text>{title}</Text>
-    </DataView>
-  );
 
 
 const mainScreen = ({navigation}) => {
+    return (
+        <Drawer.Navigator>
+            <Drawer.Screen name="Home" component={Home}  />
+            <Drawer.Screen name="ChangePW" component={ChangePW} options={{drawerLabel :'비밀번호 변경'}}/>
+            <Drawer.Screen name="Login" component={Login} options={{drawerLabel :'로그아웃'}}/>
+            <Drawer.Screen name="Signup" component={Signup} options={{drawerLabel :'계정삭제'}}/>
+        </Drawer.Navigator>
+    );
+}
+
+function Home({ navigation }) {
     const renderItem = ({ item }) => {return (
         <TouchableOpacity>
             <View style={ styles.item}>
@@ -60,35 +69,47 @@ const mainScreen = ({navigation}) => {
     );}
     return (
         <View style={styles.container}>
-            <StatusBar style="auto" />
-            <View style={styles.header}>
-                <Image style={styles.logo_My} source={require('../Source/mytab_icon_new.png')}></Image>
-            </View>
-            <View style={styles.body}>
-                <View style={styles.memberListbg}>
-                    <SafeAreaView style>
-                        <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
-                        <View style={styles.pluscontainer}>
-                            <TouchableOpacity>
-                                <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
-                            </TouchableOpacity>
-                        </View>
-                    </SafeAreaView> 
-                </View>
+        <StatusBar style="auto" />
+        <View style={styles.header}>
+            <View style={styles.logobg_My}>
+                <TouchableOpacity
+                    onPress={() => navigation.openDrawer()}
+                >
+                    <Image style={styles.logo_My}
+                    source = {require ('../Source/mytab_icon_new.png')}></Image>
+                </TouchableOpacity>
             </View>
         </View>
+        <View style={styles.body}>
+            <View style={styles.memberListbg}>
+                <SafeAreaView style>
+                    <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
+                    <View style={styles.pluscontainer}>
+                        <TouchableOpacity>
+                            <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView> 
+            </View>
+        </View>
+    </View>
     );
-}
-/*  */
+  }
+  
+const Drawer = createDrawerNavigator();
+  
 
 export default mainScreen;
+
+
+
 const styles = StyleSheet.create({
     container : {
         flex: 1,
     },
     header : {
         flex : 1,
-        flexDirection:"row",
+        flexDirection:"column",
         backgroundColor : 'white',
     },
     // logo_DANBI: {
@@ -99,14 +120,23 @@ const styles = StyleSheet.create({
     //     alignContent : "center",
     //     justifyContent : "center"
     //   },
+    logobg_My: {
+        flex : 1,
+        flexDirection : "row",
+        //backgroundColor :"blue",
+        alignSelf: "flex-end",
+        //marginVertical : 10,
+        //marginLeft :10,
+        
+      },
     logo_My: {
         flex : 1,
-        //backgroundColor :"red",
-        width : 45,
-        height: 45,
+        //backgroundColor :"yellow",
+        width : 47,
+        height: 47,
         resizeMode: "contain",
         marginVertical : 10,
-        marginLeft :330
+        //marginLeft :330
 
       },
     body : {

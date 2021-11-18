@@ -11,7 +11,6 @@ const Stack = createStackNavigator();
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import mainScreen from "./screens/Main";
-import MyTabScreen from "./screens/MyTab";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import SignupScreen from "./screens/Signup";
 import entryScreen from "./screens/entry";
@@ -37,10 +36,6 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Main"
         onPress={() => navigation.navigate('Main')}
-      />
-      <Button
-        title="Go to My Tab"
-        onPress={() => navigation.navigate('MyTab')}
       />
       <Button
         title="Go to Reg."
@@ -101,14 +96,6 @@ const App = () => {
           },headerTitle : () => (
             <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
-        }}  />
-        <Stack.Screen 
-        name="MyTab" 
-        component={MyTabScreen}
-        options={{
-          headerStyle:{
-            height:100
-          },
         }}  />
         <Stack.Screen 
         name="Reg" 
