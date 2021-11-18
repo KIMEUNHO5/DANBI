@@ -62,7 +62,6 @@ const mainScreen = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.header}>
-                <Image style={styles.logo_DANBI} source={require('../Source/DANBI_LogoName.png')} />
                 <Image style={styles.logo_My} source={require('../Source/mytab_icon_new.png')}></Image>
             </View>
             <View style={styles.body}>
@@ -90,34 +89,36 @@ const styles = StyleSheet.create({
     header : {
         flex : 1,
         flexDirection:"row",
-        backgroundColor : '#F5F5F5',
+        backgroundColor : 'white',
     },
-    logo_DANBI: {
-        flex : 10,
-        //backgroundColor: "green",
-        resizeMode: "cover", 
-        height: 130,
-        alignContent : "center",
-        justifyContent : "center"
-      },
+    // logo_DANBI: {
+    //     flex : 10,
+    //     //backgroundColor: "green",
+    //     resizeMode: "cover", 
+    //     height: 130,
+    //     alignContent : "center",
+    //     justifyContent : "center"
+    //   },
     logo_My: {
         flex : 1,
         //backgroundColor :"red",
-        height: 130,
+        width : 45,
+        height: 45,
         resizeMode: "contain",
-        marginRight :10
+        marginVertical : 10,
+        marginLeft :330
 
       },
     body : {
         backgroundColor :"#FFFFFF",
-        flex : 5,
+        flex : 10,
         justifyContent : "center",
         alignItems: "center",
     },
     memberListbg :{
         width: 300,
         height: 550,
-        marginVertical: 30,
+        marginBottom: 90,
         marginHorizontal: 30,
         padding: 10,
         borderWidth : 1,
