@@ -49,6 +49,7 @@ const LoginScreen = ({ navigation }) => {
             /> 
           </View>
           <TextInput
+            secureTextEntry={true}
             placeholder={"Password"}
             style={styles.Input}
             returnKeyType="done"
