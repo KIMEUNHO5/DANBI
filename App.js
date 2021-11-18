@@ -47,20 +47,8 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Reg')}
       />
       <Button
-        title="Go to Signup"
-        onPress={() => navigation.navigate('Signup')}
-      />
-      <Button
         title="Go to Entry"
         onPress={() => navigation.navigate('Entry')}
-      />
-      <Button
-        title="Go to find ID"
-        onPress={() => navigation.navigate('ForgotId')}
-      />
-      <Button
-        title="Go to find Password"
-        onPress={() => navigation.navigate('ForgotPw')}
       />
       <Button
         title="Go to Spec."
