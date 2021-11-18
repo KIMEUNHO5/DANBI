@@ -83,9 +83,9 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <View style={styles.signcontainer}>
           <View style = {styles.sign}>
-            <Button title="ID 찾기" />
-            <Button title="비밀번호 찾기"/>
-            <Button title="회원가입"/>
+            <Button title="ID 찾기" onPress={() => navigation.navigate('ForgotId')}/>
+            <Button title="비밀번호 찾기" onPress={() => navigation.navigate('ForgotPw')}/>
+            <Button title="회원가입"onPress={() => navigation.navigate('Signup')}/>
           </View>
         </View>
       </View>
