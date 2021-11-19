@@ -16,14 +16,17 @@ const ForgotPwScreen = ({navigation}) => {
         </Text>
             <View style={styles.input_container}>
                 <TextInput
-                    placeholder={"Name"}
+                    placeholder={"현재 비밀번호"}
                     style={styles.input}
                 />
                 <TextInput
-                placeholder={"Email"}
-                style={styles.input}
-                keyboardType="email-address"
-            />       
+                    placeholder={"새로운 비밀번호"}
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder={"새로운 비밀번호 확인"}
+                    style={styles.input}
+                />
             </View>
             <TouchableOpacity style={styles.GetPwButton}>
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
         marginTop: 90,
     },
     input_container:{
-        marginTop: 107,
+        marginTop: 80,
         margin: 50
     },
     input:{
