@@ -57,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <TouchableOpacity style={styles.LoginButton}>
             <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
-              Login!!!!!!!!!!
+              Login!!!!!
             </Text>
         </TouchableOpacity>
       </View>
