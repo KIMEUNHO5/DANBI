@@ -99,7 +99,7 @@ const App = () => {
           headerStyle:{
             height:100
           },headerTitle : () => (
-            <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }}  />
         <Stack.Screen 
@@ -110,7 +110,7 @@ const App = () => {
             height:100
           },
           headerTitle : () => (
-            <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
+            <Image style = {{ width: 125, height : 25 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }} />
         <Stack.Screen 
@@ -153,7 +153,7 @@ const App = () => {
             height:100
           },
           headerTitle : () => (
-            <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
+            <Image style = {{ width: 125, height : 25 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }} />
         <Stack.Screen 
