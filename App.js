@@ -93,7 +93,8 @@ const App = () => {
         options={{
           headerStyle:{
             height:100
-          },headerTitle : () => (
+          },
+          headerTitle : () => (
             <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }}  />
