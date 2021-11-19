@@ -18,6 +18,7 @@ import ForgotIdScreen from "./screens/ForgotId";
 import ForgotPwScreen from "./screens/ForgotPassword";
 import SpecificationScreen from "./screens/SpecificationScreen";
 import StampCalendar from "./screens/StampCalendar";
+import AddRecord from "./screens/AddRecord";
 
 
 //React Navigation Setup
@@ -52,6 +53,10 @@ function HomeScreen({ navigation }) {
       <Button 
         title="Go to Calend"
         onPress={() => navigation.navigate('Calend')}
+      />
+      <Button
+        title="Go to AddRecord"
+        onPress={() => navigation.navigate('AddRecord')}
       />
 
     </View>
@@ -93,8 +98,7 @@ const App = () => {
         options={{
           headerStyle:{
             height:100
-          },
-          headerTitle : () => (
+          },headerTitle : () => (
             <Image style = {{ width:150, height : 150 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
         }}  />
@@ -160,6 +164,14 @@ const App = () => {
             height:100
           },
         }}   />
+        <Stack.Screen
+        name="AddRecord"
+        component={AddRecord}
+        options={{
+          headerStyle:{
+            height:100
+          },
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
