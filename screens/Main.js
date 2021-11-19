@@ -50,7 +50,10 @@ const DATA = [
 const mainScreen = ({navigation}) => {
     return (
         <Drawer.Navigator>
-            <Drawer.Screen name="Home" component={Home}  />
+            <Drawer.Screen 
+            name="Home" 
+            component={Home}  
+            options = {{headerShown : false}}/>
             <Drawer.Screen name="ChangePW" component={ChangePW} options={{drawerLabel :'비밀번호 변경'}}/>
             <Drawer.Screen name="Login" component={Login} options={{drawerLabel :'로그아웃'}}/>
             <Drawer.Screen name="Signup" component={Signup} options={{drawerLabel :'계정삭제'}}/>
