@@ -55,9 +55,10 @@ const LoginScreen = ({ navigation }) => {
             returnKeyType="done"
           />             
         </View>
-        <TouchableOpacity style={styles.LoginButton}>
+        <TouchableOpacity style={styles.LoginButton}
+          onPress={() => navigation.navigate('Main')}>
             <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
-              Login!!!!!
+              Login
             </Text>
         </TouchableOpacity>
       </View>

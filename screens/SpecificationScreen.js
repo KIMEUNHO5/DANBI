@@ -71,7 +71,8 @@ const SpecificationScreen = ({navigation}) => {
                     />
                 </View>
                 <View style={styles.stampcontainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Calend')}>
                         <Image
                             style={styles.stamp}
                             source={require('../Source/stamp.png')}
@@ -84,7 +85,7 @@ const SpecificationScreen = ({navigation}) => {
                     <SafeAreaView style>
                         <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
                         <View style={styles.pluscontainer}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate('AddRecord')}>
                                 <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
                             </TouchableOpacity>
                         </View>

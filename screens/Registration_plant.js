@@ -127,6 +127,7 @@ function Registration_plant() {
                                 {label : '유칼립투스 폴리안', value : '유칼립투스 폴리안'},
                                 {label : '스투키', value : '스투키'},
                                 {label : '테이블 야자', value : '테이블 야자'},
+                                {label : '기타', value : '기타'},
                             ]}/>
                         </TouchableOpacity>
                         

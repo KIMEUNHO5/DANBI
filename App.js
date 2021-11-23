@@ -23,8 +23,18 @@ import AddRecord from "./screens/AddRecord";
 
 //React Navigation Setup
 import { NavigationContainer } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
+
+function BackBtn() {
+  return (
+    <Image
+      source={require('./Source/back_btn.png')}
+      style={{marginLeft: 10, width: 22, height: 22,}}
+    />
+  );
+}
 
 function HomeScreen({ navigation }) {
   return (
@@ -35,28 +45,12 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Login')}
       />
       <Button
-        title="Go to Main"
-        onPress={() => navigation.navigate('Main')}
-      />
-      <Button
-        title="Go to Reg."
-        onPress={() => navigation.navigate('Reg')}
-      />
-      <Button
         title="Go to Entry"
         onPress={() => navigation.navigate('Entry')}
       />
       <Button
         title="Go to Spec."
         onPress={() => navigation.navigate('Spec')}
-      />
-      <Button 
-        title="Go to Calend"
-        onPress={() => navigation.navigate('Calend')}
-      />
-      <Button
-        title="Go to AddRecord"
-        onPress={() => navigation.navigate('AddRecord')}
       />
 
     </View>
@@ -73,7 +67,7 @@ const App = () => {
         component={HomeScreen}
         options={{
           headerStyle:{
-            height:100
+            height:100,
           },
         }}  />
         <Stack.Screen 
@@ -83,7 +77,10 @@ const App = () => {
           headerStyle:{
             height:100
           },
-        }}   />
+          title:'',
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
         <Stack.Screen 
         name="Profile" 
         component={ProfileScreen}
@@ -100,6 +97,15 @@ const App = () => {
             height:100
           },headerTitle : () => (
             <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+          headerRight: () => (
+            <Button
+              onPress={() => navigation.openDrawer()}
+              title="Info"
+              color="#fff"
+            />
           ),
         }}  />
         <Stack.Screen 
@@ -119,8 +125,12 @@ const App = () => {
         options={{
           headerStyle:{
             height:100
-          },
-        }}   />
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
         <Stack.Screen 
         name="Entry" 
         component={entryScreen}
@@ -135,43 +145,61 @@ const App = () => {
         options={{
           headerStyle:{
             height:100
-          },
-        }}   />
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
         <Stack.Screen 
         name="ForgotPw" 
         component={ForgotPwScreen}
         options={{
           headerStyle:{
             height:100
-          },
-        }}   />
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
         <Stack.Screen 
         name="Spec" 
         component={SpecificationScreen} 
         options={{
           headerStyle:{
             height:100
-          },
-          headerTitle : () => (
-            <Image style = {{ width: 125, height : 25 }} source = {require('./Source/DANBI_LogoName.png')}/>
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
-        }} />
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
+        
         <Stack.Screen 
         name="Calend" 
         component={StampCalendar}
         options={{
           headerStyle:{
             height:100
-          },
-        }}   />
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
         <Stack.Screen
         name="AddRecord"
         component={AddRecord}
         options={{
           headerStyle:{
             height:100
-          },
-        }} />
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

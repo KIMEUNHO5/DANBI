@@ -53,10 +53,11 @@ const mainScreen = ({navigation}) => {
             <Drawer.Screen 
             name="Home" 
             component={Home}  
-            options = {{headerShown : false}}/>
-            <Drawer.Screen name="ChangePW" component={ChangePW} options={{drawerLabel :'비밀번호 변경'}}/>
-            <Drawer.Screen name="Login" component={Login} options={{drawerLabel :'로그아웃'}}/>
-            <Drawer.Screen name="Signup" component={Signup} options={{drawerLabel :'계정삭제'}}/>
+            //options = {{headerShown : false}}
+            />
+            <Drawer.Screen name="ChangePassword" component={ChangePW} options={{drawerLabel :'비밀번호 변경'}}/>
+            <Drawer.Screen name="Logout" component={Login} options={{drawerLabel :'로그아웃'}}/>
+            <Drawer.Screen name="DeleteAccount" component={Signup} options={{drawerLabel :'계정삭제'}}/>
         </Drawer.Navigator>
     );
 }
@@ -88,7 +89,7 @@ function Home({ navigation }) {
                 <SafeAreaView style>
                     <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
                     <View style={styles.pluscontainer}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Reg')}>
                             <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
                         </TouchableOpacity>
                     </View>
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
         width : 47,
         height: 47,
         resizeMode: "contain",
-        marginVertical : 10,
+        margin: 10,
         //marginLeft :330
 
       },

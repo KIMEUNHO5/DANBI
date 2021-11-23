@@ -30,7 +30,7 @@ const CustomDrawerContent =(props) =>{
 const MyTabScreen = ({navigation}) => {
   return (
         <Drawer.Navigator 
-            initialRouteName="Home"
+            initialRouteName="Home!"
             drawerType="front"
             drawerPosition="left"
             drawerContentOptions={{

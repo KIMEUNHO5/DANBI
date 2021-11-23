@@ -35,7 +35,8 @@ const SignupScreen = ({navigation}) => {
                 returnKeyType="done"
             />              
             </View>
-            <TouchableOpacity style={styles.SignupButton}>
+            <TouchableOpacity style={styles.SignupButton}
+                onPress={() => navigation.navigate('Login')}> 
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
                 Sign up
                 </Text>
