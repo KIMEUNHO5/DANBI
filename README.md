@@ -1,8 +1,9 @@
 # 💧 DANBI
 
-DANBI README
+DANBI, an application that helps to manage my family water intake.
 
-# Introduction
+
+## Introduction
 
 DANBI is a service designed for family members who need water intake information.
 
@@ -16,20 +17,28 @@ The water intake of pets and plants is also directly related to their life suppo
 
 Like welcome rain that falls on dry land, our DANBI will provide essential water intake information for humans, pets, and plants in our busy modern society.
 
-# Main Function
+## Main Function
 
 1. User can create an account and log in through membership registration.
+
 2. Based on the physiological information of each human, pet, and plant, the recommended amount of water intake and the interval of water intake are automatically calculated.
+
 3. Notification is provided by the application and NUGU speaker at water intake time.
+
 4. Record the amount of water intake at once according to the response to the notification.
+
 5. If '물 받기' is selected in response to the notification, LG Puricare water purifier will be supply water according to the user's set temperature and amount.
+
 6. If user has additional water intake, user can manually input through the application.
+
 7. The application provides the moisture intake status of the registrant in a visual picture.
+
 8. If there is a user's question on NUGU speaker, the current amount of water intake and the date and time of last water intake are provided through voice.
+
 9. When achieving the daily target, take stamp to encourage constant water intake.
 
-# Members
-## 김은호(KIM EUN HO) Dept of. Information System
-## 오지윤(OH JI YUN) Dept of. Information System
-## 정효은(JEONG HYO EUN) Dept of. Information System
-## 최수정(CHOI SOO JUNG) Dept of. Information System
+## Members
+__김은호(KIM EUN HO) Dept of. Information System__
+__오지윤(OH JI YUN) Dept of. Information System__
+__정효은(JEONG HYO EUN) Dept of. Information System__
+__최수정(CHOI SOO JUNG) Dept of. Information System__
