@@ -38,7 +38,7 @@ Like welcome rain that falls on dry land, our DANBI will provide essential water
 9. When achieving the daily target, take stamp to encourage constant water intake.
 
 ## Members
-__김은호(KIM EUN HO) Dept of. Information System__
-__오지윤(OH JI YUN) Dept of. Information System__
-__정효은(JEONG HYO EUN) Dept of. Information System__
+__김은호(KIM EUN HO) Dept of. Information System__  
+__오지윤(OH JI YUN) Dept of. Information System__  
+__정효은(JEONG HYO EUN) Dept of. Information System__  
 __최수정(CHOI SOO JUNG) Dept of. Information System__
