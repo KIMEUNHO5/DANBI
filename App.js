@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 // Screens
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import mainScreen from "./screens/Main";
+import MainListScreen from "./screens/Main";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import SignupScreen from "./screens/Signup";
 import entryScreen from "./screens/entry";
@@ -91,7 +91,7 @@ const App = () => {
         }}   />
         <Stack.Screen 
         name="Main" 
-        component={mainScreen}
+        component={MainListScreen}
         options={{
           headerStyle:{
             height:100

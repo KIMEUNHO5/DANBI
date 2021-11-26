@@ -45,24 +45,24 @@ const DATA = [
     },
   ];
   
-
+const Drawer = createDrawerNavigator();
 
 const mainScreen = ({navigation}) => {
     return (
         <Drawer.Navigator>
             <Drawer.Screen 
-            name="Home" 
-            component={Home}  
-            //options = {{headerShown : false}}
+            name="MainListScreen" 
+            component={MainListScreen}  
+            options = {{headerShown : false}}
             />
-            <Drawer.Screen name="ChangePassword" component={ChangePW} options={{drawerLabel :'비밀번호 변경'}}/>
+            <Drawer.Screen name="ChangePassword" component={ChangePW} options={{drawerLabel :'비밀번호 변경',headerShown : false}}/>
             <Drawer.Screen name="Logout" component={Login} options={{drawerLabel :'로그아웃'}}/>
             <Drawer.Screen name="DeleteAccount" component={Signup} options={{drawerLabel :'계정삭제'}}/>
         </Drawer.Navigator>
     );
 }
 
-function Home({ navigation }) {
+function MainListScreen({ navigation }) {
     const renderItem = ({ item }) => {return (
         <TouchableOpacity>
             <View style={ styles.item}>
@@ -100,7 +100,7 @@ function Home({ navigation }) {
     );
   }
   
-const Drawer = createDrawerNavigator();
+
   
 
 export default mainScreen;
