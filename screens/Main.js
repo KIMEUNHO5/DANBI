@@ -6,6 +6,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from './LoginScreen';
 import Signup from './Signup';
 import ChangePW from './ChangePW';
+import StackNavigator from '../App';
+import Logout from "./Logout";
 
 const DATA = [
     {
@@ -56,7 +58,7 @@ const mainScreen = ({navigation}) => {
             options = {{headerShown : false}}
             />
             <Drawer.Screen name="ChangePassword" component={ChangePW} options={{drawerLabel :'비밀번호 변경',headerShown : false}}/>
-            <Drawer.Screen name="Logout" component={Login} options={{drawerLabel :'로그아웃'}}/>
+            <Drawer.Screen name="Logout" component={Logout} options={{drawerLabel :'로그아웃'}}/>
             <Drawer.Screen name="DeleteAccount" component={Signup} options={{drawerLabel :'계정삭제'}}/>
         </Drawer.Navigator>
     );

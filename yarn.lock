@@ -21,7 +21,11 @@
   "resolved" "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.16.0.tgz"
   "version" "7.16.0"
 
+<<<<<<< Updated upstream
 "@babel/core@^7.0.0", "@babel/core@^7.1.6", "@babel/core@^7.12.9":
+=======
+"@babel/core@*", "@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.1.6", "@babel/core@^7.12.0", "@babel/core@^7.12.9", "@babel/core@^7.13.0", "@babel/core@^7.4.0-0":
+>>>>>>> Stashed changes
   "integrity" "sha512-mYZEvshBRHGsIAiyH5PzCFTCfbWfoYbO/jcSdXQSUQu1/pW0xDZAUP7KEc32heqWTAfAHhV9j1vH8Sav7l+JNQ=="
   "resolved" "https://registry.npmjs.org/@babel/core/-/core-7.16.0.tgz"
   "version" "7.16.0"
@@ -873,7 +877,11 @@
     "@babel/helper-create-regexp-features-plugin" "^7.16.0"
     "@babel/helper-plugin-utils" "^7.14.5"
 
+<<<<<<< Updated upstream
 "@babel/preset-env@^7.12.9":
+=======
+"@babel/preset-env@^7.1.6", "@babel/preset-env@^7.12.9":
+>>>>>>> Stashed changes
   "integrity" "sha512-cdTu/W0IrviamtnZiTfixPfIncr2M1VqRrkjzZWlr1B4TVYimCFK5jkyOdP4qw2MrlKHi+b3ORj6x8GoCew8Dg=="
   "resolved" "https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.16.0.tgz"
   "version" "7.16.0"
@@ -1269,7 +1277,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
+<<<<<<< Updated upstream
 "@popperjs/core@^2.9.2":
+=======
+"@popperjs/core@^2.0.0", "@popperjs/core@^2.9.2":
+>>>>>>> Stashed changes
   "integrity" "sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.10.2.tgz"
   "version" "2.10.2"
@@ -1785,7 +1797,11 @@
     "sudo-prompt" "^9.0.0"
     "wcwidth" "^1.0.1"
 
+<<<<<<< Updated upstream
 "@react-native-community/datetimepicker@3.5.2":
+=======
+"@react-native-community/datetimepicker@>=3.0.0", "@react-native-community/datetimepicker@3.5.2":
+>>>>>>> Stashed changes
   "integrity" "sha512-TWRuAtr/DnrEcRewqvXMLea2oB+YF+SbtuYLHguALLxNJQLl/RFB7aTNZeF+OoH75zKFqtXECXV1/uxQUpA+sg=="
   "resolved" "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-3.5.2.tgz"
   "version" "3.5.2"
@@ -1887,7 +1903,11 @@
     "hoist-non-react-statics" "^3.3.2"
     "react-native-safe-area-view" "^0.14.9"
 
+<<<<<<< Updated upstream
 "@react-navigation/native@^6.0.6":
+=======
+"@react-navigation/native@^6.0.0", "@react-navigation/native@^6.0.6":
+>>>>>>> Stashed changes
   "integrity" "sha512-XzL7YPsaRRQgdCQSXbA8PJWLN2I4lhUUvSFoKQPNO4DS6y8eqZI1V8COPYlJg8+tsetGV5J8jt+jVjWL7h6ZrQ=="
   "resolved" "https://registry.npmjs.org/@react-navigation/native/-/native-6.0.6.tgz"
   "version" "6.0.6"
@@ -2636,7 +2656,11 @@
   "resolved" "https://registry.npmjs.org/blueimp-md5/-/blueimp-md5-2.19.0.tgz"
   "version" "2.19.0"
 
+<<<<<<< Updated upstream
 "boolbase@~1.0.0":
+=======
+"boolbase@^1.0.0", "boolbase@~1.0.0":
+>>>>>>> Stashed changes
   "integrity" "sha1-aN/1++YMUes3cl6p4+0xDcwed24="
   "resolved" "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   "version" "1.0.0"
@@ -3147,6 +3171,19 @@
     "hyphenate-style-name" "^1.0.2"
     "isobject" "^3.0.1"
 
+<<<<<<< Updated upstream
+=======
+"css-select@^2.1.0":
+  "integrity" "sha512-Dqk7LQKpwLoH3VovzZnkzegqNSuAziQyNZUcrdDM401iY+R5NkGBXGmtO05/yaXQziALuPogeG0b7UAgjnTJTQ=="
+  "resolved" "https://registry.npmjs.org/css-select/-/css-select-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "boolbase" "^1.0.0"
+    "css-what" "^3.2.1"
+    "domutils" "^1.7.0"
+    "nth-check" "^1.0.2"
+
+>>>>>>> Stashed changes
 "css-select@~1.0.0":
   "integrity" "sha1-sRIcpRhI3SZOIkTQWM7iVN7rRLA="
   "resolved" "https://registry.npmjs.org/css-select/-/css-select-1.0.0.tgz"
@@ -3157,6 +3194,14 @@
     "domutils" "1.4"
     "nth-check" "~1.0.0"
 
+<<<<<<< Updated upstream
+=======
+"css-what@^3.2.1":
+  "integrity" "sha512-ACUm3L0/jiZTqfzRM3Hi9Q8eZqd6IK37mMWPLz9PJxkLWllYeRf+EHUSHYEtFop2Eqytaq1FizFVh7XfBnXCDQ=="
+  "resolved" "https://registry.npmjs.org/css-what/-/css-what-3.4.2.tgz"
+  "version" "3.4.2"
+
+>>>>>>> Stashed changes
 "css-what@1.0":
   "integrity" "sha1-18wt9FGAZm+Z0rFEYmOUaeAPc2w="
   "resolved" "https://registry.npmjs.org/css-what/-/css-what-1.0.0.tgz"
@@ -3228,6 +3273,7 @@
   "resolved" "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.0.tgz"
   "version" "0.2.0"
 
+<<<<<<< Updated upstream
 "deep-assign@^3.0.0":
   "integrity" "sha512-YX2i9XjJ7h5q/aQ/IM9PEwEnDqETAIYbggmdDB3HLTlSgo1CxPsj6pvhPG68rq6SVE0+p+6Ywsm5fTYNrYtBWw=="
   "resolved" "https://registry.npmjs.org/deep-assign/-/deep-assign-3.0.0.tgz"
@@ -3235,6 +3281,8 @@
   dependencies:
     "is-obj" "^1.0.0"
 
+=======
+>>>>>>> Stashed changes
 "deepmerge@^3.2.0":
   "integrity" "sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA=="
   "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-3.3.0.tgz"
@@ -3246,6 +3294,7 @@
   "version" "1.0.3"
   dependencies:
     "clone" "^1.0.2"
+<<<<<<< Updated upstream
 
 "define-properties@^1.1.3":
   "integrity" "sha512-3MqfYKj2lLzdMSf8ZIZE/V+Zuy+BgD6f164e8K2w7dgnpKArBDerGYpM46IYYcjnkdPNMjPk9A6VFB8+3SKlXQ=="
@@ -3291,6 +3340,53 @@
   "resolved" "https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz"
   "version" "1.0.4"
 
+=======
+
+"define-properties@^1.1.3":
+  "integrity" "sha512-3MqfYKj2lLzdMSf8ZIZE/V+Zuy+BgD6f164e8K2w7dgnpKArBDerGYpM46IYYcjnkdPNMjPk9A6VFB8+3SKlXQ=="
+  "resolved" "https://registry.npmjs.org/define-properties/-/define-properties-1.1.3.tgz"
+  "version" "1.1.3"
+  dependencies:
+    "object-keys" "^1.0.12"
+
+"define-property@^0.2.5":
+  "integrity" "sha1-w1se+RjsPJkPmlvFe+BKrOxcgRY="
+  "resolved" "https://registry.npmjs.org/define-property/-/define-property-0.2.5.tgz"
+  "version" "0.2.5"
+  dependencies:
+    "is-descriptor" "^0.1.0"
+
+"define-property@^1.0.0":
+  "integrity" "sha1-dp66rz9KY6rTr56NMEybvnm/sOY="
+  "resolved" "https://registry.npmjs.org/define-property/-/define-property-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "is-descriptor" "^1.0.0"
+
+"define-property@^2.0.2":
+  "integrity" "sha512-jwK2UV4cnPpbcG7+VRARKTZPUWowwXA8bzH5NP6ud0oeAxyYPuGZUAC7hMugpCdz4BeSZl2Dl9k66CHJ/46ZYQ=="
+  "resolved" "https://registry.npmjs.org/define-property/-/define-property-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "is-descriptor" "^1.0.2"
+    "isobject" "^3.0.1"
+
+"denodeify@^1.2.1":
+  "integrity" "sha1-OjYof1A05pnnV3kBBSwubJQlFjE="
+  "resolved" "https://registry.npmjs.org/denodeify/-/denodeify-1.2.1.tgz"
+  "version" "1.2.1"
+
+"depd@~1.1.2":
+  "integrity" "sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak="
+  "resolved" "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
+  "version" "1.1.2"
+
+"destroy@~1.0.4":
+  "integrity" "sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA="
+  "resolved" "https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz"
+  "version" "1.0.4"
+
+>>>>>>> Stashed changes
 "dom-helpers@^3.3.1":
   "integrity" "sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA=="
   "resolved" "https://registry.npmjs.org/dom-helpers/-/dom-helpers-3.4.0.tgz"
@@ -3336,6 +3432,7 @@
   "integrity" "sha1-iJ+N9iZAOvB4jinWbV1cb36/D9Y="
   "resolved" "https://registry.npmjs.org/domhandler/-/domhandler-2.0.3.tgz"
   "version" "2.0.3"
+<<<<<<< Updated upstream
   dependencies:
     "domelementtype" "1"
 
@@ -3344,6 +3441,24 @@
   "resolved" "https://registry.npmjs.org/domhandler/-/domhandler-2.3.0.tgz"
   "version" "2.3.0"
   dependencies:
+=======
+  dependencies:
+    "domelementtype" "1"
+
+"domhandler@2.3":
+  "integrity" "sha1-LeWaCCLVAn+r/28DLCsloqir5zg="
+  "resolved" "https://registry.npmjs.org/domhandler/-/domhandler-2.3.0.tgz"
+  "version" "2.3.0"
+  dependencies:
+    "domelementtype" "1"
+
+"domutils@^1.7.0":
+  "integrity" "sha512-Lgd2XcJ/NjEw+7tFvfKxOzCYKZsdct5lczQ2ZaQY8Djz7pfAD3Gbp8ySJWtreII/vDlMVmxwa6pHmdxIYgttDg=="
+  "resolved" "https://registry.npmjs.org/domutils/-/domutils-1.7.0.tgz"
+  "version" "1.7.0"
+  dependencies:
+    "dom-serializer" "0"
+>>>>>>> Stashed changes
     "domelementtype" "1"
 
 "domutils@1.1":
@@ -4385,11 +4500,14 @@
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
 
+<<<<<<< Updated upstream
 "is-obj@^1.0.0":
   "integrity" "sha1-PkcprB9f3gJc19g6iW2rn09n2w8="
   "resolved" "https://registry.npmjs.org/is-obj/-/is-obj-1.0.1.tgz"
   "version" "1.0.1"
 
+=======
+>>>>>>> Stashed changes
 "is-plain-object@^2.0.3", "is-plain-object@^2.0.4":
   "integrity" "sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og=="
   "resolved" "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz"
@@ -4663,6 +4781,7 @@
   "integrity" "sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM="
   "resolved" "https://registry.npmjs.org/jsonify/-/jsonify-0.0.0.tgz"
   "version" "0.0.0"
+<<<<<<< Updated upstream
 
 "kind-of@^3.0.2":
   "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
@@ -4671,6 +4790,43 @@
   dependencies:
     "is-buffer" "^1.1.5"
 
+"kind-of@^3.0.3":
+  "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
+  "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "is-buffer" "^1.1.5"
+
+"kind-of@^3.2.0":
+=======
+
+"kind-of@^3.0.2":
+>>>>>>> Stashed changes
+  "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
+  "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "is-buffer" "^1.1.5"
+
+<<<<<<< Updated upstream
+"kind-of@^4.0.0":
+  "integrity" "sha1-IIE989cSkosgc3hpGkUGb65y3Vc="
+  "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "is-buffer" "^1.1.5"
+
+"kind-of@^5.0.0":
+  "integrity" "sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw=="
+  "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-5.1.0.tgz"
+  "version" "5.1.0"
+
+"kind-of@^6.0.0", "kind-of@^6.0.2":
+  "integrity" "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
+  "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
+  "version" "6.0.3"
+
+=======
 "kind-of@^3.0.3":
   "integrity" "sha1-MeohpzS6ubuw8yRm2JOupR5KPGQ="
   "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-3.2.2.tgz"
@@ -4702,6 +4858,7 @@
   "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
   "version" "6.0.3"
 
+>>>>>>> Stashed changes
 "klaw@^1.0.0":
   "integrity" "sha1-QIhDO0azsbolnXh4XY6W9zugJDk="
   "resolved" "https://registry.npmjs.org/klaw/-/klaw-1.3.1.tgz"
@@ -5622,7 +5779,11 @@
   dependencies:
     "path-key" "^2.0.0"
 
+<<<<<<< Updated upstream
 "nth-check@~1.0.0":
+=======
+"nth-check@^1.0.2", "nth-check@~1.0.0":
+>>>>>>> Stashed changes
   "integrity" "sha512-WeBOdju8SnzPN5vTUJYxYUxLeXpCaVP5i5e0LF8fg7WORF2Wd7wFX/pk0tYZk7s8T+J7VLy0Da6J1+wCT0AtHg=="
   "resolved" "https://registry.npmjs.org/nth-check/-/nth-check-1.0.2.tgz"
   "version" "1.0.2"
@@ -6027,7 +6188,11 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
+<<<<<<< Updated upstream
 "react-dom@17.0.1":
+=======
+"react-dom@*", "react-dom@^15.5.x || ^16.x || ^17.x", "react-dom@^16.8.0 || ^17.0.0-rc.1", "react-dom@^16.9.0 || ^17", "react-dom@>=17.0.1", "react-dom@17.0.1":
+>>>>>>> Stashed changes
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -6080,7 +6245,11 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+<<<<<<< Updated upstream
 "react-native-gesture-handler@~1.10.2":
+=======
+"react-native-gesture-handler@*", "react-native-gesture-handler@^1.0.0", "react-native-gesture-handler@^1.0.12", "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@~1.10.2":
+>>>>>>> Stashed changes
   "integrity" "sha512-cBGMi1IEsIVMgoox4RvMx7V2r6bNKw0uR1Mu1o7NbuHS6BRSVLq0dP34l2ecnPlC+jpWd3le6Yg1nrdCjby2Mw=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz"
   "version" "1.10.3"
@@ -6103,7 +6272,11 @@
   dependencies:
     "prop-types" "^15.7.2"
 
+<<<<<<< Updated upstream
 "react-native-pager-view@5.4.6":
+=======
+"react-native-pager-view@*", "react-native-pager-view@>= 4.0.0", "react-native-pager-view@5.4.6":
+>>>>>>> Stashed changes
   "integrity" "sha512-yZiG65xlOeC8LOCNF0N8Cdc+MDQGWJnOpsmlHAndWXQhuVPjj4/KnS556BeTddcQ2EqJu/DjL7o8j0hpB+nkVg=="
   "resolved" "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-5.4.6.tgz"
   "version" "5.4.6"
@@ -6121,7 +6294,11 @@
     "@react-native-picker/picker" "^1.8.3"
     "lodash.isequal" "^4.5.0"
 
+<<<<<<< Updated upstream
 "react-native-reanimated@~2.2.0":
+=======
+"react-native-reanimated@*", "react-native-reanimated@^1.0.0", "react-native-reanimated@^1.0.0-alpha", "react-native-reanimated@>= 1.0.0", "react-native-reanimated@~2.2.0":
+>>>>>>> Stashed changes
   "integrity" "sha512-Nn648MfEEnTCEiWsl1YmfkojiLyV0NMY0EiRdDRbZNfJVfxBuyqhCxI/4Jd7aBi162qpgf8XK2mByYgvF4zLrQ=="
   "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.2.4.tgz"
   "version" "2.2.4"
@@ -6136,7 +6313,11 @@
   "resolved" "https://registry.npmjs.org/react-native-responsive-screen/-/react-native-responsive-screen-1.4.2.tgz"
   "version" "1.4.2"
 
+<<<<<<< Updated upstream
 "react-native-safe-area-context@3.3.2":
+=======
+"react-native-safe-area-context@*", "react-native-safe-area-context@>= 3.0.0", "react-native-safe-area-context@3.3.2":
+>>>>>>> Stashed changes
   "integrity" "sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q=="
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz"
   "version" "3.3.2"
@@ -6148,13 +6329,28 @@
   dependencies:
     "hoist-non-react-statics" "^2.3.1"
 
+<<<<<<< Updated upstream
 "react-native-screens@~3.8.0":
+=======
+"react-native-screens@>= 3.0.0", "react-native-screens@>=1.0.0 || >= 2.0.0-alpha.0 || >= 2.0.0-beta.0 || >= 2.0.0", "react-native-screens@~3.8.0":
+>>>>>>> Stashed changes
   "integrity" "sha512-lHrnB/elAoMJKv8O12U6BLgeup4lB6ZKJHEOVuG/D72nv/OE9wUusbou6YCB5tp3YbaSpHflPnkFmHA/vCejpw=="
   "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-3.8.0.tgz"
   "version" "3.8.0"
   dependencies:
     "warn-once" "^0.1.0"
 
+<<<<<<< Updated upstream
+=======
+"react-native-svg@*":
+  "integrity" "sha512-NIAJ8jCnXGCqGWXkkJ1GTzO4a3Md5at5sagYV8Vh4MXYnL4z5Rh428Wahjhh+LIjx40EE5xM5YtwyJBqOIba2Q=="
+  "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-12.1.1.tgz"
+  "version" "12.1.1"
+  dependencies:
+    "css-select" "^2.1.0"
+    "css-tree" "^1.0.0-alpha.39"
+
+>>>>>>> Stashed changes
 "react-native-swipe-gestures@^1.0.5":
   "integrity" "sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw=="
   "resolved" "https://registry.npmjs.org/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz"
@@ -6165,7 +6361,11 @@
   "resolved" "https://registry.npmjs.org/react-native-tab-view/-/react-native-tab-view-2.16.0.tgz"
   "version" "2.16.0"
 
+<<<<<<< Updated upstream
 "react-native-tab-view@^3.1.1":
+=======
+"react-native-tab-view@^3.1.1", "react-native-tab-view@>= 3.0.0":
+>>>>>>> Stashed changes
   "integrity" "sha512-M5pRN6utQfytKWoKlKVzg5NbkYu308qNoW1khGTtEOTs1k14p2dHJ/BWOJoJYHKbPVUyZldbG9MFT7gUl4YHnw=="
   "resolved" "https://registry.npmjs.org/react-native-tab-view/-/react-native-tab-view-3.1.1.tgz"
   "version" "3.1.1"
@@ -6183,7 +6383,11 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
+<<<<<<< Updated upstream
 "react-native@0.64.3":
+=======
+"react-native@*", "react-native@>=0.35", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@>=0.65.0", "react-native@0.64.3":
+>>>>>>> Stashed changes
   "integrity" "sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.3.tgz"
   "version" "0.64.3"
@@ -6236,7 +6440,11 @@
     "react-native-iphone-x-helper" "^1.3.0"
     "react-native-tab-view" "^2.15.2"
 
+<<<<<<< Updated upstream
 "react-navigation@^4.4.4":
+=======
+"react-navigation@^4.1.1", "react-navigation@^4.4.4":
+>>>>>>> Stashed changes
   "integrity" "sha512-08Nzy1aKEd73496CsuzN49vLFmxPKYF5WpKGgGvkQ10clB79IRM2BtAfVl6NgPKuUM8FXq1wCsrjo/c5ftl5og=="
   "resolved" "https://registry.npmjs.org/react-navigation/-/react-navigation-4.4.4.tgz"
   "version" "4.4.4"
@@ -6262,7 +6470,11 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   "version" "0.4.3"
 
+<<<<<<< Updated upstream
 "react@17.0.1":
+=======
+"react@*", "react@^15.5.x || ^16.x || ^17.x", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0-rc.1", "react@^16.9.0 || ^17", "react@>=16.0", "react@>=17.0.1", "react@16 || 17", "react@17.0.1":
+>>>>>>> Stashed changes
   "integrity" "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   "version" "17.0.1"

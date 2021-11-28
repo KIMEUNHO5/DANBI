@@ -19,6 +19,7 @@ import ForgotPwScreen from "./screens/ForgotPassword";
 import SpecificationScreen from "./screens/SpecificationScreen";
 import StampCalendar from "./screens/StampCalendar";
 import AddRecord from "./screens/AddRecord";
+import LogoutScreen from "./screens/Logout";
 
 
 //React Navigation Setup
@@ -57,11 +58,9 @@ function HomeScreen({ navigation }) {
   );
 }
 
-const App = () => {
-  
+const StackNavigator = () =>{
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Home">
         <Stack.Screen 
         name="Home" 
         component={HomeScreen}
@@ -200,7 +199,28 @@ const App = () => {
           headerBackTitleVisible: false,
           headerBackImage: BackBtn,
         }}  />
+        <Stack.Screen 
+        name="Logout" 
+        component={LogoutScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
       </Stack.Navigator>
+
+  );
+};
+
+const App = () => {
+  
+  return (
+    <NavigationContainer>
+      <StackNavigator />
     </NavigationContainer>
   );
 };
