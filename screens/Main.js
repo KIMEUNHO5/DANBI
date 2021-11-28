@@ -8,6 +8,7 @@ import Signup from './Signup';
 import ChangePW from './ChangePW';
 import StackNavigator from '../App';
 import Logout from "./Logout";
+import DeleteAccountScreen from "./DeleteAccount";
 
 const DATA = [
     {
@@ -58,8 +59,8 @@ const mainScreen = ({navigation}) => {
             options = {{headerShown : false}}
             />
             <Drawer.Screen name="ChangePassword" component={ChangePW} options={{drawerLabel :'비밀번호 변경',headerShown : false}}/>
-            <Drawer.Screen name="Logout" component={Logout} options={{drawerLabel :'로그아웃'}}/>
-            <Drawer.Screen name="DeleteAccount" component={Signup} options={{drawerLabel :'계정삭제'}}/>
+            <Drawer.Screen name="Logout" component={Logout} options={{drawerLabel :'로그아웃',headerShown : false}}/>
+            <Drawer.Screen name="DeleteAccount" component={DeleteAccountScreen} options={{drawerLabel :'계정삭제',headerShown : false}}/>
         </Drawer.Navigator>
     );
 }
@@ -76,16 +77,6 @@ function MainListScreen({ navigation }) {
     return (
         <View style={styles.container}>
         <StatusBar style="auto" />
-        <View style={styles.header}>
-            <View style={styles.logobg_My}>
-                <TouchableOpacity
-                    onPress={() => navigation.openDrawer()}
-                >
-                    <Image style={styles.logo_My}
-                    source = {require ('../Source/mytab_icon_new.png')}></Image>
-                </TouchableOpacity>
-            </View>
-        </View>
         <View style={styles.body}>
             <View style={styles.memberListbg}>
                 <SafeAreaView style>
@@ -153,8 +144,7 @@ const styles = StyleSheet.create({
     },
     memberListbg :{
         width: 300,
-        height: 550,
-        marginBottom: 90,
+        height: 600,
         marginHorizontal: 30,
         padding: 10,
         borderWidth : 1,
@@ -183,7 +173,7 @@ const styles = StyleSheet.create({
         marginHorizontal:10,
     },
     pluscontainer:{
-        //backgroundColor:"red",
+        backgroundColor:"red",
         height:40,
         justifyContent:"center",
         alignItems:"center",

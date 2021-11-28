@@ -3,7 +3,8 @@ import "react-native-gesture-handler";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 //import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image, Text, View, Button } from 'react-native';
+import { Image, Text, View, Button, StyleSheet } from 'react-native';
+import { DrawerActions } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
@@ -20,10 +21,12 @@ import SpecificationScreen from "./screens/SpecificationScreen";
 import StampCalendar from "./screens/StampCalendar";
 import AddRecord from "./screens/AddRecord";
 import LogoutScreen from "./screens/Logout";
+import DeleteAccountScreen from "./screens/DeleteAccount";
+import Edit_person from "./screens/edit_person";
 
 
 //React Navigation Setup
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
@@ -35,6 +38,23 @@ function BackBtn() {
       style={{marginLeft: 10, width: 22, height: 22,}}
     />
   );
+}
+
+const HeaderRight = () => {
+  const navigation = useNavigation();
+  return (
+    <View style = {{flexDirection:'row', paddingRight: 15}}>
+      <TouchableOpacity
+        onPress={() =>{
+          navigation.dispatch(DrawerActions.openDrawer())
+      }}>
+        <Image style={styles.logo_My}
+          source = {require ('./Source/mytab_icon_new.png')}>
+        </Image>
+      </TouchableOpacity>
+
+    </View>
+  )
 }
 
 function HomeScreen({ navigation }) {
@@ -52,6 +72,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Spec."
         onPress={() => navigation.navigate('Spec')}
+      />
+      <Button
+        title="Go to Edit person."
+        onPress={() => navigation.navigate('Edit_person')}
       />
 
     </View>
@@ -99,13 +123,7 @@ const StackNavigator = () =>{
           ),
           headerBackTitleVisible: false,
           headerBackImage: BackBtn,
-          headerRight: () => (
-            <Button
-              onPress={() => navigation.openDrawer()}
-              title="Info"
-              color="#fff"
-            />
-          ),
+          headerRight: ({}) => <HeaderRight />
         }}  />
         <Stack.Screen 
         name="Reg" 
@@ -211,6 +229,30 @@ const StackNavigator = () =>{
           headerBackTitleVisible: false,
           headerBackImage: BackBtn,
         }}  />
+        <Stack.Screen 
+        name="DeleteAccount" 
+        component={DeleteAccountScreen}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
+        <Stack.Screen 
+        name="Edit_person" 
+        component={Edit_person}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
       </Stack.Navigator>
 
   );
@@ -225,5 +267,15 @@ const App = () => {
   );
 };
 
-
 export default App;
+
+const styles = StyleSheet.create({
+  logo_My: {
+    //backgroundColor :"yellow",
+    width : 40,
+    height: 40,
+    resizeMode: "contain",
+    //marginLeft :330
+
+  },
+});

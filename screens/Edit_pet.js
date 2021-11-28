@@ -41,7 +41,7 @@ String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s
 String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
-function Edit_person () {
+function Edit_pet() {
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
   const placeholder = "시간을 입력해주세요";
@@ -78,11 +78,18 @@ function Edit_person () {
     onChangeText_sleep(sleepDate.format("a/p hh:mm"));
   };
 
+  const [text_type, setText_type] = useState("");
+  const onChangeText_type = (value) => {
+      console.warn(value)
+      setText_type(value);
+  }
+
   const [text_cycle, setText_cycle] = useState("");
   const onChangeText_cycle = (value) => {
       console.warn(value)
       setText_cycle(value);
   }
+
   
 
   return (
@@ -97,7 +104,26 @@ function Edit_person () {
             <TextInput 
             style={styles.inputField}
             placeholder = "Nickname"
-            placeholderTextColor="gray"/>
+            placeholderTextcolor = "gray"/>
+          </View>
+          <View style={styles.eachLine}>
+            <View style={styles.inputTag}>
+              <Text style={styles.contentText}>종류</Text>
+            </View>
+            <TouchableOpacity
+            style={styles.inputField}>
+                <RNPickerSelect
+                placeholder={{
+                    label:"Animal Type",
+                    color : "gray",
+                }}
+                value={text_type}
+                onValueChange={(value)=>onChangeText_type(value)}
+                items={[
+                    {label : '강아지', value : '강아지'},
+                    {label : '고양이', value : '고양이'}
+                ]}/>
+            </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
@@ -157,23 +183,11 @@ function Edit_person () {
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
-              <Text style={styles.contentText}>선호 물 온도</Text>
+              <Text style={styles.contentText}>목표 급수량</Text>
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
-                placeholder = "Water Temperature"
-                placeholderTextColor = "gray"
-                keyboardType="number-pad"/>
-                <Text>°C</Text>
-            </View>
-          </View>
-          <View style={styles.eachLine}>
-            <View style={styles.inputTag}>
-              <Text style={styles.contentText}>목표 수분 섭취량</Text>
-            </View>
-            <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
-                <TextInput 
-                placeholder = "Water Intake Goal"
+                placeholder = "Water Supply Goal"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
                 <Text>mL</Text>
@@ -181,14 +195,13 @@ function Edit_person () {
           </View>
           <View style={styles.eachLine}>
             <View style={styles.inputTag}>
-              <Text style={styles.contentText}>수분 섭취 주기</Text>
+              <Text style={styles.contentText}>급수 주기</Text>
             </View>
-
             <TouchableOpacity
             style={styles.inputField}>
                 <RNPickerSelect
                 placeholder={{
-                    label:"Water Intake Cycle",
+                    label:"Water Supply Cycle",
                     color : "gray",
                 }}
                 value={text_cycle}
@@ -204,7 +217,7 @@ function Edit_person () {
             </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
-            <Button title="수정"/>
+            <Button title="수정" />
           </View>
         </View>
       </View>
@@ -213,7 +226,7 @@ function Edit_person () {
   );
 }
 
-export default Edit_person;
+export default Edit_pet;
 
 const styles = StyleSheet.create({
   container: {
