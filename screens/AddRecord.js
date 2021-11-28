@@ -44,7 +44,7 @@ Date.prototype.format = function(f) {
   function AddRecord() {
     const [isWaterIntakeTimePickerVisible, setWaterIntakeTimePickerVisibility] = useState(false);
     const placeholder = "시간을 입력해주세요";
-    const [text_WaterIntake, onChangeText_WaterIntake] = useState("");
+    const [text_WaterIntake, onChangeText_WaterIntake] = useState(""); //
   
     const showWaterIntakeTimePicker = () => {
       setWaterIntakeTimePickerVisibility(true);
@@ -54,12 +54,47 @@ Date.prototype.format = function(f) {
       setWaterIntakeTimePickerVisibility(false);
     };
   
-    const handleConfirm_WaterIntake = (date) => {
+    const handleConfirm_WaterIntake = (date) => { //
       const WaterIntakeDate = new Date(date);
       console.warn("A time has been picked: ", WaterIntakeDate);
       hideWaterIntakeTimePicker();
       onChangeText_WaterIntake(WaterIntakeDate.format("a/p hh:mm"));
     };
+
+    const [time, setTime] = useState("");
+    const [amount, setAmount] = useState(0); 
+
+    const addTime = (date) => { 
+      setTime(date);
+    };
+    const addAmount = (amount) => { 
+      setAmount(amount);
+    };
+
+    const [newTimeItem, setNewTimeItem] = useState(""); 
+    const [newAmountItem, setNewAmountItem] = useState(""); 
+
+    const amountInputHandler = (newAmount) =>{ 
+      setNewAmountItem(newAmount);
+    };
+
+    const addTimeHandler = () => { 
+      addTime(text_WaterIntake);
+      setNewTimeItem('');
+    };
+    const addAmountHandler = () => { 
+      const newAmountNum = parseInt(newAmountItem, 10);
+      addAmount(newAmountNum);
+      setNewAmountItem('');
+    };
+    const addRecordHandler = () => { 
+      addTimeHandler();
+      addAmountHandler();
+      console.log("time : " + time);
+      console.log("amount : " + amount);
+    };
+
+  
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -84,7 +119,6 @@ Date.prototype.format = function(f) {
               mode="time"
               onConfirm={handleConfirm_WaterIntake}
               onCancel={hideWaterIntakeTimePicker}
-              minuteInterval={10}
               />
             </TouchableOpacity>
           </View>
@@ -97,9 +131,17 @@ Date.prototype.format = function(f) {
                 <TextInput 
                 placeholder = "Amount"
                 placeholderTextColor = "gray"
-                keyboardType="number-pad"/>
+                keyboardType="number-pad"
+                onChangeText={amountInputHandler}
+                value={newAmountItem}
+                />
                     <Text>mL</Text>
             </View>
+          </View>
+          <View style={styles.eachLine}>
+            <TouchableOpacity style={styles.button} onPress={addRecordHandler}>
+              <Text style = {{fontSize:20}}>등록</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -116,17 +158,20 @@ const styles = StyleSheet.create({
     },
     body : {
         flex : 50,
+        justifyContent : "center",
         backgroundColor : "white",
-        paddingTop: 200,
-        paddingBottom : 200,
+        paddingTop: 150,
+        paddingBottom : 150,
         paddingLeft : 30,
         paddingRight : 30
     },
     list: {
         backgroundColor : "white",
-        flex : 1,
-        paddingTop : 100,
-        paddingBottom : 100,
+        justifyContent : "center",
+        alignItems : "center",
+        flex : 3,
+        paddingTop : 120,
+        paddingBottom : 120,
         paddingHorizontal : 20
     },
     eachLine: {
@@ -137,8 +182,20 @@ const styles = StyleSheet.create({
         alignContent:"center",
         justifyContent:"center",
     },
+    button: {
+      flex:1,
+      paddingTop : 10,
+      paddingBottom : 10,
+      paddingHorizontal:100,
+      width:80,
+      height:50,
+      justifyContent:"center",
+      alignItems:"center",
+      backgroundColor:"lightskyblue",
+      borderRadius:10
+  },
     inputTag: {
-        flex:1,
+        flex:3,
         backgroundColor: "white",
         justifyContent : "center",
     },
@@ -146,7 +203,7 @@ const styles = StyleSheet.create({
         fontSize : 15,
     },
     inputField: {
-        flex:1,
+        flex:4,
         backgroundColor:"white",
         justifyContent: "center",
         borderBottomColor: "gray",
