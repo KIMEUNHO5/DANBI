@@ -43,7 +43,7 @@ Number.prototype.zf = function(len){return this.toString().zf(len);};
 
 function Registration_plant() {
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
-  const [text, onChangeText] = useState("");
+  const [time_text, setTime_text] = useState("");
 
   const showTimePicker = () => {
     setTimePickerVisibility(true);
@@ -54,19 +54,13 @@ function Registration_plant() {
   };
 
   const handleConfirm = (date) => {
-    console.warn("A time has been picked: ", date);
+    setSupplyTime(date);
     hideTimePicker();
-    onChangeText(date.format("a/p hh:mm"));
-  };
-  
-  const [text_type, setText_type] = useState("");
-  const onChangeText_type = (value) => {
-      console.warn(value)
-      setText_type(value);
+    setTime_text(date.format("a/p hh:mm"));
   };
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [text_date, onChangeText_date] = useState("");
+  const [date_text, setDate_text] = useState("");
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -77,17 +71,42 @@ function Registration_plant() {
   };
 
   const handleConfirm_date = (date) => {
-    console.warn("A date has been picked: ", date);
+    setSupplyDate(date);
     hideDatePicker();
-    onChangeText_date(date.format("yyyy/MM/dd"))
+    setDate_text(date.format("yyyy/MM/dd"))
   };
 
   const [text_cycle, setText_cycle] = useState("");
-  const onChangeText_cycle = (value) => {
-      console.warn(value)
-      setText_cycle(value);
-  }
 
+  const [nickname, setNickname] = useState("");
+  const [type, setType] = useState("");
+  const [supplyDate, setSupplyDate] = useState(null);
+  const [supplyTime, setSupplyTime] = useState(null);
+  const [amount, setAmount] = useState(0);
+  const [amountInput, setAmountInput] = useState("");
+  const [cycle, setCycle] = useState(0);
+  const [cycleInput, setCycleInput] = useState("");
+
+  const addAmountHandler = () => {
+    const newAmountNum = parseInt(amountInput, 10);
+    setAmount(newAmountNum);
+  };
+  const addCycleHandler = () => {
+    const newCycleNum = parseInt(text_cycle, 10);
+    setCycle(newCycleNum);
+  };
+
+  const registerPlant = () => {
+    addAmountHandler();
+    addCycleHandler();
+    console.log(
+      nickname + " / " 
+      + type + " / "
+      + supplyDate + " / " 
+      + supplyTime + " / " 
+      + amount + " / "
+      + cycle);
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -98,7 +117,9 @@ function Registration_plant() {
                         <View style={styles.inputTag}>
                         <Text style={styles.contentText}>닉네임</Text>
                         </View>
-                        <TextInput 
+                        <TextInput
+                        onChangeText={setNickname}
+                        value={nickname}
                         style={styles.inputField}
                         placeholder = "Nickname"
                         placeholderTextColor = "gray"/>
@@ -114,8 +135,8 @@ function Registration_plant() {
                                 label:"Plant Type",
                                 color : "gray"
                             }}
-                            value={text_type}
-                            onValueChange={(value)=>onChangeText_type(value)}
+                            value={type}
+                            onValueChange={(value)=>setType(value)}
                             items={[
                                 {label : '몬스테라 델리시오사', value : '몬스테라 델리시오사'},
                                 {label : '올리브나무', value : '올리브나무'},
@@ -143,7 +164,7 @@ function Registration_plant() {
                           placeholder="Last Water Supply Date"
                           placeholderTextColor="gray"
                           editable={false}
-                          value={text_date}
+                          value={date_text}
                           />
                           <DateTimePickerModal
                           headerTextIOS = "Last Water Supply Date"
@@ -164,7 +185,7 @@ function Registration_plant() {
                         placeholder="Water Supply Time"
                         placeholderTextColor="gray"
                         editable={false}
-                        value={text}
+                        value={time_text}
                         />
                         <DateTimePickerModal
                         isVisible={isTimePickerVisible}
@@ -181,6 +202,8 @@ function Registration_plant() {
                         </View>
                         <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                             <TextInput 
+                            onChangeText={setAmountInput}
+                            value={amountInput}
                             placeholder = "Water Supply Amount"
                             placeholderTextColor = "gray"
                             keyboardType="number-pad"/>
@@ -199,7 +222,7 @@ function Registration_plant() {
                                 color : "gray",
                             }}
                             value={text_cycle}
-                            onValueChange={(value)=>onChangeText_cycle(value)}
+                            onValueChange={(value)=>setText_cycle(value)}
                             items={[
                                 {label : '1일', value : 1},
                                 {label : '2일', value : 2},
@@ -235,7 +258,7 @@ function Registration_plant() {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.eachLine}>
-                        <Button title="등록" />
+                        <Button title="등록" onPress={registerPlant}/>
                     </View>
                 </View>
             </View>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 
@@ -7,6 +7,13 @@ const Stack = createStackNavigator();
 
 
 const ForgotPwScreen = ({navigation}) => {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+
+    const confirm = () => {
+        console.log(name + " / " + email);
+    }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -17,15 +24,19 @@ const ForgotPwScreen = ({navigation}) => {
             <View style={styles.input_container}>
                 <TextInput
                     placeholder={"Name"}
+                    onChangeText = {setName}
+                    value = {name}
                     style={styles.input}
                 />
                 <TextInput
                 placeholder={"Email"}
+                onChangeText = {setEmail}
+                value = {email}
                 style={styles.input}
                 keyboardType="email-address"
             />       
             </View>
-            <TouchableOpacity style={styles.GetPwButton}>
+            <TouchableOpacity style={styles.GetPwButton} onPress={confirm}>
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
                 Next
                 </Text>

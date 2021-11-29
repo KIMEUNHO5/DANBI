@@ -12,7 +12,8 @@ import {
   Button,
   TextInput,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  SliderComponent
 } from "react-native";
 
 Date.prototype.format = function(f) {
@@ -43,8 +44,7 @@ Date.prototype.format = function(f) {
   
   function AddRecord() {
     const [isWaterIntakeTimePickerVisible, setWaterIntakeTimePickerVisibility] = useState(false);
-    const placeholder = "시간을 입력해주세요";
-    const [text_WaterIntake, onChangeText_WaterIntake] = useState(""); //
+    const [time_text, setTime_text] = useState(""); // 얜 걍 문자임
   
     const showWaterIntakeTimePicker = () => {
       setWaterIntakeTimePickerVisibility(true);
@@ -54,47 +54,27 @@ Date.prototype.format = function(f) {
       setWaterIntakeTimePickerVisibility(false);
     };
   
-    const handleConfirm_WaterIntake = (date) => { //
-      const WaterIntakeDate = new Date(date);
-      console.warn("A time has been picked: ", WaterIntakeDate);
+    const handleConfirm_WaterIntake = (date) => { // 얜 진짜 데이터임
+      setTime(date);
       hideWaterIntakeTimePicker();
-      onChangeText_WaterIntake(WaterIntakeDate.format("a/p hh:mm"));
+      setTime_text(date.format("a/p hh:mm"));
     };
 
-    const [time, setTime] = useState("");
+    const [time, setTime] = useState(null);
     const [amount, setAmount] = useState(0); 
 
-    const addTime = (date) => { 
-      setTime(date);
-    };
-    const addAmount = (amount) => { 
-      setAmount(amount);
-    };
+    const [amountInput, setAmountInput] = useState(""); 
 
-    const [newTimeItem, setNewTimeItem] = useState(""); 
-    const [newAmountItem, setNewAmountItem] = useState(""); 
-
-    const amountInputHandler = (newAmount) =>{ 
-      setNewAmountItem(newAmount);
-    };
-
-    const addTimeHandler = () => { 
-      addTime(text_WaterIntake);
-      setNewTimeItem('');
-    };
     const addAmountHandler = () => { 
-      const newAmountNum = parseInt(newAmountItem, 10);
-      addAmount(newAmountNum);
-      setNewAmountItem('');
-    };
-    const addRecordHandler = () => { 
-      addTimeHandler();
-      addAmountHandler();
-      console.log("time : " + time);
-      console.log("amount : " + amount);
+      const newAmountNum = parseInt(amountInput, 10);
+      setAmount(newAmountNum);
     };
 
-  
+    const addRecordHandler = () => { 
+      addAmountHandler();
+      console.log(time + " " + amount);
+    };
+
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -111,7 +91,7 @@ Date.prototype.format = function(f) {
               placeholder="Time"
               placeholderTextColor="gray"
               editable={false}
-              value={text_WaterIntake}
+              value={time_text}
               />
               <DateTimePickerModal
               headerTextIOS={placeholder}
@@ -132,8 +112,8 @@ Date.prototype.format = function(f) {
                 placeholder = "Amount"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"
-                onChangeText={amountInputHandler}
-                value={newAmountItem}
+                onChangeText={setAmountInput}
+                value={amountInput}
                 />
                     <Text>mL</Text>
             </View>

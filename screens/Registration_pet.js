@@ -65,32 +65,56 @@ function Registration_pet() {
   };
 
   const handleConfirm_wakeup = (date) => {
-    const wakeupDate = new Date(date);
-    console.warn("A time has been picked: ", wakeupDate);
+    setWakeup(date);
     hideWakeupTimePicker();
-    onChangeText_wakeup(wakeupDate.format("a/p hh:mm"));
+    onChangeText_wakeup(date.format("a/p hh:mm"));
   };
 
   const handleConfirm_sleep = (date) => {
-    const sleepDate = new Date(date);
-    console.warn("A time has been picked: ", sleepDate);
+    setBedtime(date);
     hideSleepTimePicker();
-    onChangeText_sleep(sleepDate.format("a/p hh:mm"));
+    onChangeText_sleep(date.format("a/p hh:mm"));
   };
 
-  const [text_type, setText_type] = useState("");
-  const onChangeText_type = (value) => {
-      console.warn(value)
-      setText_type(value);
-  }
-
   const [text_cycle, setText_cycle] = useState("");
-  const onChangeText_cycle = (value) => {
-      console.warn(value)
-      setText_cycle(value);
-  }
 
+  const [nickname, setNickname] = useState("");
+  const [type, setType] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [weightInput, setWeightInput] = useState("");
+  const [wakeup, setWakeup] = useState(null);
+  const [bedtime, setBedtime] = useState(null);
+  const [goal, setGoal] = useState(0);
+  const [goalInput, setGoalInput] = useState("");
+  const [cycle, setCycle] = useState(0);
+  const [cycleInput, setCycleInput] = useState("");
   
+  const addWeightHandler = () => {
+    const newWeightNum = parseInt(weightInput, 10);
+    setWeight(newWeightNum);
+  };
+  const addGoalHandler = () => {
+    const newGoalNum = parseInt(goalInput, 10);
+    setGoal(newGoalNum);
+  };
+  const addCycleHandler = () => {
+    const newCycleNum = parseInt(text_cycle, 10);
+    setCycle(newCycleNum);
+  };
+
+  const registerPet = () => {
+    addWeightHandler();
+    addGoalHandler();
+    addCycleHandler();
+    console.log(
+      nickname + " / " 
+      + type + " / "
+      + weight + " / " 
+      + wakeup + " / " 
+      + bedtime + " / " 
+      + goal + " / "
+      + cycle);
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -103,6 +127,8 @@ function Registration_pet() {
             </View>
             <TextInput 
             style={styles.inputField}
+            onChangeText={setNickname}
+            value={nickname}
             placeholder = "Nickname"
             placeholderTextcolor = "gray"/>
           </View>
@@ -117,8 +143,8 @@ function Registration_pet() {
                     label:"Animal Type",
                     color : "gray",
                 }}
-                value={text_type}
-                onValueChange={(value)=>onChangeText_type(value)}
+                value={type}
+                onValueChange={(value)=>setType(value)}
                 items={[
                     {label : '강아지', value : '강아지'},
                     {label : '고양이', value : '고양이'}
@@ -131,6 +157,8 @@ function Registration_pet() {
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
+                onChangeText={setWeightInput}
+                value={weightInput}
                 placeholder = "Weight"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
@@ -187,6 +215,8 @@ function Registration_pet() {
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
+                onChangeText={setGoalInput}
+                value={goalInput}
                 placeholder = "Water Supply Goal"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
@@ -205,7 +235,7 @@ function Registration_pet() {
                     color : "gray",
                 }}
                 value={text_cycle}
-                onValueChange={(value)=>onChangeText_cycle(value)}
+                onValueChange={(value)=>setText_cycle(value)}
                 items={[
                     {label : '30분', value : 30},
                     {label : '1시간', value : 60},
@@ -217,7 +247,7 @@ function Registration_pet() {
             </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
-            <Button title="등록" />
+            <Button title="등록" onPress={registerPet}/>
           </View>
         </View>
       </View>

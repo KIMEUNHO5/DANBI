@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 
@@ -7,6 +7,12 @@ const Stack = createStackNavigator();
 
 
 const ForgotIdScreen = ({navigation}) => {
+    const [name, setName] = useState("");
+    const [pn, setPn] = useState("");
+
+    const confirm = () => {
+        console.log(name + " / " + pn);
+    }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -17,15 +23,19 @@ const ForgotIdScreen = ({navigation}) => {
             <View style={styles.input_container}>
                 <TextInput
                     placeholder={"Name"}
+                    onChangeText={setName}
+                    value={name}
                     style={styles.input}
                 />
                 <TextInput
                     placeholder={"Phone Number"}
+                    onChangeText={setPn}
+                    value={pn}
                     style={styles.input}
                     keyboardType="number-pad"
                 />          
             </View>
-            <TouchableOpacity style={styles.GetIdButton}>
+            <TouchableOpacity style={styles.GetIdButton} onPress={confirm}>
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
                 Next
                 </Text>

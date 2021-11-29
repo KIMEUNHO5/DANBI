@@ -14,6 +14,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
+import DateTimePicker from "react-native-modal-datetime-picker";
 
 Date.prototype.format = function(f) {
   if(!this.valueOf()) return " ";
@@ -42,9 +43,9 @@ String.prototype.zf = function(len){return "0".string(len - this.length) + this;
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
 function Registration_person () {
+  const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
-  const placeholder = "시간을 입력해주세요";
   const [text_wakeup, onChangeText_wakeup] = useState("");
   const [text_sleep, onChangeText_sleep] = useState("");
 
@@ -65,23 +66,60 @@ function Registration_person () {
   };
 
   const handleConfirm_wakeup = (date) => {
-    const wakeupDate = new Date(date);
-    console.warn("A time has been picked: ", wakeupDate);
+    setWakeup(date);
     hideWakeupTimePicker();
-    onChangeText_wakeup(wakeupDate.format("a/p hh:mm"));
+    onChangeText_wakeup(date.format("a/p hh:mm"));
   };
 
   const handleConfirm_sleep = (date) => {
-    const sleepDate = new Date(date);
-    console.warn("A time has been picked: ", sleepDate);
+    setBedtime(date);
     hideSleepTimePicker();
-    onChangeText_sleep(sleepDate.format("a/p hh:mm"));
+    onChangeText_sleep(date.format("a/p hh:mm"));
   };
 
   const [text_cycle, setText_cycle] = useState("");
-  const onChangeText_cycle = (value) => {
-      console.warn(value)
-      setText_cycle(value);
+
+  const [nickname, setNickname] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [weightInput, setWeightInput] = useState("");
+  const [wakeup, setWakeup] = useState(null);
+  const [bedtime, setBedtime] = useState(null);
+  const [temperature, setTemperature] = useState(0);
+  const [tempInput, setTempInput] = useState("");
+  const [goal, setGoal] = useState(0);
+  const [goalInput, setGoalInput] = useState("");
+  const [cycle, setCycle] = useState(0);
+
+  const addWeightHandler = () => {
+    const newWeightNum = parseInt(weightInput, 10);
+    setWeight(newWeightNum);
+  };
+  const addTempHandler = () => {
+    const newTempNum = parseInt(tempInput, 10);
+    setTemperature(newTempNum);
+  };
+  const addGoalHandler = () => {
+    const newGoalNum = parseInt(goalInput, 10);
+    setGoal(newGoalNum);
+  };
+  const addCycleHandler = () => {
+    const newCycleNum = parseInt(text_cycle, 10);
+    setCycle(newCycleNum);
+  };
+
+  const registerPerson = () => {
+    addWeightHandler();
+    addTempHandler();
+    addGoalHandler();
+    addCycleHandler();
+    console.log(
+      nickname + " / " 
+      + weight + " / " 
+      + wakeup + " / " 
+      + bedtime + " / " 
+      + temperature + " / "
+      + goal + " / "
+      + cycle);
   }
   
 
@@ -95,6 +133,8 @@ function Registration_person () {
               <Text style={styles.contentText}>닉네임</Text>
             </View>
             <TextInput 
+            onChangeText={setNickname}
+            value={nickname}
             style={styles.inputField}
             placeholder = "Nickname"
             placeholderTextColor="gray"/>
@@ -105,6 +145,8 @@ function Registration_person () {
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
+                onChangeText={setWeightInput}
+                value={weightInput}
                 placeholder = "Weight"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
@@ -161,6 +203,8 @@ function Registration_person () {
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
+                onChangeText={setTempInput}
+                value={tempInput}
                 placeholder = "Water Temperature"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
@@ -173,6 +217,8 @@ function Registration_person () {
             </View>
             <View style={styles.inputField} flexDirection="row" justifyContent="space-between" alignItems="center">
                 <TextInput 
+                onChangeText={setGoalInput}
+                value={goalInput}
                 placeholder = "Water Intake Goal"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
@@ -192,7 +238,7 @@ function Registration_person () {
                     color : "gray",
                 }}
                 value={text_cycle}
-                onValueChange={(value)=>onChangeText_cycle(value)}
+                onValueChange={(value)=>setText_cycle(value)}
                 items={[
                     {label : '30분', value : 30},
                     {label : '1시간', value : 60},
@@ -204,7 +250,7 @@ function Registration_person () {
             </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
-            <Button title="등록"/>
+            <Button title="등록" onPress={registerPerson}/>
           </View>
         </View>
       </View>

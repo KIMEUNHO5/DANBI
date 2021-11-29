@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 
 const Stack = createStackNavigator();
 
-
-
 const ForgotPwScreen = ({navigation}) => {
+
+const [currentPW, setCurrentPW] = useState("");
+const [newPW, setNewPW] = useState("");
+const [checkPW, setCheckPW] = useState("");
+
+const confirm = () => {
+    console.log(currentPW + " / " + newPw + " / " + checkPW);
+}
+
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -17,18 +24,24 @@ const ForgotPwScreen = ({navigation}) => {
             <View style={styles.input_container}>
                 <TextInput
                     placeholder={"현재 비밀번호"}
+                    onChangeText={setCurrentPW}
+                    value={currentPW}
                     style={styles.input}
                 />
                 <TextInput
                     placeholder={"새로운 비밀번호"}
+                    onChangeText={setNewPW}
+                    value={newPW}
                     style={styles.input}
                 />
                 <TextInput
                     placeholder={"새로운 비밀번호 확인"}
+                    onChangeText={setCheckPW}
+                    value={checkPW}
                     style={styles.input}
                 />
             </View>
-            <TouchableOpacity style={styles.GetPwButton}>
+            <TouchableOpacity style={styles.GetPwButton} onPress={confirm}>
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
                 Next
                 </Text>

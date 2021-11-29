@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, ColorPropType, TouchableWithoutFeedback, Keyboard } from "react-native";
 import * as Google from "expo-google-app-auth";
 //import logo from './Source/DANBI_Logo.png'; 
 
 const LoginScreen = ({ navigation }) => {
+
   const signInAsync = async () => {
     console.log("LoginScreen.js 6 | loggin in");
     try {
@@ -21,6 +22,13 @@ const LoginScreen = ({ navigation }) => {
       console.log("LoginScreen.js 19 | error with login", error);
     }
   };
+
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+
+  const confirm = () => {
+    console.log(email + " / " + pw);
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -44,6 +52,8 @@ const LoginScreen = ({ navigation }) => {
           <View>
             <TextInput
               placeholder={"Email"}
+              onChangeText={setEmail}
+              value={email}
               style={styles.Input}
               keyboardType="email-address"
             /> 
@@ -51,6 +61,8 @@ const LoginScreen = ({ navigation }) => {
           <TextInput
             secureTextEntry={true}
             placeholder={"Password"}
+            onChangeText={setPw}
+            value={pw}
             style={styles.Input}
             returnKeyType="done"
           />             
@@ -76,7 +88,7 @@ const LoginScreen = ({ navigation }) => {
             source={require('../Source/btn_naver.png')}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={confirm}>
             <Image
             style={styles.login_btn}
             source={require('../Source/btn_kakao.png')}
