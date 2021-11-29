@@ -11,14 +11,21 @@ const DeleteAccountScreen = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <View style={styles.container}>
-        <Text style={styles.signup_title}>
-        Delete Account
-        </Text>
-            <Button title="계정 삭제하기" onPress={() => navigation.dispatch(StackActions.popToTop())}/>
+    <View style={styles.container}>
+    <Text style={styles.title}>
+    계정 삭제
+    </Text>
+        <View style={styles.input_container}>
+            <TextInput
+                secureTextEntry={true}
+                placeholder={"비밀번호를 입력해주세요"}
+                style={styles.input}
+                returnKeyType="done"
+            />          
+        </View>
+        <Button title="계정 삭제하기" onPress={() => navigation.dispatch(StackActions.popToTop())}/>
     </View>
-
-    </TouchableWithoutFeedback>
+</TouchableWithoutFeedback>
   );
 };
 
@@ -32,7 +39,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor: "white",
     },
-    signup_title:{
+    title:{
         fontSize: 40,
         fontWeight: "700",
         marginTop: 90,
