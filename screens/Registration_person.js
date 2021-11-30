@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -107,11 +109,11 @@ function Registration_person () {
     setCycle(newCycleNum);
   };
 
-  const registerPerson = () => {
-    addWeightHandler();
-    addTempHandler();
-    addGoalHandler();
-    addCycleHandler();
+  const registerPerson = async() => {
+    // addWeightHandler();
+    // addTempHandler();
+    // addGoalHandler();
+    // addCycleHandler();
     console.log(
       nickname + " / " 
       + weight + " / " 
@@ -120,6 +122,17 @@ function Registration_person () {
       + temperature + " / "
       + goal + " / "
       + cycle);
+    
+    axios.post("http://35.212.138.86/test", {
+      test: "test"
+    })
+    .then(function (response) {
+      console.log(response);
+    }).catch(function (error) {
+      console.log("ㅗ");
+    }).then(function() {
+      console.log("^^");
+    });
   }
   
 
