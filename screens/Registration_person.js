@@ -127,7 +127,7 @@ function Registration_person () {
       test: "test"
     })
     .then(function (response) {
-      console.log(response);
+      console.log(response.data);
     }).catch(function (error) {
       console.log("ㅗ");
     }).then(function() {
