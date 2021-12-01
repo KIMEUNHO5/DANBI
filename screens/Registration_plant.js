@@ -138,16 +138,16 @@ function Registration_plant() {
                             value={type}
                             onValueChange={(value)=>setType(value)}
                             items={[
-                                {label : '몬스테라 델리시오사', value : '몬스테라 델리시오사'},
-                                {label : '올리브나무', value : '올리브나무'},
-                                {label : '몬스테라 아단소니', value : '몬스테라 아단소니'},
-                                {label : '블루스타 고사리', value : '블루스타 고사리'},
-                                {label : '생선뼈 선인장', value : '생선뼈 선인장'},
-                                {label : '몬스테라 알보 바리에가타', value : '몬스테라 알보 바리에가타'},
-                                {label : '칼라디움', value : '칼라디움'},
-                                {label : '유칼립투스 폴리안', value : '유칼립투스 폴리안'},
+                                {label : '산세베리아', value : '산세베리아'},
+                                {label : '로즈마리', value : '로즈마리'},
+                                {label : '유칼립투스', value : '유칼립투스'},
                                 {label : '스투키', value : '스투키'},
-                                {label : '테이블 야자', value : '테이블 야자'},
+                                {label : '스위트 바질', value : '스위트 바질'},
+                                {label : '라벤더', value : '라벤더'},
+                                {label : '페퍼민트', value : '페퍼민트'},
+                                {label : '튤립', value : '튤립'},
+                                {label : '바질트리', value : '바질트리'},
+                                {label : '수선화', value : '수선화'},
                                 {label : '기타', value : '기타'},
                             ]}/>
                         </TouchableOpacity>
