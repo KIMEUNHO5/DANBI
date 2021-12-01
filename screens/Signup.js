@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import axios from "axios";
 
 const Stack = createStackNavigator();
 
@@ -12,8 +13,23 @@ const SignupScreen = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [pw, setPw] = useState("");
 
-    const confirm = () => {
-        console.log(name + " / " + pn + " / " + email + " / " + pw);
+    const confirm = async() => {
+        axios.post("http://35.212.138.86/signup", {
+            email:email,
+            pw:pw,
+            name:name,
+            mobile:pn
+        })
+        .then(function(response) {
+            console.log(response.data);
+            if (response.statusCode = 200) {
+                navigation.navigate('Login');
+            }
+        }).catch(function(error) {
+            console.log("error");
+        }).then(function() {
+            console.log("^^");
+        });
     };
 
   return (
@@ -52,7 +68,7 @@ const SignupScreen = ({navigation}) => {
             />              
             </View>
             <TouchableOpacity style={styles.SignupButton}
-                onPress={() => navigation.navigate('Login')}> 
+                onPress={confirm}> 
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
                 Sign up
                 </Text>
