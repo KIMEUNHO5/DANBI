@@ -9,44 +9,66 @@ import ChangePW from './ChangePW';
 import StackNavigator from '../App';
 import Logout from "./Logout";
 import DeleteAccountScreen from "./DeleteAccount";
+import axios from "axios";
 
 const DATA = [
     {
          id: '1',
          name: '수쟁이',
-         img: require('../Source/person_activated.png')
+         img: require('../Source/person_activated.png'),
+         member_type : 1
     },
     {
         id: '2',
         name: '으노',
-        img: require('../Source/person_activated.png')
+        img: require('../Source/person_activated.png'), 
+        member_type : 1
     },
     {
         id: '3',
-        name: '지유니',
-        img: require('../Source/person_activated.png')
+        name: '초롱이',
+        img: require('../Source/pet_activated.png'),
+        member_type : 2
     },
     {
         id: '4',
         name: '횬',
-        img: require('../Source/person_activated.png')
+        img: require('../Source/person_activated.png'),
+        member_type : 1
       },
     {
         id: '5',
-        name: '흔',
-        img: require('../Source/person_activated.png')
+        name: '바질이',
+        img: require('../Source/plant_activated.png'),
+        member_type : 3
     },
     {
         id: '6',
         name: 'SJ',
-        img: require('../Source/person_activated.png')
-    },
-    {
-        id: '7',
-        name: '왜살지',
-        img: require('../Source/person_activated.png')
+        img: require('../Source/person_activated.png'), 
+        member_type : 1
     },
   ];
+
+  // 함수쓸거야
+  /*
+  const confirm = async() => {
+      axios.post("http://35.212.138.86/login", {
+        email : email,
+        pw : pw
+      })
+      .then(function(배열) {
+          // 실행 내용
+          
+      }).catch(function (error) {
+          console.log("error");
+      }).then(function() {
+          console.log("^^");
+      });
+  }
+  */
+
+  // 여기까지
   
 const Drawer = createDrawerNavigator();
 
@@ -67,7 +89,7 @@ const mainScreen = ({navigation}) => {
 
 function MainListScreen({ navigation }) {
     const renderItem = ({ item }) => {return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Spec')}>
             <View style={ styles.item}>
                 <Image style={styles.itemImg} source={item.img} ></Image>
                 <Text style={styles.itemName}>{item.name}</Text>
@@ -79,14 +101,14 @@ function MainListScreen({ navigation }) {
         <StatusBar style="auto" />
         <View style={styles.body}>
             <View style={styles.memberListbg}>
-                <SafeAreaView style>
+                <SafeAreaView style={{flex:9}}>
                     <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
-                    <View style={styles.pluscontainer}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Reg')}>
-                            <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
-                        </TouchableOpacity>
-                    </View>
                 </SafeAreaView> 
+                <View style={styles.pluscontainer}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Reg')}>
+                        <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     </View>
@@ -143,6 +165,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     memberListbg :{
+        flex:0.8,
         width: 300,
         height: 600,
         marginHorizontal: 30,
@@ -167,16 +190,18 @@ const styles = StyleSheet.create({
     itemName :{
         //backgroundColor :"blue",
         fontSize:20,
-        fontWeight: "900",
+        fontWeight: "300",
         justifyContent :"center",
         marginTop:15,
         marginHorizontal:10,
     },
     pluscontainer:{
-        backgroundColor:"red",
+        flex:1,
+        backgroundColor:"#DEEFFF",
         height:40,
         justifyContent:"center",
         alignItems:"center",
+        paddingTop : 10
     },
     plusicon:{
         height:30,

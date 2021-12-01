@@ -37,7 +37,7 @@ const Item = ({ title }) => (
 
 const SpecificationScreen = ({navigation}) => {
     const renderItem = ({ item }) => {return (
-        <TouchableOpacity>
+        <TouchableOpacity >
             <View style={ styles.item}>
                 <Text style={styles.itemName}>{item.name}</Text>
             </View>

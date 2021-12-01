@@ -43,6 +43,7 @@ Date.prototype.format = function(f) {
   Number.prototype.zf = function(len){return this.toString().zf(len);};
   
   function AddRecord() {
+    const placeholder = "input time";
     const [isWaterIntakeTimePickerVisible, setWaterIntakeTimePickerVisibility] = useState(false);
     const [time_text, setTime_text] = useState(""); // 얜 걍 문자임
   

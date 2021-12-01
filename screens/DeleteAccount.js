@@ -2,12 +2,27 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {StackActions} from '@react-navigation/native';
 import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { useState } from "react";
 
 const Stack = createStackNavigator();
 
 
 
 const DeleteAccountScreen = ({navigation}) => {
+    const [PW, setPW] = useState("");
+
+    const confirm = async() => {
+        axios.post("http://35.212.138.86/accountdelete", {
+            // email : 이메일
+            pw : PW
+        }).then(function(response) {
+            // 계정 삭제
+        }).catch(function(error) {
+            console.log("error");
+        }).then(function() {
+            console.log("^^");
+        });
+    }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -18,6 +33,8 @@ const DeleteAccountScreen = ({navigation}) => {
         <View style={styles.input_container}>
             <TextInput
                 secureTextEntry={true}
+                onChangeText={setPW}
+                value={PW}
                 placeholder={"비밀번호를 입력해주세요"}
                 style={styles.input}
                 returnKeyType="done"

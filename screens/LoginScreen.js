@@ -35,15 +35,13 @@ const LoginScreen = ({ navigation }) => {
     })
     .then(function(response) {
       console.log(response.data);
-      if (response.statusCode = 200) {
-        navigation.navigate('Main');
-      }
+      navigation.navigate('Main');
     }).catch(function(error) {
       console.log("error");
     }).then(function() {
       console.log("^^");
     });
-    
+    navigation.navigate('Main');
   }
 
   return (
