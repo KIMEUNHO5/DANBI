@@ -108,7 +108,7 @@ function Registration_person () {
     const newCycleNum = parseInt(text_cycle, 10);
     setCycle(newCycleNum);
   };
-
+  
   const registerPerson = async() => {
     addWeightHandler();
     addTempHandler();
@@ -123,13 +123,22 @@ function Registration_person () {
       + goal + " / "
       + cycle);
     
-    axios.post("http://35.212.138.86/test", {
-      test: "test"
+    axios.post("http://35.212.138.86/registration", {
+      email: "test",
+      nickname: nickname,
+      member_type: "1",
+      weight: weight,
+      wakeup_time: wakeup,
+      sleep_time: bedtime,
+      temperature: temperature,
+      intake_goal: goal,
+      cycle: cycle,
     })
     .then(function (response) {
       console.log(response.data);
+      navigation.navigate('Main');
     }).catch(function (error) {
-      console.log("ㅗ");
+      console.log("error");
     }).then(function() {
       console.log("^^");
     });
