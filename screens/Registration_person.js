@@ -129,7 +129,7 @@ function Registration_person () {
       member_type: "1",
       weight: weight,
       wakeup_time: wakeup,
-      sleep_time: bedtime,
+      bed_time: bedtime,
       temperature: temperature,
       intake_goal: goal,
       cycle: cycle,
