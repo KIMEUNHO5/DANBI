@@ -84,17 +84,45 @@ function Registration_plant() {
   const [supplyTime, setSupplyTime] = useState(null);
   const [amount, setAmount] = useState(0);
   const [amountInput, setAmountInput] = useState("");
-  const [cycle, setCycle] = useState(0);
-  const [cycleInput, setCycleInput] = useState("");
+  const [cycle, setCycle] = useState(1);
+  // const [cycleInput, setCycleInput] = useState("");
 
   const addAmountHandler = () => {
     const newAmountNum = parseInt(amountInput, 10);
     setAmount(newAmountNum);
   };
+  /*
   const addCycleHandler = () => {
     const newCycleNum = parseInt(text_cycle, 10);
     setCycle(newCycleNum);
-  };
+  }; */
+
+  const setPlant = (value) => {
+    setType(value);
+    if (value == '산세베리아') {
+      setCycle(30);
+    } else if (value == '로즈마리') {
+      setCycle(3);
+    } else if (value == '유칼립투스') {
+      setCycle(2);
+    } else if (value == '스투키') {
+      setCycle(30);
+    } else if (value == '스위트 바질') {
+      setCycle(3);
+    } else if (value == '라벤더') {
+      setCycle(3);
+    } else if (value == '페퍼민트') {
+      setCycle(3);
+    } else if (value == '튤립') {
+      setCycle(3);
+    } else if (value == '바질트리') {
+      setCycle(3);
+    } else if (value == '수선화') {
+      setCycle(3);
+    }
+
+
+  }
 
   const registerPlant = () => {
     addAmountHandler();
@@ -136,7 +164,7 @@ function Registration_plant() {
                                 color : "gray"
                             }}
                             value={type}
-                            onValueChange={(value)=>setType(value)}
+                            onValueChange={(value)=>setPlant(value)}
                             items={[
                                 {label : '산세베리아', value : '산세베리아'},
                                 {label : '로즈마리', value : '로즈마리'},
@@ -218,11 +246,11 @@ function Registration_plant() {
                         style={styles.inputField}>
                             <RNPickerSelect
                             placeholder={{
-                                label:"Water Supply Cycle",
+                                label:String(cycle),
                                 color : "gray",
                             }}
-                            value={text_cycle}
-                            onValueChange={(value)=>setText_cycle(value)}
+                            value={cycle}
+                            onValueChange={(value)=>setCycle(value)}
                             items={[
                                 {label : '1일', value : 1},
                                 {label : '2일', value : 2},
