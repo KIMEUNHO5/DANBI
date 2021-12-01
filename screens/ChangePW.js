@@ -11,7 +11,7 @@ const [newPW, setNewPW] = useState("");
 const [checkPW, setCheckPW] = useState("");
 
 const confirm = () => {
-    console.log(currentPW + " / " + newPw + " / " + checkPW);
+    console.log(currentPW + " / " + newPW + " / " + checkPW);
 }
 
 
