@@ -22,7 +22,9 @@ import StampCalendar from "./screens/StampCalendar";
 import AddRecord from "./screens/AddRecord";
 import LogoutScreen from "./screens/Logout";
 import DeleteAccountScreen from "./screens/DeleteAccount";
-import Edit_person from "./screens/edit_person";
+import Edit_person from "./screens/Edit_person";
+import Edit_pet from "./screens/Edit_pet";
+import Edit_plant from "./screens/Edit_plant";
 
 
 //React Navigation Setup
@@ -76,6 +78,14 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Edit person."
         onPress={() => navigation.navigate('Edit_person')}
+      />
+      <Button
+        title="Go to Edit pet."
+        onPress={() => navigation.navigate('Edit_pet')}
+      />
+      <Button
+        title="Go to Edit plant."
+        onPress={() => navigation.navigate('Edit_plant')}
       />
 
     </View>
@@ -244,6 +254,30 @@ const StackNavigator = () =>{
         <Stack.Screen 
         name="Edit_person" 
         component={Edit_person}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
+        <Stack.Screen 
+        name="Edit_pet" 
+        component={Edit_pet}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
+        <Stack.Screen 
+        name="Edit_plant" 
+        component={Edit_plant}
         options={{
           headerStyle:{
             height:100

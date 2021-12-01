@@ -110,10 +110,10 @@ function Registration_person () {
   };
 
   const registerPerson = async() => {
-    // addWeightHandler();
-    // addTempHandler();
-    // addGoalHandler();
-    // addCycleHandler();
+    addWeightHandler();
+    addTempHandler();
+    addGoalHandler();
+    addCycleHandler();
     console.log(
       nickname + " / " 
       + weight + " / " 
