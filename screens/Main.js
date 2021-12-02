@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity, Press
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Login, {sendList, account} from './LoginScreen';
+import Login, { sendList, account } from './LoginScreen';
 import Signup from './Signup';
 import ChangePW from './ChangePW';
 import StackNavigator from '../App';
@@ -11,9 +11,9 @@ import Logout from "./Logout";
 import DeleteAccountScreen from "./DeleteAccount";
 import axios from "axios";
 
-let DATA = sendList;
+// var DATA = sendList;
 
-DATA.forEach((value, index, array) => {
+sendList.forEach((value, index, array) => {
     if (value.member_type == 1) {
         value.img = require('../Source/person_activated.png');
     } else if (value.member_type == 2) {
@@ -61,10 +61,10 @@ function MainListScreen({ navigation }) {
         <View style={styles.body}>
             <View style={styles.memberListbg}>
                 <SafeAreaView style={{flex:9}}>
-                    <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
+                    <FlatList data={sendList} renderItem={renderItem} keyExtractor={item => item.id} />
                 </SafeAreaView> 
                 <View style={styles.pluscontainer}>
-                    <TouchableOpacity onPress={confirm/* () => navigation.navigate('Reg')*/}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Reg')}>
                         <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
                     </TouchableOpacity>
                 </View>

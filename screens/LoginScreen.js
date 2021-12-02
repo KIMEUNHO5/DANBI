@@ -40,8 +40,11 @@ const LoginScreen = ({ navigation }) => {
     .then(function(response) {
       //console.log(response.data);
       if (response.data.success == true) {
+        console.log("login success");
         setList(response.data.result);
         sendList = list;
+        console.log("sendList here");
+        console.log(sendList);
         navigation.navigate('Main');
       }
       else {
