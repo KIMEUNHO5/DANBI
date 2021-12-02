@@ -70,7 +70,7 @@ const SpecificationScreen = ({navigation}) => {
                         source={require('../Source/waterIntakePicTest.png')}
                     />
                 </View>
-                <View style={styles.stampcontainer}>
+                <View style={{flexDirection:'row', paddingRight: 380}}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Calend')}>
                         <Image
@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
     stamp : {
         width: 40,
         height: 40,
+        //backgroundColor : "red",
         paddingBottom: 60,
         resizeMode: "contain",
     },
