@@ -25,7 +25,7 @@ import DeleteAccountScreen from "./screens/DeleteAccount";
 import Edit_person from "./screens/Edit_person";
 import Edit_pet from "./screens/Edit_pet";
 import Edit_plant from "./screens/Edit_plant";
-
+import Notification from "./screens/Notification";
 
 //React Navigation Setup
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
@@ -86,6 +86,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Edit plant."
         onPress={() => navigation.navigate('Edit_plant')}
+      />
+      <Button
+        title="Go to Notification."
+        onPress={() => navigation.navigate('Notification')}
       />
 
     </View>
@@ -278,6 +282,18 @@ const StackNavigator = () =>{
         <Stack.Screen 
         name="Edit_plant" 
         component={Edit_plant}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
+        <Stack.Screen 
+        name="Notification" 
+        component={Notification}
         options={{
           headerStyle:{
             height:100
