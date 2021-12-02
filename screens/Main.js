@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity, Press
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Login from './LoginScreen';
+import Login, {sendList, account} from './LoginScreen';
 import Signup from './Signup';
 import ChangePW from './ChangePW';
 import StackNavigator from '../App';
@@ -11,67 +11,26 @@ import Logout from "./Logout";
 import DeleteAccountScreen from "./DeleteAccount";
 import axios from "axios";
 
-const DATA = [
-    {
-         id: '1',
-         name: '수쟁이',
-         img: require('../Source/person_activated.png'),
-         member_type : 1
-    },
-    {
-        id: '2',
-        name: '으노',
-        img: require('../Source/person_activated.png'), 
-        member_type : 1
-    },
-    {
-        id: '3',
-        name: '초롱이',
-        img: require('../Source/pet_activated.png'),
-        member_type : 2
-    },
-    {
-        id: '4',
-        name: '횬',
-        img: require('../Source/person_activated.png'),
-        member_type : 1
-      },
-    {
-        id: '5',
-        name: '바질이',
-        img: require('../Source/plant_activated.png'),
-        member_type : 3
-    },
-    {
-        id: '6',
-        name: 'SJ',
-        img: require('../Source/person_activated.png'), 
-        member_type : 1
-    },
-  ];
+let DATA = sendList;
 
-  // 함수쓸거야
-  /*
-  const confirm = async() => {
-      axios.post("http://35.212.138.86/login", {
-        email : email,
-        pw : pw
-      })
-      .then(function(배열) {
-          // 실행 내용
-          
-      }).catch(function (error) {
-          console.log("error");
-      }).then(function() {
-          console.log("^^");
-      });
-  }
-  */
-
-  // 여기까지
+DATA.forEach((value, index, array) => {
+    if (value.member_type == 1) {
+        value.img = require('../Source/person_activated.png');
+    } else if (value.member_type == 2) {
+        value.img = require('../Source/pet_activated.png');
+    } else if (value.member_type == 3) {
+        value.img = require('../Source/plant_activated.png');
+    }
+})
   
 const Drawer = createDrawerNavigator();
 
+const confirm = () => {
+    console.log("my sendList here");
+    console.log(sendList);
+    console.log("data here");
+    console.log(DATA);
+}
 const mainScreen = ({navigation}) => {
     return (
         <Drawer.Navigator>
@@ -92,7 +51,7 @@ function MainListScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.navigate('Spec')}>
             <View style={ styles.item}>
                 <Image style={styles.itemImg} source={item.img} ></Image>
-                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemName}>{item.nickname}</Text>
             </View>
         </TouchableOpacity>
     );}
@@ -105,7 +64,7 @@ function MainListScreen({ navigation }) {
                     <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
                 </SafeAreaView> 
                 <View style={styles.pluscontainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Reg')}>
+                    <TouchableOpacity onPress={confirm/* () => navigation.navigate('Reg')*/}>
                         <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
                     </TouchableOpacity>
                 </View>

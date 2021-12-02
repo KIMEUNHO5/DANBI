@@ -4,9 +4,12 @@ import * as Google from "expo-google-app-auth";
 import axios from "axios";
 // import { response } from "express";
 //import logo from './Source/DANBI_Logo.png'; 
-
+export let sendList = [];
+export let account = "";
 const LoginScreen = ({ navigation }) => {
 
+  const [list, setList] = useState([]);
+  
   const signInAsync = async () => {
     console.log("LoginScreen.js 6 | loggin in");
     try {
@@ -29,19 +32,26 @@ const LoginScreen = ({ navigation }) => {
   const [pw, setPw] = useState("");
 
   const confirm = async() => {
+    account = email;
     axios.post("http://35.212.138.86/login", {
       email : email,
       pw : pw
     })
     .then(function(response) {
-      console.log(response.data);
-      navigation.navigate('Main');
+      //console.log(response.data);
+      if (response.data.success == true) {
+        setList(response.data.result);
+        sendList = list;
+        navigation.navigate('Main');
+      }
+      else {
+        console.log("login failed");
+      }
     }).catch(function(error) {
-      console.log("error");
+      console.log("ㅗ");
     }).then(function() {
       console.log("^^");
     });
-    navigation.navigate('Main');
   }
 
   return (
