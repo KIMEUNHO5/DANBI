@@ -113,6 +113,7 @@ Additionally, DANBI is linked to LG PuriCare Water Purifier, so that it can mana
 
 \ 
 \subsection{Research on Related Software}
+\setlength{\parindent}{2ex}
 You can find applications in the App Store and Play Store (Apple and Android) that manage water intake of humans, pets, and plants.\\
 \begin{enumerate}
 \setlength{\parindent}{2ex}
@@ -135,7 +136,6 @@ There is a 'Plantgram' application that helps to check the plant water cycle. If
 \end{enumerate}
 There are many applications that provide such useful functions, but information on humans, pets, and plants cannot be managed at once, and in person input should be accompanied for each water intake. All of your family water intake information should be checked through different applications, and notifications should be received from each application. People would feel a great inconvenience in the distribution of this information, so we suggest a solution called DANBI.
 
-\ 
 \ 
 
 \section{Requirements}
@@ -193,6 +193,7 @@ NUGU speaker also provides notification of water intake time. When the water int
 User can select the response that they want to the notification from application or NUGU speaker by choosing the application option or answering NUGU speaker. Both application and NUGU speaker provide same options, and perform same tasks. These are the options that user can choose.
 \begin{enumerate}
 \setlength{\parindent}{2ex}
+\setlength{\parskip}{0.5em}
 \item 물받기
 
 The option '물받기' is the feature which gets water from LG PuriCare Purifier and updates user's water intake information.
@@ -216,6 +217,9 @@ When the user selects the option '미루기' at the application's notification, 
 User can also select this option to NUGU Speaker. When the user says "나중에 마실게" to NUGU Speaker's notification, NUGU Speaker transfers the option '미루기' to the server. Server doesn't update water intake information.
 \end{enumerate}
 
+\item \textit{Automatic recording by biometric function} 
+
+DANBI supports automatic recording when a user gets water directly from LG PuriCare water purifier, in addition to automatic recording by responding at notification time. When one of the members receives water directly from the water purifier, the water purifier automatically identifies who the member is through biometric functions such as face recognition and fingerprint recognition and sends the member's name, amount of water, and time to the application. The user can select and respond to whether to record the information or not, and only record the amount of water the user drank.
 \item \textit{Checking the amount of water intake} 
 
 User can check the amount of water intake of all family members. When user selects the certain member from 'main page', DANBI shows today's water intake status by graph. This graph shows the proportion of the current amount of water to water intake goal based on records stored in the server.
@@ -239,9 +243,37 @@ DANBI provides Awards stamps. User can select the certain family member from 'ma
 
 \subsection{Software Development Platforms}\label{AA}
 \setlength{\parindent}{2ex}
+\begin{itemize}
+\setlength{\parindent}{2ex}
+    \item Development Platform
+    \begin{enumerate}
+    \setlength{\parindent}{2ex}
+    \setlength{\parskip}{0.5em}
+        \item Windows10  
+        
+        Windows 10 is a major release of the Windows NT operating system developed by Microsoft. As of June 2021, it is estimated that 79\% of Windows PCs\cite{Android1},and 24\% of all devices \cite{Android2}(including mobile, tablet and console) are running Windows 10.
+        \item macOS
+        
+        macOs is a proprietary graphical operating system developed and marketed by Apple Inc. since 2001.Within the market of desktop and laptop computers it is the second most widely used desktop OS, after Windows NT and ahead of Chrome OS.
+
+        \item Android 
+        
+        Android is a mobile/desktop operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.
+        
+        \item iOS  
+        
+        iOS (formerly iPhone OS) is a mobile operating system created and developed by Apple Inc. exclusively for its hardware. It is the operating system that powers many of the company's mobile devices. It is the world's second-most widely installed mobile operating system, after Android.
+
+    \end{enumerate}
+\end{itemize}
+\vspace{0.5mm}
+
+\begin{itemize}
+\item Development Tool
 \begin{enumerate}
 \setlength{\parindent}{2ex}
 \setlength{\parskip}{0.5em}
+
 \item React Native
 \par \begin{figure}[h!]
 \includegraphics[width=3cm]{image/React Native.jpg}
@@ -249,6 +281,14 @@ DANBI provides Awards stamps. User can select the certain family member from 'ma
 \end{figure}
 
 React Native is  a JavaScript framework used to develop mobile application for iOS and Android, Web and UWP. It is an open source mobile application framework developed by Facebook. It allows developers to use React along with native platform functions.
+
+\item Expo
+\par \begin{figure}[h!]
+\includegraphics[width=3cm]{image/Expo.png}
+\centering
+\end{figure}
+
+Expo is a framework and platform for universal React applications. It enables developing, building, and deploying of iOS, Android, and web apps on the same JavaScript code base very quickly and easily. It is convenient because it makes it easy to set up or build various environments in the early stages of development. It was also useful because it supports various APIs.
 
 \item Node.js
 \par \begin{figure}[h!]
@@ -258,21 +298,21 @@ React Native is  a JavaScript framework used to develop mobile application for i
 
 Node.js is is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser. Because it is based on JavaScript, it is easy for front-end developers to understand the code and can lower communication costs. There is an advantage that various functions have been implemented as modules by other developers through npm.
 
-\item Mongo DB
+\item MySQL
 \par \begin{figure}[h!]
-\includegraphics[width=3cm]{image/MongoDB.png}
+\includegraphics[width=3cm]{image/MySQL.png}
 \centering
 \end{figure}
 
-MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSONlike documents with optional schemas. We chose MongoDB for our database management because we need free data model not limited in schema.
+MySQL is the world's most commonly used open-source relational database management system (RDBMS) as an open-source DBMS announced in 1995. It is a database management system in the form of multi-thread, multi-user, and structural query words. Oracle is managing and supporting.
 
-\item AWS
+\item Google Cloud Platform
 \par \begin{figure}[h!]
-\includegraphics[width=3cm]{image/AWS.png}
+\includegraphics[width=3cm]{image/GCP.png}
 \centering
 \end{figure}
 
-AWS provides online services for client-side application or other websites. Most services are not exposed directly to end users, but instead offer functionality through APIs for developers to use in their applications. The reason that we chose AWS for backend server is that it is widely used so that we can refer to lots of data. Also, it provides resources for students at reasonable price.
+Google Cloud platform (GCP) is Google's cloud computing service. It provides infrastructure tools and services for users to build applications and services. It is currently located in the top three in the cloud market along with Amazon and Microsoft. The manager screen is intuitive, the market exists, saving time to install services, and has a reasonable price policy compared to competitors. Among the services provided, Google Compute Engine was used.
 
 \item Visual studio code
 \par \begin{figure}[h!]
@@ -324,7 +364,10 @@ Adobe XD is a powerful design solution that helps design UI/UX of applications. 
 Overleaf is an online LaTeX editor. It does not require installation and provides various templates, so you can conveniently work on documents. Overleaf is characterized by being very fast, easy to share, and easy to find errors. In addition, writing in code is convenient to work on because it shows the results on the screen on the right in real time.
 
 \end{enumerate}
-\subsection{Programming Language}
+\end{itemize}
+\vspace{0.5mm}
+\begin{itemize}
+\item Programming Language
 \setlength{\parindent}{2ex}
 
 \begin{enumerate}
@@ -333,10 +376,60 @@ Overleaf is an online LaTeX editor. It does not require installation and provide
 \includegraphics[width=3cm]{image/JavaScript.png}
 \centering
 \end{figure}
+\setlength{\parindent}{2ex}
+\setlength{\parskip}{0.5em}
 JavaScript is high-level, often just-in-time compiled and multi-paradigm. It has dynamic typing, prototype-based object-orientation and first-class functions. JavaScript has several advantages, including speed, simplicity, popularity, interoperability, server load, and rich interfaces. DANBI decided to use React Native as a hybrid web app, and because Node.js is also based on JavaScript, JavaScript is familiar to us and even economical.
 \end{enumerate}
-
+\end{itemize}
+\vspace{0.5mm}
+\begin{itemize}
+    \item Cost Estimation
+\begin{table}[h]
+\centering
+\caption{Cost Estimation}
+\begin{tabular}[t]{p{0.8cm}p{3.4cm}p{2.5cm}}
+\toprule
+Type&Content&Price\\
+\midrule
+Labor&4 People * 10,464won * 200 hours&8,371,200 won\\
+\rule{0in}{3ex}Laptop&MacBook Pro (13-inch, M1, 2020)&1,960,000 won\\
+\rule{0in}{2ex}&MacBook Air (13-inch, M1, 2020)&1,290,000 won\\
+\rule{0in}{2ex}&acer swift5 (i5 8th gen)&1,250,000 won\\
+\rule{0in}{2ex}&LG gram (i5 8th gen)&1,400,000 won\\
+\rule{0in}{3ex}Internet&SK broadband internet&16,500won per month\\
+\rule{0in}{3ex}Program&Overleaf&8 dollars per month\\
+\rule{0in}{3ex}Server&Google Cloud Platform&351,128 won\\
+\bottomrule
+\end{tabular}
+\end{table}%
+\end{itemize}
 \ 
+\subsection{Software in use}
+\setlength{\parindent}{2ex}
+\begin{itemize}
+\setlength{\parindent}{2ex}
+\setlength{\parskip}{0.5em}
+\item Login Api (Google, Naver, Kakao)
+
+API is the Application Program Interface, which refers to the language or message format used for communication between the operating system and the application program. DANBI uses Google, Naver, and Kakao's login APIs to implement social login functions. Through this, the user can register an account in the DANBI application by linking information already written on SNS without entering information. In addition, users are guaranteed security for information by connecting existing account information rather than entering user information into each service.   
+\end{itemize}
+
+\subsection{Task Distribution}
+\begin{table}[h]
+\centering
+\caption{Task distribution}
+\begin{tabular}[t]{ll}
+\toprule
+Name&Task Description\\
+\midrule
+Kim Eunho&Frontend, Server develop\\
+Jeong Hyoeun&Frontend, Data processing\\
+Oh Jiyun&Frontend, NUGU develop\\
+Choi Soojung&Frontend, Database\\
+\bottomrule
+\end{tabular}
+\end{table}%
+
 
 \section{Specification}
 
@@ -527,6 +620,7 @@ The notification disappears immediately when the user presses the button on the 
 \subsection{NUGU speaker}
 \begin{itemize}
 \setlength{\parindent}{2ex}
+\setlength{\parskip}{0.5em}
 \item \textbf{Notification}
 
 In the same way as the notification of the application, when the water intake time set by the user comes, NUGU speaker notifies the user by voice as follows. - “OOO님의 수분 섭취 시간입니다.”
@@ -558,8 +652,424 @@ The notification disappears immediately when the user presses the button on the 
 
 When a user selects "물받기" in response to an application notification or NUGU speaker's voice notification, the server sends a query to the LG PuriCare water purifier about the temperature and amount of water set differently for each member. The LG PuriCare water purifier receives the query and automatically offers water according to the set value.
 
+Moreover, through biometric functions such as face recognition and fingerprint recognition of LG PuriCare, the water purifier knows which family member used the water purifier. If a member receives 500ml of water from the water purifier, it recognizes the member and sends the member's name, the amount of water offered, and the time to the DANBI application. Accordingly, the user conveniently records information on water offered from the LG PuriCare water purifier without manually inputting it.
+
+\ 
+
+\section{Architecture Design / Implementation}
+
+\subsection{Overall architecture}\label{AA}
+\setlength{\parindent}{2ex}
+\par \begin{figure}[h!]
+\includegraphics[width=8cm]{image/architecture.png}
+\centering
+\caption{}
+\label{fig:architecture}
+\end{figure}
+
+[Fig. \ref{fig:architecture}] DANBI is largely composed of three modules : application, server, and NUGU speaker. User can use DANBI in two ways, mobile application method and the NUGU speaker method.
+
+The first module is frontend. We designed the application using React Native and JavaScript, and make it possible for the user to use DANBI. The user can check the list of family members that she registered in the DANBI. In addition, the degree of achievement of water intake of each member can be provided as an intuitive picture. In addition, specific water intake time and water intake amount data can be checked. Furthermore, it is possible to check application push notification and can response to this notification, additional member registration, and achievement stamp confirmation.
+
+\par \begin{figure}[h!]
+\includegraphics[width=8cm]{image/db.PNG}
+\centering
+\caption{}
+\label{fig:db}
+\end{figure}
+
+The second module is backend which interacts with the database [Fig. \ref{fig:db}]. We built a backend that delivers information to the frontend using node.js, JavaScript, and express.js. Our database is made by mySQL. Backend receives user account, stores it in database, and manages member information registered by each user account. When the user inputs the member's information, the recommended amount and recommended period of water intake for each member are calculated and the delivered. It also delivers and stores all water intake information of each member to the database. Backend also select and retrieve values that stored in the database so that the user can see the information in the frontend.
+
+The third module is the NUGU playbuilder. It is a service provided by SKT NUGU developers, SKT. We used this to enable users to use the DANBI service by voice. The user can ask the NUGU speaker about each member's water intake information by voice, and the NUGU provides the answer to the user.
+
+\subsection{Directory Organization}
+\setlength{\parindent}{2ex}
+\begin{table}[h!]
+
+        \begin{threeparttable}
+            \caption{Directory Organization - Frontend%
+            \label{tab:table5}}    %% Caption above tabular, label inside caption
+            \begin{tabular}{p{2.4cm}p{2.8cm}p{2cm}}
+            \toprule
+            \bfseries Directory & \bfseries File name & \multicolumn{1}{l}{\bfseries Modules used} \\
+            \midrule
+            /DANBI 
+            & App.js \\
+            & app.json\\
+            & package.json\\
+            & package-lock.json\\
+            \hline
+            /DANBI/Source
+            & DANBI\_Logo.png\\
+            & DANBI\_LogoName.png\\
+            & DANBI\_Name.png\\
+            & back\_btn.png\\
+            & btn\_google.png\\
+            & btn\_kakao.png\\
+            & btn\_naver.png\\
+            & edit.png\\
+            & entry.png\\
+            & mytab\_icon\_new.png\\
+            & person\_activated.png\\
+            & person\_inactivated.png\\
+            & pet\_activated.png\\
+            & pet\_inactivated.png\\
+            & plant\_activated.png\\
+            & plant\_inactivated.png\\
+            & plus.png\\
+            & smallDANBI.png\\
+            & stamp.png\\
+            & waterIntakePicTest.png\\
+            \hline
+            /DANBI/screens 
+            & ChangePW.js\\
+            & DeleteAccount.js\\
+            & Edit\_person.js\\
+            & Edit\_pet.js\\
+            & Edit\_plant.js\\
+            & ForgotId.js\\
+            & ForgotPassword.js\\
+            & LoginScreen.js\\
+            & Logout.js\\
+            & Main.js\\
+            & Notification.js\\
+            & ProfileScreen.js\\
+            & RegistrationScreen.js\\
+            & Registration\_person.js\\
+            & Registration\_pet.js\\
+            & Registration\_plant.js\\
+            & Signup.js\\
+            & SpecificationScreen.js\\
+            & StampCalendar.js\\
+            & entry.js\\
+            \bottomrule
+            \end{tabular}
+        \end{threeparttable}
+    \end{table}
+    
+\par \begin{figure}[h!]
+\includegraphics[width=8cm]{image/repo.png}
+\centering
+\caption{}
+\label{fig:repo}
+\end{figure}
+
+[Fig. \ref{fig:repo}] DANBI is made up of three github repositories, which is DANBI, DANBI\_backend and DANBI\_document. DANBI repository is about frontend, which has files that related to the overall design and files to interact with the users of DANBI service. Secondly, DANBI\_backend repository has files that work with DANBI repository and database. Also backend repository includes NUGU folder that needed to work with NUGU speaker. The DANBI\_document repository includes Latex and pdf file of the document of our team.
+
+\subsection{Module of Software Component of Class Name}
+\setlength{\parindent}{2ex}
+
+\begin{itemize}
+    \item Module1 : Frontend
+    \begin{enumerate}
+    \setlength{\parindent}{2ex}
+    \setlength{\parskip}{0.5em}
+        \item Purpose
+        
+        Frontend provides user interface. It serves to connect user and server. It provides an input fields for the user to enter informations and deliver the values to the backend. It also provides data in database provided by backend so that the user can see it.
+        \item Functionality
+        
+        Sign up, login, registration of family members(human, animal, plant), reading family member list and show list, reading and show each member's specific water intake information with visual materials, manually input about water intake information, setting notifications, show award stamps. Communicate with server to send the input informations from user to database. Show the informations that obtained from the database by requesting it to backend.
+        \item Location of Source Code
+        
+        /DANBI
+        \item Class Components
+        \begin{itemize}
+            \item Entry Page
+            \setlength{\parindent}{2ex}
+            
+            It shows DANBI logo during the loading time before the application starts. If the account data is stored on the device, it requests a list of members with the current account data and the screen moves to the Main Page, and if the account data is not stored, it moves to Login Page.
+            \item Signup Page
+            \setlength{\parindent}{2ex}
+            
+            It helps users to create an account. It provides input fields for entering name, phone number, email, and password. When the user fills out all the input fields and presses the 'Sign Up' button, the user input value is transferred to the backend to request account creation, and the screen returns to the Login Page. There are Google, Naver, and KakaoTalk buttons are displayed under input fields, and when the user selects the button, frontend requests a social sign-up function to backend according to the selected button.
+            \item Login Page
+            \setlength{\parindent}{2ex}
+            
+            It helps users to log in. It provides input fields for entering e-mail and password with the DANBI logo. When the user fills out the input fields and presses the 'Login' button, the user input value is delivered to backend and frontend requests login, and when the login is successfully processed at backend, the list of members registered in the account is delivered to Main page. There are Google, Naver, and KakaoTalk buttons are displayed under the input fields, and when the user selects the button, frontend requests a social login function to backend according to the selected button. At the bottom, 'ID찾기' and '비밀번호찾기'' buttons are displayed so that the user can move to the ForgotId/Forgot password page where account data can be found. In addition, by displaying '회원가입' button, it is possible to move to Signup Page where the user can create an account.
+            \item ForgotId / ForgotPassword Page
+            \setlength{\parindent}{2ex}
+            
+            It helps user to find their ID or password. ForgotId Page provides input fields for entering names and phone numbers, and ForgotPassword Page provides input fields for entering name and e-mail. When the user enters all input fields and presses the 'Next' button, the user input value is transferred to backend to check account data and backend provides an ID or password.
+            \item ChangePW Page
+            \setlength{\parindent}{2ex}
+            
+            It helps user to change the password of the current account. It provides input fields for entering email, password, and new password. When the user fills all input fields and presses the 'Next' button, the user input value is transferred to backend to change the password. After that, it is logged out and user returns to Login Page.
+            \item Main Page
+            \setlength{\parindent}{2ex}
+            
+            It provides a list of members registered in the current account. When a user requests a list of members with the email and password entered by the user, the list of members registered in the current account is received and displayed in the form of a list consisting of images and nicknames when the login is successful. Images provide different images depending on the type of member (person, animal, plant). When a certain member is selected, the screen moves to the Specification Screen Page of the member. The MyTab button is displayed on the upper right side of the screen to provide functions such as changing password, logout, and account deletion.
+            \item RegistrationScreen (person, pet, plant) Page
+            \setlength{\parindent}{2ex}
+            
+            It helps user register new family members. Different input fields are provided according to human, pet, and plant so that the user can input biometric information suitable for each type. When the user fills all input fields and presses the '등록' button, the input value is transferred to backend, sends a request for adding members, and moves to the Main Page.
+            \item SpecificationScreen Page
+            \setlength{\parindent}{2ex}
+            
+            It provides the member's details to user. When the user requests biometric information with the selected member information to backend, the corresponding information is received to configure an individual Specification Screen Page. A member's name is displayed in the upper left corner, and a button to move to Edit Page to modify the member's biometric information is displayed in the upper right corner. In the center of the screen, the current intake compared to the member's daily target intake is schematically shown in the shape of a water cup. At the bottom, you can see the member's daily water intake record as a list, and at the bottom of the list, there are button that connected to AddRecord Page, where user can add water intake records manually.
+            \item AddRecord Page
+            \setlength{\parindent}{2ex}
+            
+            In addition to responding to notification, water intake record can be added manually. It provides an input field that allows user to record of water intake time and amount. When the '등록' button is pressed, the member's water intake information added with the time, and the amount information in the input field are delivered to backend. It requests an additional water intake record and return to the Specification Screen Page.
+            \item Edit (person, pet, plant) Page
+            \setlength{\parindent}{2ex}
+            
+            It helps modify existing biometric information. When requesting biometric information along with member information, it brings up an interface suitable for the member type, such as human, animal, and plant. The biometric information of the previously set corresponding member is received from backend, filled and provided in the input field. When the user finishes modifying the information and presses the '수정' button, the user delivers the newly entered biometric information to the backend, requests an information update, and returns to the Specification Screen Page.
+            \item StampCalendar Page 
+            \setlength{\parindent}{2ex}
+            
+            It provides a stamped calendar interface on the day that user achieves the water intake goal. When a stamp record is requested to the backend along with the selected member information, the information is provided to the user in the form of receiving it and displaying it on the calendar.
+            \item Notification
+            \setlength{\parindent}{2ex}
+            
+            When the water intake time set by the user is reached, the member's name and once water intake amount are sent by the alert. When the currently logged-in account information is delivered to the backend, a notification occurs at the set water intake time of the members registered in the account. In the pop-up notification, the user's response is received by providing '물받기', '마시기', and '미루기' options. The option selected by the user is delivered to the backend so that the backend executes different content that correspond to each option.
+        \end{itemize}
+        
+        \item Where It's taken from
+        
+        It provides interface that user can see directly. The user enters the information in input field that required to use DANBI service. And also user can show the data which is stored in database with various visual materials.
+        \item How / Why you used it
+        
+        We used React Native with JavaScript. Also we used expo. Through these, we compose pages and made convenient and intuitive UI. These have the advantage of highly productive and easy to build. Expo is especially useful of various reasons. One of them is it support various APIs.
+    \end{enumerate}
+\end{itemize}
+
+\begin{itemize}
+    \item Module2 : Server
+    \begin{enumerate}
+    \setlength{\parindent}{2ex}
+    \setlength{\parskip}{0.5em}
+        \item Purpose
+        
+        The backend server continues to wait for requests from applications and NUGU speaker. When any function calls the server, it manages and responds to the database accordingly. Values are stored and managed in a database.
+
+        The backend server is responsible for bringing whatever data is required from the DB and delivering it from DANBI application made of React Native and NUGU speaker.
+        \item Functionality
+        
+        The server calculates, organizes, and stores information sent from applications and AI speakers in a database. In addition, when an application or AI speaker requests a value, it is taken from the database and returned in addition to the request.
+        \item Location of Source Code
+        
+        /DANBI\_backend
+        \item Class Components
+        \begin{itemize}
+            \item routes/auth
+            \setlength{\parindent}{2ex}
+            
+            It exchanges POST requests and responses to the user's authorization. It can receive necessary information from the user, sign up as a member, and log in through the information the user put in. Afterwards, it is able to delete the account or change the password. If the user forgot ID or password, the user can obtain the information wanted to find through information other than ID and password.
+            \item routes/member
+            \setlength{\parindent}{2ex}
+            
+            It contains functions for members assigned to a user. Through registration, users can give different information according to people, animals, and plants and register members. In addition, when a member is selected on the main page, there is a specification POST that hands over information about the member. In addition, it can also enable modification of member information.
+            \item routes/record
+            \setlength{\parindent}{2ex}
+            
+            When the user responds to the notification with an application or NUGU speaker, the server receives the request and stores the record in the database. In addition, information is stored when manually inputting or when the water purifier sends the amount of water. In addition, when a member achieves the water intake goal, server receives the date and stores in the database. When the member gets in the stamp calendar, the days of achieving the goal are collected and sent to the application.
+            \item routes/notification 
+            \setlength{\parindent}{2ex}
+            
+            The server constantly waits for notification time, and when notification time comes, it delivers information to the application and NUGU speaker about which member have to drink how much water.
+            \item routes/NUGU
+            \setlength{\parindent}{2ex}
+            
+            When a user asks a question to a speaker, the server receives what information the speaker needs and what parameters are needed to give the information, and finds the information in the database and sends a response.
+            
+        \end{itemize}
+        
+        
+        \item Where It's taken from
+        
+        The backend receives data from the frontend, NUGU speaker, and database.
+        \item How / Why you used it
+        
+        We were able to connect users and databases through the backend server. Users can exchange information through an application, NUGU speaker, or water purifier, and the server plays a role in connecting them all. Since we got used to using JavaScript in React Native, we used node.js for fast development.
+    \end{enumerate}
+\end{itemize}
+
+\begin{itemize}
+    \item Module3 : Database
+    \begin{enumerate}
+    \setlength{\parindent}{2ex}
+    \setlength{\parskip}{0.5em}
+        \item Purpose
+        
+        There is a lot of data in DANBI. There are users, members, records, and stamps, and among them, members are divided into people, animals, and plants. In addition, these information should not be stored inside the mobile phone, but should be provided with login information. We used a database to organize the data well, insert and send appropriate information from time to time.
+
+        Since the information we need is closely related to each other, we used SQL, a relational database, and chose mySQL, which is the most commonly used of them.
+        \item Functionality
+        
+        The server can take information from the outside and put it in the desired table of the database through INSERT. In addition, a user can receive desired information through SELECT, delete data to DELETE, or insert new data from existing data through UPDATE. In addition, data may be conveniently managed through various functions.
+        \item Location of Source Code
+        
+        /DANBI\_backend/danbi\_sql.sql
+        \item Class Components
+        \begin{itemize}
+            \item user
+            \setlength{\parindent}{2ex}
+            
+            The user table includes index id, email, password, name, and mobile. These four values are essential values for membership. Email is a primary key and allows identification of the user, which is also used to find password. The password is used to log in or delete an account along with an email, and this value may be changed on the password search or password change screen. The name is the user's name and is also used to find password. Phone number is used to find ID.
+            \item person
+            \setlength{\parindent}{2ex}
+            
+            When a member is a person, information enters this table when the application registers. In the personal table, there are nickname, weight, sleep\_time, wakeup\_time, intake\_goal, take\_once, temperature, and cycle. Nickname is the name of a member, and is displayed on the main screen and the specification screen. Weight is used to calculate intake\_goal. Wakeup\_time, bed\_time, and cycle are used to calculate the notification time and intake\_ounce. Temperature is used to send queries to water purifiers. This table receives the user's id as a foreign key.
+            \item pet
+            \setlength{\parindent}{2ex}
+            
+            When a member is a person, information enters this table when the application registers. In the personal table, there are nickname, weight, sleep\_time, wakeup\_time, intake\_goal, take\_once, temperature, and cycle. Nickname is the name of a member, and is displayed on the main screen and the specification screen. Weight is used to calculate intake\_goal. Wakeup\_time, bed\_time, and cycle are used to calculate the notification time and intake\_ounce. Temperature is used to send queries to water purifiers. This table receives the user's id as a foreign key.
+            \item plant
+            \setlength{\parindent}{2ex}
+            
+            If the member is a plant, information is entered into this table when registration is performed in the application. Plants do not need sleep\_time or wakeup\_time because the water supply cycle is not time, but date type. Instead, last\_supply\_time was needed to calculate the water supply cycle in date, and supply\_time was required to notify.
+            \item record
+            \setlength{\parindent}{2ex}
+            
+            Record tables are individually connected to each person, animal, and plant table, but the contents of the column are the same. There is a 'date' column of the DATETIME type, which automatically stores the current time except for manually inputting, and stores the time when manually input is performed. In addition, active\_intake is used to record the amount of water consumed.
+            \item stamp
+            \setlength{\parindent}{2ex}
+            
+            When certain conditions are met, the corresponding members and dates are stored in the stamp. After that, this value is called in the stamp calendar.
+        \end{itemize}
+        
+        \item Where It's taken from
+        
+        The database receives data from a server.
+        \item How / Why you used it
+        
+        Using the database, we were able to record all the information about users, members, and water intake. It was also possible to get the necessary information through appropriate queries. It was possible to organize the contents to enter the table and draw in detail what information is needed for the DANBI application.
+    \end{enumerate}
+\end{itemize}
+
+\begin{itemize}
+    \item Module4 : NUGU
+    \begin{enumerate}
+    \setlength{\parindent}{2ex}
+    \setlength{\parskip}{0.5em}
+        \item Purpose
+        
+        We use NUGU Play Builder to make user can communicate with  DANBI service through voice. The user can ask about water intake information to NUGU speaker through voice and NUGU speaker provides answer through connect with backend of DANBI.
+        \item Functionality
+        
+        User can ask today's water intake amount of each members, last record of water intake and next schedule of water intake. And NUGU provides information that response to user's request. The notification rings at the set time which informs water intake time and amount. Also it can receive the user's reply and send this reply data to database.
+        \item Location of Source Code
+        
+        /DANBI\_backend/NUGU
+        \par \begin{figure}[h!]
+        \includegraphics[width=8cm]{image/NUGU.jpg}
+        \centering
+        \caption{}
+        \label{fig:NUGU}
+        \end{figure}
+        \item Class Components [Fig. \ref{fig:NUGU}]
+        \begin{itemize}
+            \item ask.amount 
+            \setlength{\parindent}{2ex}
+            
+            Class of 'ask.amount' determines whether user's question is about the water intake amount by processing predefined entities and intents. The intents used here include {{nickname}} and {{amount}}. If any of the user question's keywords overlap with the {{amount}}, NUGU recognize it as the user asking a question about the amount and link it to the '~/check\_amount' server page to answer it.
+            \item ask.record 
+            \setlength{\parindent}{2ex}
+            
+            'ask.record' class determines questions related to record. Record means previous water intake. Intents of {{nickname}} and {{record}} are used to perceive user's questions. If there are {{record}} intent keyword, NUGU recognize it as record asking question. So send request to '~/check\_record' server page.
+            \item ask.schedule 
+            \setlength{\parindent}{2ex}
+            
+            Class named 'ask.schedule' examine user's questions about asking water intake schedule. {{nickname}} and {{schedule}} intents are used to determine it. If {{schedule}} intent is included in questions, NUGU perceive it as schedule asking question. And it link to '~/check\_schedule' server page so that it can answer.
+            \item check\_amount 
+            \setlength{\parindent}{2ex}
+            
+            'check\_amount' action response to 'ask.amount' request by using database. Specifically, 'actual\_intake' key in DANBI database is correspond to {{amount}} intent, and provide member's today water intake amount by INT value. {{nickname}} intent is used to determine members type of human, animal, plant. Through this process, NUGU provide informations that match to user's question as a voice.
+            \item check\_record 
+            \setlength{\parindent}{2ex}
+            
+            Class of 'check\_record' is about '~/check\_record' server. This server provide response to 'ask.record' request by using 'date' key in 'record\_person/pet/plant' table in database. This key is correspond to {{record}} intent. So NUGU provide response that put in key to {{record}} which was defined in prompt sentence.
+            \item check\_schedule 
+            \setlength{\parindent}{2ex}
+            
+            Class named 'check\_schedule' connected with 'ask.schedule' class. So it provide a response about next water intake schedule of members by using DANBI database. The database values that used to {{schedule}} intent are 'date' and 'cycle'. These two values are calculated in the server and result put in the {{schedule}} intent. So user can provide complete prompt about schedule information through NUGU.
+            
+        \end{itemize}
+        
+        \item Where It's taken from
+        
+        It is taken from backend proxy. And also it is taken from the verbal input by user.
+        \item How / Why you used it
+        
+        We use NUGU Play Builder which is provided by NUGU developers from SKT. We can build play with set Intent, Entity and Action. Intent and Entity are User Utterance Model. Entity is a function that define keywords. With defined keywords, we can define sentences and it is Intent. Action is a function that NUGU provide answers to user. We assigned actions based on database by connect NUGU with backend proxy API, using REST API. We link NUGU speaker to DANBI because it can be more easy for the user. The user may feel  convenient by checking information through voice by NUGU speaker, than handle application.
+    \end{enumerate}
+\end{itemize}
+
+\begin{itemize}
+    \item Module5 : LG Puricare Purifier
+    \begin{enumerate}
+    \setlength{\parindent}{2ex}
+    \setlength{\parskip}{0.5em}
+        \item Purpose
+        
+        
+        \item Functionality
+        
+        
+        \item Location of Source Code
+        
+        
+        \item Class Components
+        \begin{itemize}
+            \item 
+        \end{itemize}
+        
+        \item Where It's taken from
+        
+        
+        \item How / Why you used it
+        
+        
+    \end{enumerate}
+\end{itemize}
+
+\ 
+
+\section{Use cases [Fig. \ref{fig:usecase}]}
+
+\begin{itemize}
+\setlength{\parindent}{2ex}
+\setlength{\parskip}{0.5em}
+\par \begin{figure}[h!]
+\includegraphics[width=8cm]{image/use case.png}
+\centering
+\caption{}
+\label{fig:usecase}
+\end{figure}
+\item User Case 1 : Sign-up
+
+User creates an account by entering information of name, phone number, email, and password. User can also use social login services of Google, NAVER, and Kakao. When account register is completed, user is automatically accessed to the login page.
+\item User Case 2 : Login
+
+User can login to DANBI by entering email and password. When the login is completed, user automatically accesses the main page. If the user forgets the email or password, account information can be recovered through each 'ID 찾기' and '비밀번호 찾기' button.
+\item User Case 3 : Logout 
+
+User can login to DANBI by entering email and password. When the login is completed, user automatically accesses the main page. If the user forgets the email or password, account information can be recovered through each 'ID 찾기' and '비밀번호 찾기' button.
+\item User Case 4 : Delete Account
+
+User can delete account of DANBI through the '계정삭제' button in the drawer of the main page. When the account is deleted, all personal information and water intake information of the user are deleted. When the account deletion is completed, user automatically connected to the login page.
+\item User Case 5 : Register Information 
+
+User can register human, animals, and plants as family members. The user can check the information registration form by selecting the entity that she wants to register among the categories of human, animals, and plants in the navigation bar of the information registration page.
+\begin{enumerate}
+    \item Human: The information required when registering a human member is nickname, weight, wake-up time, sleep time, preferred water temperature, water intake goal, and water intake cycle. Water intake goal is automatically provided based on weight information. The user can freely change this value. After filling out all of the above items and pressing the registration button, the information is stored in the database. Registered information can be modified, and the modified information is updated in the database when the correction completion button is pressed after modifying the desired value.
+    \item Pet : The information required when registering a pet member is nickname, type, weight, wake-up time, sleep time, water supply goal, and water supply cycle. Water supply goal is automatically provided based on weight information. The user can freely change this value. After filling out all of the above items and pressing the registration button, the information is stored in the database. Registered information can be modified, and the modified information is updated in the database when the correction completion button is pressed after modifying the desired value.
+    \item Plants: Information required when registering plant members includes nickname, plant type, last water supply date, water supply time, water supply amount, and water supply cycle. The water supply cycle is automatically provided based on plant types. The user can freely change this value. If the plant type is set to 'other', the user must directly set the water supply cycle. After filling out all of the above items and pressing the registration button, the information is stored in the database. Registered information can be modified, and the modified information is updated in the database when the correction completion button is pressed after modifying the desired value.
+\end{enumerate}
+\item User Case 6 : Communication 
+
+User communicates with the NUGU speaker by voice. When the user says "단비 켜줘", the NUGU speaker is executed. The user may request and receive information on water intake of the family member by NUGU speaker via voice. The specific informations on water intake include each member's water intake amount, the remaining water amount until the goal, the date and time of water intake, and the next water intake schedule. User can request these informations to NUGU speaker and NUGU provides a response.
+\item User Case 7 : Notification 
+
+Users get notifications which recommend water intake, and react to it. The notifications come through DANBI application or NUGU speaker at the time set by users, and users respond by selecting the button or answering to NUGU speaker. There are three options users can choose, which are '물받기', '마시기' and '미루기'. When the users select '물받기' or '마시기', water intake record will be updated. In the case of '물받기', users can get water set by preferred temperature and amount from LG PuriCare Purifier. If the users select '미루기', the notification will be eliminated without record updating.
+\end{itemize}
 
 \begin{thebibliography}{00}
+\bibitem{Android1} "Desktop Windows Version Market Share Worldwide". StatCounter Global Stats. Retrieved June 15, 2021.
+
+\bibitem{Android2} "Operating System Market Share Worldwide". StatCounter Global Stats. Retrieved February 11, 2021.
+
 \bibitem{waterIntake_Human} 
 \url{http://kwater.or.kr/web/download/info/WRqna.pdf}
 
