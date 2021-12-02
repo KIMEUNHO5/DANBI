@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -41,7 +42,7 @@ String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s
 String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
-function Registration_pet() {
+const Registration_pet = ({navigation}) =>{
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
   const placeholder = "시간을 입력해주세요";
@@ -114,6 +115,26 @@ function Registration_pet() {
       + bedtime + " / " 
       + goal + " / "
       + cycle);
+
+    axios.post("http://35.212.138.86/registration", {
+      email: "test",
+      nickname: nickname,
+      pet_type:type,
+      member_type: "2",
+      weight: weight,
+      wakeup_time: wakeup,
+      bed_time: bedtime,
+      intake_goal: goal,
+      cycle: cycle,
+    })
+    .then(function (response) {
+      console.log(response.data);
+      navigation.navigate('Main');
+    }).catch(function (error) {
+      console.log("error");
+    }).then(function() {
+      console.log("^^");
+    });
   }
 
   return (

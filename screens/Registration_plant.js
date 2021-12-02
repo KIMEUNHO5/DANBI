@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -41,7 +42,7 @@ String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s
 String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
-function Registration_plant() {
+const Registration_plant = ({navigation}) => {
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
   const [time_text, setTime_text] = useState("");
 
@@ -85,17 +86,17 @@ function Registration_plant() {
   const [amount, setAmount] = useState(0);
   const [amountInput, setAmountInput] = useState("");
   const [cycle, setCycle] = useState(1);
-  // const [cycleInput, setCycleInput] = useState("");
+  //const [cycleInput, setCycleInput] = useState("");
 
   const addAmountHandler = () => {
     const newAmountNum = parseInt(amountInput, 10);
     setAmount(newAmountNum);
   };
-  /*
-  const addCycleHandler = () => {
+  
+  /*const addCycleHandler = () => {
     const newCycleNum = parseInt(text_cycle, 10);
     setCycle(newCycleNum);
-  }; */
+  };*/ 
 
   const setPlant = (value) => {
     setType(value);
@@ -126,7 +127,7 @@ function Registration_plant() {
 
   const registerPlant = () => {
     addAmountHandler();
-    addCycleHandler();
+    //addCycleHandler();
     console.log(
       nickname + " / " 
       + type + " / "
@@ -134,6 +135,26 @@ function Registration_plant() {
       + supplyTime + " / " 
       + amount + " / "
       + cycle);
+
+
+    axios.post("http://35.212.138.86/registration", {
+    email: "test",
+    member_type: "3",
+    nickname: nickname,
+    plant_type: type,
+    intake_goal: amount,
+    last_supply_date: supplyDate,
+    supply_time: String(supplyTime),
+    cycle: cycle,
+    })
+    .then(function (response) {
+      console.log(response.data);
+      //navigation.navigate('Main');
+    }).catch(function (error) {
+      console.log("error");
+    }).then(function() {
+      console.log("^^");
+    });
   }
 
   return (

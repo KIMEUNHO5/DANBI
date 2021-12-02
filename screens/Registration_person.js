@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
@@ -44,7 +43,7 @@ String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s
 String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
-function Registration_person () {
+const Registration_person = ({navigation}) => {
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
@@ -116,12 +115,12 @@ function Registration_person () {
     addCycleHandler();
     console.log(
       nickname + " / " 
-      + weight + " / " 
+      + weightInput + " / " 
       + wakeup + " / " 
       + bedtime + " / " 
-      + temperature + " / "
-      + goal + " / "
-      + cycle);
+      + tempInput + " / "
+      + goalInput + " / "
+      + text_cycle);
     
     axios.post("http://35.212.138.86/registration", {
       email: "test",
