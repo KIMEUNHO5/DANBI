@@ -104,7 +104,7 @@ const Registration_person = ({navigation}) => {
     setGoalInput(String(weight*30));
     console.log("weightInput", weightInput, "weight", weight, "goal", goal);
   }
-
+/*
   const addWeightHandler = () => {
     const newWeightNum = parseInt(weightInput, 10);
     setWeight(newWeightNum);
@@ -120,35 +120,24 @@ const Registration_person = ({navigation}) => {
   const addCycleHandler = () => {
     const newCycleNum = parseInt(text_cycle, 10);
     setCycle(newCycleNum);
-  };
+  }; */
   
   const registerPerson = async() => {
-    addWeightHandler();
-    addTempHandler();
-    addGoalHandler();
-    addCycleHandler();
-    console.log(
-      nickname + " / " 
-      + weightInput + " / " 
-      + wakeup + " / " 
-      + bedtime + " / " 
-      + tempInput + " / "
-      + goalInput + " / "
-      + text_cycle);
     
     axios.post("http://35.212.138.86/registration", {
       email: "test",
       nickname: nickname,
       member_type: "1",
-      weight: weight,
+      weight: weightInput,
       wakeup_time: wakeup,
       bed_time: bedtime,
-      temperature: temperature,
-      intake_goal: goal,
-      cycle: cycle,
+      temperature: tempInput,
+      intake_goal: goalInput,
+      cycle: text_cycle,
     })
     .then(function (response) {
       console.log(response.data);
+      navigation.navigate('Main');
     }).catch(function (error) {
       console.log("ㅗ");
     }).then(function() {
@@ -182,7 +171,6 @@ const Registration_person = ({navigation}) => {
                 onChangeText={setWeightInput}
                 value={weightInput}
                 onEndEditing={()=>{
-                  
                   defaultWeight();
                 }}
                 placeholder = "Weight"

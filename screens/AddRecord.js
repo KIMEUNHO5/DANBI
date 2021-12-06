@@ -79,12 +79,12 @@ Date.prototype.format = function(f) {
     };
 
     const confirm = async()=> {
-      addAmountHandler();
-      console.log(currentID, time, amount);
+      //addAmountHandler();
+      console.log(currentID, time, amountInput);
       axios.post("http://35.212.138.86/record", {
         member_id : currentID,
         date : time, 
-        actual_intake : amount
+        actual_intake : amountInput
       }).then(function(response) {
         console.log(response.data);
       }).catch(function(error) {

@@ -148,7 +148,7 @@ const Registration_plant = ({navigation}) => {
     })
     .then(function (response) {
       console.log(response.data);
-      //navigation.navigate('Main');
+      navigation.navigate('Main');
     }).catch(function (error) {
       console.log("error");
     }).then(function() {

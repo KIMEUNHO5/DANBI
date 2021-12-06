@@ -119,27 +119,8 @@ const SpecificationScreen = ({navigation}) => {
                 </View>
                 <Button
                         title="알림"
-<<<<<<< Updated upstream
                         onPress={showNotification}></Button>
                     <TouchableOpacity onPress={pressEdit}>
-=======
-                        onPress={() => {
-                            const prefix = Linking.createURL("/");
-                            Notifications.scheduleNotificationAsync({
-                            content: {
-                                title: "ㅇㅇㅇ물 마실 시간입니다.",
-                                body: '~~ ml 마시세요',
-                                data: {
-                                    url: prefix + "Notification", // 여기가 path를 설정하는 부분입니다.
-                                  },
-                            },
-                            trigger: {
-                                seconds: 1, //onPress가 클릭이 되면 1초 뒤에 알람이 발생합니다.
-                            },
-                            });
-                        }}></Button>
-                    <TouchableOpacity>
->>>>>>> Stashed changes
                         <Image 
                             style={styles.edit}
                             source={require('../Source/edit.png')}

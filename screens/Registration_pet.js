@@ -104,28 +104,28 @@ const Registration_pet = ({navigation}) =>{
   };
 
   const registerPet = () => {
-    addWeightHandler();
-    addGoalHandler();
-    addCycleHandler();
+    //addWeightHandler();
+    //addGoalHandler();
+    //addCycleHandler();
     console.log(
       nickname + " / " 
       + type + " / "
-      + weight + " / " 
+      + weightInput + " / " 
       + wakeup + " / " 
       + bedtime + " / " 
-      + goal + " / "
-      + cycle);
-
+      + goalInput + " / "
+      + cycleInput);
+    
     axios.post("http://35.212.138.86/registration", {
       email: "test",
       nickname: nickname,
       pet_type:type,
       member_type: "2",
-      weight: weight,
+      weight: weightInput,
       wakeup_time: wakeup,
       bed_time: bedtime,
-      intake_goal: goal,
-      cycle: cycle,
+      intake_goal: goalInput,
+      cycle: cycleInput,
     })
     .then(function (response) {
       console.log(response.data);
@@ -134,7 +134,7 @@ const Registration_pet = ({navigation}) =>{
       console.log("error");
     }).then(function() {
       console.log("^^");
-    });
+    }); 
   }
 
   return (
