@@ -15,6 +15,9 @@ import {
   Keyboard,
   SliderComponent
 } from "react-native";
+import axios from "axios";
+import {currentID} from './Main.js';
+import { SectionList } from "native-base";
 
 Date.prototype.format = function(f) {
     if(!this.valueOf()) return " ";
@@ -73,7 +76,22 @@ Date.prototype.format = function(f) {
 
     const addRecordHandler = () => { 
       addAmountHandler();
-      console.log(time + " " + amount);
+    };
+
+    const confirm = async()=> {
+      addAmountHandler();
+      console.log(currentID, time, amount);
+      axios.post("http://35.212.138.86/record", {
+        member_id : currentID,
+        date : time, 
+        actual_intake : amount
+      }).then(function(response) {
+        console.log(response.data);
+      }).catch(function(error) {
+        console.log(error);
+      }).then(function() {
+        console.log("^^");
+      });
     };
 
 
@@ -120,7 +138,7 @@ Date.prototype.format = function(f) {
             </View>
           </View>
           <View style={styles.eachLine}>
-            <TouchableOpacity style={styles.button} onPress={addRecordHandler}>
+            <TouchableOpacity style={styles.button} onPress={confirm}>
               <Text style = {{fontSize:20}}>등록</Text>
             </TouchableOpacity>
           </View>

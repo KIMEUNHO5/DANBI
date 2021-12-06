@@ -16,6 +16,9 @@ import {
   FlatList,
 } from "react-native";
 import {sendInfo, currentID} from './Main.js'
+import axios from 'axios';
+
+
 
 const DATA = [
     {
@@ -39,27 +42,58 @@ const Item = ({ title }) => (
   );
 
 const SpecificationScreen = ({navigation}) => {
-    console.log("sendInfo in spec");
-    console.log(sendInfo);
+    const [memberInfo, setMemberInfo] = useState(sendInfo);
+    const [notiArray, setNotiArray] = useState([]);
 
-    useEffect(()=> { // 계정 내 멤버 reload
-        memberInfo.forEach((value, index, array) => {
-          if (value.member_type == 1) {
-              value.img = require('../Source/person_inactivated.png');
-          } else if (value.member_type == 2) {
-              value.img = require('../Source/pet_inactivated.png');
-          } else if (value.member_type == 3) {
-              value.img = require('../Source/plant_inactivated.png');
-          }
-        })
+    useEffect(()=> { 
+        if (memberInfo[0].member_type == 1) {
+            memberInfo[0].img = require('../Source/person_inactivated.png');
+        } else if (memberInfo[0].member_type == 2) {
+            memberInfo[0].img = require('../Source/pet_inactivated.png');
+        } else if (memberInfo[0].member_type == 3) {
+            memberInfo[0].img = require('../Source/plant_inactivated.png');
+        }
         console.log("memberInfo in spec");
         console.log(memberInfo);
         console.log("memberinfo.nickname");
         console.log(memberInfo[0].nickname);
     
-      }, [memberInfo]);
+    }, [memberInfo]);
 
-    const [memberInfo, setMemberInfo] = useState(sendInfo);
+    const showNotification = async() => {
+        axios.post("http://35.212.138.86/notification", {
+             member_id : currentID
+         }).then(function(response) {
+           console.log(response.data);
+           //setNotiArray(response.data.result[0]);
+           Notifications.scheduleNotificationAsync({
+            content: {
+                title: response.data.result[0].nickname + "님의 수분 섭취 시간입니다.",
+                body: response.data.result[0].intake_once + 'ml 섭취하세요',
+            },
+            trigger: {
+                seconds: 1, //onPress가 클릭이 되면 1초 뒤에 알람이 발생합니다.
+            },
+        });
+         }).catch(function(error) {
+           console.log(error);
+         }).then(function() {
+           console.log("^^");;
+         });
+        
+    };
+
+    const pressEdit = async() => {
+        if (memberInfo[0].member_type == 1) {
+            navigation.navigate('Edit_person');
+        } else if (memberInfo[0].member_type == 2) {
+            navigation.navigate('Edit_pet');
+        } else if (memberInfo[0].member_type == 3) {
+            navigation.navigate('Edit_plant');
+        }
+    }
+
+    
 
     const renderItem = ({ item }) => {
         return (
@@ -84,18 +118,8 @@ const SpecificationScreen = ({navigation}) => {
                 </View>
                 <Button
                         title="알림"
-                        onPress={() => {
-                            Notifications.scheduleNotificationAsync({
-                            content: {
-                                title: "ㅇㅇㅇ물 마실 시간입니다.",
-                                body: '~~ ml 마시세요',
-                            },
-                            trigger: {
-                                seconds: 1, //onPress가 클릭이 되면 1초 뒤에 알람이 발생합니다.
-                            },
-                            });
-                        }}></Button>
-                    <TouchableOpacity>
+                        onPress={showNotification}></Button>
+                    <TouchableOpacity onPress={pressEdit}>
                         <Image 
                             style={styles.edit}
                             source={require('../Source/edit.png')}
