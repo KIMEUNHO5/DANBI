@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { View, StyleSheet, Button, Alert } from "react-native";
 
 const Notification = () => {
-  const createThreeButtonAlert = () =>
-    Alert.alert(
-      "OOO님의 수분 섭취 시간입니다",
-      "~ml 섭취하세요",
+  Alert.alert(
+    "OOO님의 수분 섭취 시간입니다",
+    "~ml 섭취하세요",
       [
         {
           text: "물받기",
@@ -21,11 +20,7 @@ const Notification = () => {
       ]
     );
 
-  return (
-    <View style={styles.container}>
-      <Button title={"3-Button Alert"} onPress={createThreeButtonAlert} />
-    </View>
-  );
+  return Notification;
 }
 
 const styles = StyleSheet.create({
