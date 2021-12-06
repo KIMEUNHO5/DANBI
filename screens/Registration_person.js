@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import * as Notifications from 'expo-notifications';
 import { 
   StyleSheet, 
   Text, 
@@ -288,6 +289,20 @@ const Registration_person = ({navigation}) => {
           </View>
           <View style={styles.eachLine}>
             <Button title="등록" onPress={registerPerson}/>
+            <Button
+              title="알림"
+              onPress={() => {
+                Notifications.scheduleNotificationAsync({
+                  content: {
+                    title: "물 마실 시간입니다.",
+                    body: '마시세요',
+                  },
+                  trigger: {
+                    seconds: 1, //onPress가 클릭이 되면 1초 뒤에 알람이 발생합니다.
+                  },
+                });
+              }}></Button>
+
           </View>
         </View>
       </View>
@@ -297,6 +312,15 @@ const Registration_person = ({navigation}) => {
 }
 
 export default Registration_person;
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
 
 const styles = StyleSheet.create({
   container: {
@@ -377,34 +401,3 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   }
 });
-
-/*
-<View style={styles.header}>
-        <Image style={styles.logo} source = {require('../Source/DANBI_LogoName.png')}/>
-      </View>
-      <View style={styles.menu}>
-        <View style={styles.option}>
-          <TouchableOpacity onPress={person}>
-            <Text
-            style={{ ...styles.btnText, color: working ? "white" : "gray" }}
-            >
-              Person
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={pet}>
-            <Text
-            style={{ ...styles.btnText, color: !working ? "white" : "gray" }}
-            >
-              Pet
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={plant}>
-            <Text
-            style={{ ...styles.btnText, color: !working ? "white" : "gray" }}
-            >
-              Plant
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      */
