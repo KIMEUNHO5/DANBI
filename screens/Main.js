@@ -15,6 +15,7 @@ import { useEffect } from "react/cjs/react.development";
   
 const Drawer = createDrawerNavigator();
 export let sendInfo = [];
+export let currentID = 0;
 
 const mainScreen = ({navigation}) => {
     return (
@@ -39,7 +40,7 @@ function MainListScreen({ navigation }) {
     const [memberInfo, setMemberInfo] = useState([]); // 개인 상세 정보
     const [selectedItem, setSelectedItem] = useState([]); // 개인 단순 정보
 
-    useEffect(()=> { // 
+    useEffect(()=> { // 계정 내 멤버 reload
         list.forEach((value, index, array) => {
           if (value.member_type == 1) {
               value.img = require('../Source/person_activated.png');
@@ -49,9 +50,13 @@ function MainListScreen({ navigation }) {
               value.img = require('../Source/plant_activated.png');
           }
         })
-        console.log(list);
+        //console.log(list);
     
-      }, [list]);
+    }, [list]);
+
+    useEffect(() => {
+        currentID=selectedID;
+    }, [selectedID])
 
     useEffect(() => { // 계정 정보 확인 -> 멤버 리스트 업데이트
         if (isFocused) {
@@ -61,8 +66,10 @@ function MainListScreen({ navigation }) {
               })
               .then(function(response) {
                 setList(response.data.result);
+                console.log(list);
               }).catch(function(error) {
                 console.log("account loading failed");
+                console.log(error);
               }).then(function() {
                 console.log("^^");
               }); 
@@ -70,8 +77,9 @@ function MainListScreen({ navigation }) {
     }, [isFocused]);
 
     useEffect(() => { // 멤버 선택시 개인 생체 정보 저장
-        sendInfo = memberInfo;
-        sendInfo.forEach((value, index, array) => {
+        if(!memberInfo==[]) {
+            sendInfo = memberInfo;
+            sendInfo.forEach((value, index, array) => {
             if (value.member_type == 1) {
                 value.img = require('../Source/person_inactivated.png');
             } else if (value.member_type == 2) {
@@ -80,23 +88,23 @@ function MainListScreen({ navigation }) {
                 value.img = require('../Source/plant_inactivated.png');
             }
           })
+        }
     }, [memberInfo]);
 
 
     const selectMember = async(info) => {
-        console.log("start selectMember");
-        console.log("info here");
-        console.log(info);
-        console.log("info.id here");
-        console.log(info.id);
+        setSelectedID(info.id);
         axios.post("http://35.212.138.86/specification", {
             member_id : info.id
         }).then(function(response) {
-            console.log("data below");
+            //console.log("selectedID : ", selectedID);
+            console.log("response data here");
             console.log(response.data);
-            //setMemberInfo(response.data.result);
-            console.log("memberInfo below");
-            console.log(memberInfo);            
+            setMemberInfo(response.data.result);
+            //console.log("memberInfo in main");
+            //console.log(memberInfo);
+            //console.log("sendInfo in main");
+            //console.log(sendInfo); 
             navigation.navigate('Spec');
         }).catch(function(error) {
             console.log("ㅗ");

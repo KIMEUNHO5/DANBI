@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { useState, Component } from "react";
+import { useState, Component, useEffect} from "react";
 import { 
   StyleSheet, 
   Text, 
@@ -13,7 +13,7 @@ import {
   SafeAreaView,
   FlatList,
 } from "react-native";
-import {sendInfo} from './Main.js'
+import {sendInfo, currentID} from './Main.js'
 
 const DATA = [
     {
@@ -37,11 +37,33 @@ const Item = ({ title }) => (
   );
 
 const SpecificationScreen = ({navigation}) => {
+    console.log("sendInfo in spec");
+    console.log(sendInfo);
+
+    useEffect(()=> { // 계정 내 멤버 reload
+        memberInfo.forEach((value, index, array) => {
+          if (value.member_type == 1) {
+              value.img = require('../Source/person_inactivated.png');
+          } else if (value.member_type == 2) {
+              value.img = require('../Source/pet_inactivated.png');
+          } else if (value.member_type == 3) {
+              value.img = require('../Source/plant_inactivated.png');
+          }
+        })
+        console.log("memberInfo in spec");
+        console.log(memberInfo);
+        console.log("memberinfo.nickname");
+        console.log(memberInfo[0].nickname);
+    
+      }, [memberInfo]);
+
     const [memberInfo, setMemberInfo] = useState(sendInfo);
-    const renderItem = ({ item }) => {return (
+
+    const renderItem = ({ item }) => {
+        return (
         <TouchableOpacity >
             <View style={ styles.item}>
-                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemName}>{currentID}</Text>
             </View>
         </TouchableOpacity>
     );}
@@ -52,10 +74,10 @@ const SpecificationScreen = ({navigation}) => {
                 <View style={styles.user}>
                     <Image
                         style={styles.userLogo}
-                        source={require('../Source/person_inactivated.png')}
+                        source={memberInfo[0].img}
                     />
                     <View style={styles.username}>
-                    <Text>{memberInfo.nickname}</Text>
+                    <Text style={{fontSize:20}}>{memberInfo[0].nickname}</Text>
                     </View>
                 </View>
                     <TouchableOpacity>
@@ -127,7 +149,7 @@ const styles = StyleSheet.create({
     username : {
         flexDirection: "row",
         alignItems: "center",
-        paddingLeft: 5,
+        paddingLeft: 10,
     },
     edit : {
         flexDirection: "row",

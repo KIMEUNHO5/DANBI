@@ -34,25 +34,26 @@ const LoginScreen = ({ navigation }) => {
   const [pw, setPw] = useState("");
 
   useEffect(()=> {
-    sendList=list;
-    account_email = email;
-    account_pw = pw;
-    sendList.forEach((value, index, array) => {
-      if (value.member_type == 1) {
-          value.img = require('../Source/person_activated.png');
-      } else if (value.member_type == 2) {
-          value.img = require('../Source/pet_activated.png');
-      } else if (value.member_type == 3) {
-          value.img = require('../Source/plant_activated.png');
-      }
-    })
-    console.log(sendList);
-    console.log("I'm checking account_~ ", account_email, account_pw);
+    if(!list==[]) {
+      sendList=list;
+      account_email = email;
+      account_pw = pw;
+      sendList.forEach((value, index, array) => {
+        if (value.member_type == 1) {
+            value.img = require('../Source/person_activated.png');
+        } else if (value.member_type == 2) {
+            value.img = require('../Source/pet_activated.png');
+        } else if (value.member_type == 3) {
+            value.img = require('../Source/plant_activated.png');
+        }
+      })
+      //console.log(sendList);
+      //console.log("I'm checking account_~ ", account_email, account_pw);
+    }
 
   }, [list])
 
   const confirm = async() => {
-    
     axios.post("http://35.212.138.86/login", {
       email : email,
       pw : pw
@@ -61,7 +62,7 @@ const LoginScreen = ({ navigation }) => {
       if (response.data.success == true) {
         console.log("login success");
         setList(response.data.result);
-        navigation.navigate('Main', {email:email, pw : pw});
+        navigation.navigate('Main');
       }
       else {
         Alert.alert('Login failed');
