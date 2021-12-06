@@ -19,7 +19,7 @@ export let currentID = 0;
 
 const mainScreen = ({navigation}) => {
     return (
-        <Drawer.Navigator>
+        <Drawer.Navigator screenOptions={{ headerShown: false, drawerPosition: "right" }}>
             <Drawer.Screen 
             name="MainListScreen" 
             component={MainListScreen}  
