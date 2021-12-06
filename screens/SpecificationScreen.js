@@ -13,6 +13,7 @@ import {
   SafeAreaView,
   FlatList,
 } from "react-native";
+import {sendInfo} from './Main.js'
 
 const DATA = [
     {
@@ -36,6 +37,7 @@ const Item = ({ title }) => (
   );
 
 const SpecificationScreen = ({navigation}) => {
+    const [memberInfo, setMemberInfo] = useState(sendInfo);
     const renderItem = ({ item }) => {return (
         <TouchableOpacity >
             <View style={ styles.item}>
@@ -53,7 +55,7 @@ const SpecificationScreen = ({navigation}) => {
                         source={require('../Source/person_inactivated.png')}
                     />
                     <View style={styles.username}>
-                    <Text>HEUN</Text>
+                    <Text>{memberInfo.nickname}</Text>
                     </View>
                 </View>
                     <TouchableOpacity>
@@ -70,7 +72,7 @@ const SpecificationScreen = ({navigation}) => {
                         source={require('../Source/waterIntakePicTest.png')}
                     />
                 </View>
-                <View style={{flexDirection:'row', paddingRight: 380}}>
+                <View style={{flexDirection:'row', paddingLeft : 30, paddingRight: 380}}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Calend')}>
                         <Image
@@ -161,7 +163,6 @@ const styles = StyleSheet.create({
     stamp : {
         width: 40,
         height: 40,
-        //backgroundColor : "red",
         paddingBottom: 60,
         resizeMode: "contain",
     },

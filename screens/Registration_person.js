@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { StatusBar } from "expo-status-bar";
-import React, { useState, Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import { 
@@ -16,6 +16,8 @@ import {
   Keyboard
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import { StackActions, CommonActions } from '@react-navigation/native';
+// import { useEffect } from 'react/cjs/react.development';
 
 Date.prototype.format = function(f) {
   if(!this.valueOf()) return " ";
@@ -44,6 +46,11 @@ String.prototype.zf = function(len){return "0".string(len - this.length) + this;
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
 const Registration_person = ({navigation}) => {
+
+  useEffect(()=> {
+    defaultWeight();
+  }, [weightInput]); 
+   
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
@@ -91,6 +98,12 @@ const Registration_person = ({navigation}) => {
   const [goalInput, setGoalInput] = useState("");
   const [cycle, setCycle] = useState(0);
 
+  const defaultWeight = () => {
+    setWeight(parseInt(weightInput, 10));
+    setGoalInput(String(weight*30));
+    console.log("weightInput", weightInput, "weight", weight, "goal", goal);
+  }
+
   const addWeightHandler = () => {
     const newWeightNum = parseInt(weightInput, 10);
     setWeight(newWeightNum);
@@ -135,9 +148,8 @@ const Registration_person = ({navigation}) => {
     })
     .then(function (response) {
       console.log(response.data);
-      navigation.navigate('Main');
     }).catch(function (error) {
-      console.log("error");
+      console.log("ㅗ");
     }).then(function() {
       console.log("^^");
     });
@@ -168,6 +180,10 @@ const Registration_person = ({navigation}) => {
                 <TextInput 
                 onChangeText={setWeightInput}
                 value={weightInput}
+                onEndEditing={()=>{
+                  
+                  defaultWeight();
+                }}
                 placeholder = "Weight"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
@@ -240,7 +256,7 @@ const Registration_person = ({navigation}) => {
                 <TextInput 
                 onChangeText={setGoalInput}
                 value={goalInput}
-                placeholder = "Water Intake Goal"
+                placeholder = {goalInput}
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
                 <Text>mL</Text>

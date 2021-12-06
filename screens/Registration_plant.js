@@ -127,7 +127,6 @@ const Registration_plant = ({navigation}) => {
 
   const registerPlant = () => {
     addAmountHandler();
-    //addCycleHandler();
     console.log(
       nickname + " / " 
       + type + " / "

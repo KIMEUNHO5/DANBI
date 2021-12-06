@@ -4,7 +4,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 //import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, Text, View, Button, StyleSheet } from 'react-native';
-import { DrawerActions } from '@react-navigation/native';
+import { CommonActions, DrawerActions, StackActions } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 

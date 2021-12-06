@@ -1,36 +1,21 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity, Pressable, Image } from "react-native";
+import React, {useState} from "react";
+import { SafeAreaView, StyleSheet, Alert, Text, View, FlatList, TouchableOpacity, Pressable, Image } from "react-native";
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, CommonActions, useIsFocused } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Login, { sendList, account } from './LoginScreen';
+import Login, { sendList, account_email, account_pw } from './LoginScreen';
 import Signup from './Signup';
 import ChangePW from './ChangePW';
 import StackNavigator from '../App';
 import Logout from "./Logout";
 import DeleteAccountScreen from "./DeleteAccount";
 import axios from "axios";
+import { useEffect } from "react/cjs/react.development";
 
-// var DATA = sendList;
-
-sendList.forEach((value, index, array) => {
-    if (value.member_type == 1) {
-        value.img = require('../Source/person_activated.png');
-    } else if (value.member_type == 2) {
-        value.img = require('../Source/pet_activated.png');
-    } else if (value.member_type == 3) {
-        value.img = require('../Source/plant_activated.png');
-    }
-})
   
 const Drawer = createDrawerNavigator();
+export let sendInfo = [];
 
-const confirm = () => {
-    console.log("my sendList here");
-    console.log(sendList);
-    console.log("data here");
-    console.log(DATA);
-}
 const mainScreen = ({navigation}) => {
     return (
         <Drawer.Navigator>
@@ -47,8 +32,82 @@ const mainScreen = ({navigation}) => {
 }
 
 function MainListScreen({ navigation }) {
-    const renderItem = ({ item }) => {return (
-        <TouchableOpacity onPress={() => navigation.navigate('Spec')}>
+
+    const [list,setList] = useState(sendList); // 계정 내 멤버 정보
+    const isFocused = useIsFocused();
+    const [selectedID, setSelectedID] = useState(0); 
+    const [memberInfo, setMemberInfo] = useState([]); // 개인 상세 정보
+    const [selectedItem, setSelectedItem] = useState([]); // 개인 단순 정보
+
+    useEffect(()=> { // 
+        list.forEach((value, index, array) => {
+          if (value.member_type == 1) {
+              value.img = require('../Source/person_activated.png');
+          } else if (value.member_type == 2) {
+              value.img = require('../Source/pet_activated.png');
+          } else if (value.member_type == 3) {
+              value.img = require('../Source/plant_activated.png');
+          }
+        })
+        console.log(list);
+    
+      }, [list]);
+
+    useEffect(() => { // 계정 정보 확인 -> 멤버 리스트 업데이트
+        if (isFocused) {
+            axios.post("http://35.212.138.86/login", {
+                email : account_email,
+                pw : account_pw
+              })
+              .then(function(response) {
+                setList(response.data.result);
+              }).catch(function(error) {
+                console.log("account loading failed");
+              }).then(function() {
+                console.log("^^");
+              }); 
+        }
+    }, [isFocused]);
+
+    useEffect(() => { // 멤버 선택시 개인 생체 정보 저장
+        sendInfo = memberInfo;
+        sendInfo.forEach((value, index, array) => {
+            if (value.member_type == 1) {
+                value.img = require('../Source/person_inactivated.png');
+            } else if (value.member_type == 2) {
+                value.img = require('../Source/pet_inactivated.png');
+            } else if (value.member_type == 3) {
+                value.img = require('../Source/plant_inactivated.png');
+            }
+          })
+    }, [memberInfo]);
+
+
+    const selectMember = async(info) => {
+        console.log("start selectMember");
+        console.log("info here");
+        console.log(info);
+        console.log("info.id here");
+        console.log(info.id);
+        axios.post("http://35.212.138.86/specification", {
+            member_id : info.id
+        }).then(function(response) {
+            console.log("data below");
+            console.log(response.data);
+            //setMemberInfo(response.data.result);
+            console.log("memberInfo below");
+            console.log(memberInfo);            
+            navigation.navigate('Spec');
+        }).catch(function(error) {
+            console.log("ㅗ");
+        }).then(function() {
+            console.log("^^");
+        });
+    };
+    
+    const renderItem = ({ item }) => {
+        return (
+        <TouchableOpacity onPress={()=>selectMember(item)}>
             <View style={ styles.item}>
                 <Image style={styles.itemImg} source={item.img} ></Image>
                 <Text style={styles.itemName}>{item.nickname}</Text>
@@ -61,7 +120,11 @@ function MainListScreen({ navigation }) {
         <View style={styles.body}>
             <View style={styles.memberListbg}>
                 <SafeAreaView style={{flex:9}}>
-                    <FlatList data={sendList} renderItem={renderItem} keyExtractor={item => item.id} />
+                    <FlatList 
+                    data={list} 
+                    extraData={list}
+                    renderItem={renderItem} 
+                    keyExtractor={item => item.id} />
                 </SafeAreaView> 
                 <View style={styles.pluscontainer}>
                     <TouchableOpacity onPress={() => navigation.navigate('Reg')}>
@@ -119,7 +182,7 @@ const styles = StyleSheet.create({
       },
     body : {
         backgroundColor :"#FFFFFF",
-        flex : 10,
+        flex : 9,
         justifyContent : "center",
         alignItems: "center",
     },
@@ -131,7 +194,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth : 1,
         borderColor :"black",
-        backgroundColor: "#DEEFFF",
+        backgroundColor: "white",
         borderRadius: 10,
     },
     item: {
@@ -156,7 +219,8 @@ const styles = StyleSheet.create({
     },
     pluscontainer:{
         flex:1,
-        backgroundColor:"#DEEFFF",
+        backgroundColor:"white",
+        borderTopWidth : StyleSheet.hairlineWidth,
         height:40,
         justifyContent:"center",
         alignItems:"center",
