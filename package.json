@@ -24,6 +24,7 @@
     "expo": "~43.0.2",
     "expo-google-app-auth": "~9.0.0",
     "expo-notifications": "~0.13.3",
+    "expo-permissions": "~13.0.3",
     "expo-status-bar": "~1.1.0",
     "jshint": "^2.13.1",
     "native": "^0.3.3",

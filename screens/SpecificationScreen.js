@@ -1,6 +1,8 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { useState, Component, useEffect} from "react";
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 import { 
   StyleSheet, 
   Text, 
@@ -80,12 +82,26 @@ const SpecificationScreen = ({navigation}) => {
                     <Text style={{fontSize:20}}>{memberInfo[0].nickname}</Text>
                     </View>
                 </View>
+                <Button
+                        title="알림"
+                        onPress={() => {
+                            Notifications.scheduleNotificationAsync({
+                            content: {
+                                title: "ㅇㅇㅇ물 마실 시간입니다.",
+                                body: '~~ ml 마시세요',
+                            },
+                            trigger: {
+                                seconds: 1, //onPress가 클릭이 되면 1초 뒤에 알람이 발생합니다.
+                            },
+                            });
+                        }}></Button>
                     <TouchableOpacity>
                         <Image 
                             style={styles.edit}
                             source={require('../Source/edit.png')}
                         />
                     </TouchableOpacity>
+                    
             </View>
             <View style={styles.body}>
                 <View style={styles.waterStatus}>
@@ -122,6 +138,14 @@ const SpecificationScreen = ({navigation}) => {
 
 export default SpecificationScreen;
 
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
+  
 const styles = StyleSheet.create({
     container : {
         flex: 1,
@@ -228,4 +252,12 @@ const styles = StyleSheet.create({
         width: 20,
         resizeMode: "contain",
     },
+    eachLine: {
+        flex:1,
+        flexDirection:"row",
+        paddingTop : 10,
+        paddingBottom : 10,
+        alignContent:"center",
+        justifyContent:"center",
+      },
 });
