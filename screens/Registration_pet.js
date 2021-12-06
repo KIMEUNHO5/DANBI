@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import {account_email} from './LoginScreen.js';
 import { 
   StyleSheet, 
   Text, 
@@ -117,7 +118,7 @@ const Registration_pet = ({navigation}) =>{
       + cycleInput);
     
     axios.post("http://35.212.138.86/registration", {
-      email: "test",
+      email: account_email,
       nickname: nickname,
       pet_type:type,
       member_type: "2",
@@ -125,7 +126,7 @@ const Registration_pet = ({navigation}) =>{
       wakeup_time: wakeup,
       bed_time: bedtime,
       intake_goal: goalInput,
-      cycle: cycleInput,
+      cycle: text_cycle,
     })
     .then(function (response) {
       console.log(response.data);

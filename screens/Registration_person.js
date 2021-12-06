@@ -16,6 +16,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
+import {account_email} from './LoginScreen.js';
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { StackActions, CommonActions } from '@react-navigation/native';
 // import { useEffect } from 'react/cjs/react.development';
@@ -125,7 +126,7 @@ const Registration_person = ({navigation}) => {
   const registerPerson = async() => {
     
     axios.post("http://35.212.138.86/registration", {
-      email: "test",
+      email: account_email,
       nickname: nickname,
       member_type: "1",
       weight: weightInput,

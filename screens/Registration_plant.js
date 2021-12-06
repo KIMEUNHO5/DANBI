@@ -15,6 +15,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
+import {account_email} from './LoginScreen.js';
 
 Date.prototype.format = function(f) {
   if(!this.valueOf()) return " ";
@@ -132,18 +133,18 @@ const Registration_plant = ({navigation}) => {
       + type + " / "
       + supplyDate + " / " 
       + supplyTime + " / " 
-      + amount + " / "
+      + amountInput + " / "
       + cycle);
 
 
     axios.post("http://35.212.138.86/registration", {
-    email: "test",
+    email: account_email,
     member_type: "3",
     nickname: nickname,
     plant_type: type,
-    intake_goal: amount,
+    intake_goal: amountInput,
     last_supply_date: supplyDate,
-    supply_time: String(supplyTime),
+    supply_time: supplyTime,
     cycle: cycle,
     })
     .then(function (response) {

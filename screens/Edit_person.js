@@ -14,6 +14,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
+import axios from "axios";
+import { NavigationContainer } from "@react-navigation/native";
 
 Date.prototype.format = function(f) {
   if(!this.valueOf()) return " ";
@@ -41,7 +43,7 @@ String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s
 String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
 Number.prototype.zf = function(len){return this.toString().zf(len);};
 
-function Edit_person () {
+function Edit_person ({navigation}) {
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
@@ -113,12 +115,29 @@ function Edit_person () {
     addCycleHandler();
     console.log(
       nickname + " / " 
-      + weight + " / " 
+      + weightInput + " / " 
       + wakeup + " / " 
       + bedtime + " / " 
-      + temperature + " / "
-      + goal + " / "
-      + cycle);
+      + tempInput+ " / "
+      + goalInput + " / "
+      + text_cycle);
+
+      axios.post("http://35.212.138.86/editmemberinfo", {
+        nickname : nickname,
+        weight : weightInput,
+        wakeup_time : wakeup,
+        bed_time : bedtime,
+        temperature : tempInput,
+        intake_goal : goalInput,
+        cycle : text_cycle
+      }).then(function(response) {
+        console.log(response.data);
+        navigation.goBack();
+      }).catch(function (error) {
+        console.log(error);
+      }).then(function() {
+        console.log("^^");
+      });
   };
   
 

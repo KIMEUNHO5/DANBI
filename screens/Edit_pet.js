@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import axios from 'axios';
 import { 
   StyleSheet, 
   Text, 
@@ -109,11 +110,27 @@ function Edit_pet() {
     console.log(
       nickname + " / " 
       + type + " / "
-      + weight + " / " 
+      + weightInput + " / " 
       + wakeup + " / " 
       + bedtime + " / " 
-      + goal + " / "
-      + cycle);
+      + goalInput + " / "
+      + text_cycle);
+
+      axios.post("http://35.212.138.86/editmemberinfo", {
+        nickname : nickname,
+        weight : weightInput,
+        wakeup_time : wakeup,
+        bed_time : bedtime,
+        intake_goal : goalInput,
+        cycle : text_cycle
+      }).then(function(response) {
+        console.log(response.data);
+        navigation.goBack();
+      }).catch(function (error) {
+        console.log(error);
+      }).then(function() {
+        console.log("^^");
+      });
   }
 
   

@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import axios from 'axios';
 import { 
   StyleSheet, 
   Text, 
@@ -104,8 +105,24 @@ function Edit_plant() {
       + type + " / "
       + supplyDate + " / " 
       + supplyTime + " / " 
-      + amount + " / "
-      + cycle);
+      + amountInput + " / "
+      + text_cycle);
+
+      axios.post("http://35.212.138.86/editmemberinfo", {
+        nickname : nickname,
+        supply_time : supplyTime,
+        intake_goal : amountInput,
+        last_supply_date : supplyDate,
+        supply_time : supplyTime,
+        cycle : cycle
+      }).then(function(response) {
+        console.log(response.data);
+        navigation.goBack();
+      }).catch(function (error) {
+        console.log(error);
+      }).then(function() {
+        console.log("^^");
+      });
   }
 
 
