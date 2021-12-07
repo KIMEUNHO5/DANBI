@@ -48,8 +48,8 @@ function Edit_person ({navigation}) {
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
-  const [text_wakeup, onChangeText_wakeup] = useState(sendInfo.wakeup_time);
-  const [text_sleep, onChangeText_sleep] = useState(sendInfo.bed_time);
+  const [text_wakeup, onChangeText_wakeup] = useState(new Date("Wed Dec 08 2021 " + sendInfo.wakeup_time.slice(0,8) + " GMT+0900 (KST)").format("a/p hh:mm"));
+  const [text_sleep, onChangeText_sleep] = useState(new Date("Wed Dec 08 2021 " + sendInfo.bed_time.slice(0,8) + " GMT+0900 (KST)").format("a/p hh:mm"));
 
   const showWakeupTimePicker = () => {
     setWakeupTimePickerVisibility(true);
@@ -79,19 +79,18 @@ function Edit_person ({navigation}) {
     onChangeText_sleep(date.format("a/p hh:mm"));
   };
 
+  console.log(new Date("Wed Dec 08 2021 " + sendInfo.wakeup_time.slice(0,8) + " GMT+0900 (KST)"));
   const [nickname, setNickname] = useState(sendInfo.nickname);
   const [weight, setWeight] = useState(0);
   const [weightInput, setWeightInput] = useState(String(sendInfo.weight));
-  const [wakeup, setWakeup] = useState(sendInfo.wakeup_time);
-  const [bedtime, setBedtime] = useState(sendInfo.bed_time);
+  const [wakeup, setWakeup] = useState("Wed Dec 08 2021 " + sendInfo.wakeup_time.slice(0,8) + " GMT+0900 (KST)");
+  const [bedtime, setBedtime] = useState("Wed Dec 08 2021 " + sendInfo.bed_time.slice(0,8) + " GMT+0900 (KST)");
   const [temperature, setTemperature] = useState(0);
   const [tempInput, setTempInput] = useState(String(sendInfo.temperature));
   const [goal, setGoal] = useState(0);
   const [goalInput, setGoalInput] = useState(String(sendInfo.intake_goal));
   //const [cycle, setCycle] = useState(0);
   const [text_cycle, setText_cycle] = useState(String(sendInfo.cycle));
-
-  console.log(typeof(text_cycle));
 
   /*
   const addWeightHandler = () => {
@@ -127,6 +126,7 @@ function Edit_person ({navigation}) {
       + text_cycle);
 
       axios.post("http://35.212.138.86/member/editmemberinfo", {
+        member_id : currentID,
         nickname : nickname,
         weight : weightInput,
         wakeup_time : wakeup,
@@ -135,7 +135,7 @@ function Edit_person ({navigation}) {
         intake_goal : goalInput,
         cycle : text_cycle
       }).then(function(response) {
-        //console.log(response.data);
+        console.log(response.data);
         navigation.goBack();
       }).catch(function (error) {
         console.log(error);

@@ -158,6 +158,7 @@ const SpecificationScreen = ({navigation}) => {
          }).then(function(response) {
            //console.log(response.data);
            //setNotiArray(response.data.result[0]);
+           
            Notifications.scheduleNotificationAsync({
             content: {
                 title: response.data.result[0].nickname + "님의 수분 섭취 시간입니다.",

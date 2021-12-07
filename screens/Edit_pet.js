@@ -118,6 +118,7 @@ function Edit_pet() {
       + text_cycle);
 
       axios.post("http://35.212.138.86/member/editmemberinfo", {
+        member_id : currentID,
         nickname : nickname,
         weight : weightInput,
         wakeup_time : wakeup,
