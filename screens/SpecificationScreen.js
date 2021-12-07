@@ -14,7 +14,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
   FlatList,
-  Platform
+  Platform,
+  Alert
 } from "react-native";
 import {sendInfo, currentID} from './Main.js'
 import axios from 'axios';
@@ -75,8 +76,35 @@ const SpecificationScreen = ({navigation}) => {
         });
     
         responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-          navigation.navigate('Notification')
+            axios.post("http://35.212.138.86/notification/notification", {
+             member_id : currentID
+         }).then(function(response) {
+            Alert.alert(
+                response.data.result[0].nickname+"님의 수분 섭취 시간입니다",
+                response.data.result[0].intake_once+"ml 섭취하세요",
+                  [
+                    {
+                      text: "물받기",
+                      onPress: () => console.log("물받기 Pressed")
+                    },
+                    {
+                      text: "마시기",
+                      onPress: () => console.log("마시기 Pressed"),
+                    },
+                    { 
+                      text: "미루기", 
+                      onPress: () => console.log("미루기 Pressed") }
+                  ]
+                );
           console.log("OK")
+         }).catch(function(error) {
+           //console.log(error);
+         }).then(function() {
+           //console.log("^^");;
+         });
+            
+        
+        
         });
     
         return () => {
