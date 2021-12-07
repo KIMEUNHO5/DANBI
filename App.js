@@ -26,6 +26,7 @@ import Edit_person from "./screens/Edit_person";
 import Edit_pet from "./screens/Edit_pet";
 import Edit_plant from "./screens/Edit_plant";
 import Notification from "./screens/Notification";
+import PurifierScreen from "./screens/Purifier";
 
 //React Navigation Setup
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
@@ -90,6 +91,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="Go to Notification."
         onPress={() => navigation.navigate('Notification')}
+      />
+      <Button
+        title="Go to Puricare."
+        onPress={() => navigation.navigate('Purifier')}
       />
 
     </View>
@@ -294,6 +299,18 @@ const StackNavigator = () =>{
         <Stack.Screen 
         name="Notification" 
         component={Notification}
+        options={{
+          headerStyle:{
+            height:100
+          },headerTitle : () => (
+            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
+          ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
+        }}  />
+        <Stack.Screen 
+        name="Purifier" 
+        component={PurifierScreen}
         options={{
           headerStyle:{
             height:100
