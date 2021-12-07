@@ -76,7 +76,7 @@ const SpecificationScreen = ({navigation}) => {
     
         responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
           navigation.navigate('Notification')
-          console.log("tlqkf")
+          console.log("OK")
         });
     
         return () => {
