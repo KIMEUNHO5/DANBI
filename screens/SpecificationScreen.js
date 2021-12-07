@@ -52,6 +52,44 @@ const SpecificationScreen = ({navigation}) => {
     const [notification, setNotification] = useState(false);
     const notificationListener = useRef();
     const responseListener = useRef();
+    const react1 = () => {
+        axios.post("http://35.212.138.86/purifier/reaction", {
+            member_id : currentID,
+            reaction : "1"
+          })
+          .then(function (response) {
+            console.log("되어라");
+          }).catch(function (error) {
+            console.log("ㅗ");
+          }).then(function() {
+            console.log("^^");
+          });}
+
+      const react2 = () => {
+        axios.post("http://35.212.138.86/purifier/reaction", {
+            member_id : currentID,
+            reaction : "2"
+          })
+          .then(function (response) {
+            console.log(response.data);
+          }).catch(function (error) {
+            console.log("ㅗ");
+          }).then(function() {
+            console.log("^^");
+          });}
+
+        const react3 = () => {
+          axios.post("http://35.212.138.86/purifier/reaction", {
+              member_id : currentID,
+              reaction : "3"
+            })
+            .then(function (response) {
+              console.log(response.data);
+            }).catch(function (error) {
+              console.log("ㅗ");
+            }).then(function() {
+              console.log("^^");
+            });}
     useEffect(()=> { 
         if (memberInfo.member_type == 1) {
             memberInfo.img = require('../Source/person_inactivated.png');
@@ -85,15 +123,16 @@ const SpecificationScreen = ({navigation}) => {
                   [
                     {
                       text: "물받기",
-                      onPress: () => console.log("물받기 Pressed")
+                      onPress: react1
                     },
                     {
                       text: "마시기",
-                      onPress: () => console.log("마시기 Pressed"),
+                      onPress: react2
                     },
                     { 
                       text: "미루기", 
-                      onPress: () => console.log("미루기 Pressed") }
+                      onPress: react3
+                    }
                   ]
                 );
           console.log("OK")
