@@ -1,6 +1,5 @@
-import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { useState, Component, useEffect} from "react";
+import React,{ useState, Component, useEffect, useRef} from "react";
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import * as Linking from 'expo-linking';
@@ -15,10 +14,11 @@ import {
   TouchableOpacity,
   SafeAreaView,
   FlatList,
+  Platform
 } from "react-native";
 import {sendInfo, currentID} from './Main.js'
 import axios from 'axios';
-
+import Constants from 'expo-constants';
 
 
 const DATA = [
@@ -46,6 +46,11 @@ const SpecificationScreen = ({navigation}) => {
     const [memberInfo, setMemberInfo] = useState(sendInfo);
     const [notiArray, setNotiArray] = useState([]);
 
+    //noti
+    const [expoPushToken, setExpoPushToken] = useState('');
+    const [notification, setNotification] = useState(false);
+    const notificationListener = useRef();
+    const responseListener = useRef();
     useEffect(()=> { 
         if (memberInfo.member_type == 1) {
             memberInfo.img = require('../Source/person_inactivated.png');
@@ -60,6 +65,25 @@ const SpecificationScreen = ({navigation}) => {
         //console.log(memberInfo.nickname);
     
     }, [memberInfo]);
+
+    //noti
+    useEffect(() => {
+        registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+    
+        notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+          setNotification(notification);
+        });
+    
+        responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+          navigation.navigate('Notification')
+          console.log("tlqkf")
+        });
+    
+        return () => {
+          Notifications.removeNotificationSubscription(notificationListener.current);
+          Notifications.removeNotificationSubscription(responseListener.current);
+        };
+      }, []);
 
     const showNotification = async() => {
         axios.post("http://35.212.138.86/notification/notification", {
@@ -170,7 +194,36 @@ Notifications.setNotificationHandler({
       shouldSetBadge: false,
     }),
   });
+  async function registerForPushNotificationsAsync() {
+    let token;
+    if (Constants.isDevice) {
+      const { status: existingStatus } = await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== 'granted') {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+      if (finalStatus !== 'granted') {
+        alert('Failed to get push token for push notification!');
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+    } else {
+      alert('Must use physical device for Push Notifications');
+    }
   
+    if (Platform.OS === 'android') {
+      Notifications.setNotificationChannelAsync('default', {
+        name: 'default',
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#FF231F7C',
+      });
+    }
+  
+    return token;
+  } 
 const styles = StyleSheet.create({
     container : {
         flex: 1,
