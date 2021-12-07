@@ -17,7 +17,7 @@ class StampCalendar extends Component {
        return (
         <View style={{ paddingTop: 50, flex: 1 }}>
             <Calendar
-            current={'2021-11-17'}
+            current={'2021-12-10'}
             minDate={'2021-01-01'}
             maxDate={'2021-12-31'}
 
@@ -56,6 +56,16 @@ class StampCalendar extends Component {
               '2021-11-10': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
               '2021-11-13': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
               '2021-11-14': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-11-20': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-11-24': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-11-15': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-11-26': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-11-30': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-12-01': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-12-02': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-12-05': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-12-07': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
+              '2021-12-08': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
             }}
             />
         </View>
