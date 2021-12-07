@@ -137,7 +137,7 @@ const Registration_plant = ({navigation}) => {
       + cycle);
 
 
-    axios.post("http://35.212.138.86/registration", {
+    axios.post("http://35.212.138.86/member/registration", {
     email: account_email,
     member_type: "3",
     nickname: nickname,

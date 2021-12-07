@@ -81,7 +81,7 @@ Date.prototype.format = function(f) {
     const confirm = async()=> {
       //addAmountHandler();
       console.log(currentID, time, amountInput);
-      axios.post("http://35.212.138.86/record", {
+      axios.post("http://35.212.138.86/record/record", {
         member_id : currentID,
         date : time, 
         actual_intake : amountInput

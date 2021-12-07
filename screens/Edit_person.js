@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
+import {sendInfo, currentID} from './Main.js'
 import { 
   StyleSheet, 
   Text, 
@@ -47,8 +48,8 @@ function Edit_person ({navigation}) {
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
-  const [text_wakeup, onChangeText_wakeup] = useState("");
-  const [text_sleep, onChangeText_sleep] = useState("");
+  const [text_wakeup, onChangeText_wakeup] = useState(sendInfo.wakeup_time);
+  const [text_sleep, onChangeText_sleep] = useState(sendInfo.bed_time);
 
   const showWakeupTimePicker = () => {
     setWakeupTimePickerVisibility(true);
@@ -78,19 +79,21 @@ function Edit_person ({navigation}) {
     onChangeText_sleep(date.format("a/p hh:mm"));
   };
 
-  const [text_cycle, setText_cycle] = useState("");
-
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(sendInfo.nickname);
   const [weight, setWeight] = useState(0);
-  const [weightInput, setWeightInput] = useState("");
-  const [wakeup, setWakeup] = useState(null);
-  const [bedtime, setBedtime] = useState(null);
+  const [weightInput, setWeightInput] = useState(String(sendInfo.weight));
+  const [wakeup, setWakeup] = useState(sendInfo.wakeup_time);
+  const [bedtime, setBedtime] = useState(sendInfo.bed_time);
   const [temperature, setTemperature] = useState(0);
-  const [tempInput, setTempInput] = useState("");
+  const [tempInput, setTempInput] = useState(String(sendInfo.temperature));
   const [goal, setGoal] = useState(0);
-  const [goalInput, setGoalInput] = useState("");
-  const [cycle, setCycle] = useState(0);
+  const [goalInput, setGoalInput] = useState(String(sendInfo.intake_goal));
+  //const [cycle, setCycle] = useState(0);
+  const [text_cycle, setText_cycle] = useState(String(sendInfo.cycle));
 
+  console.log(typeof(text_cycle));
+
+  /*
   const addWeightHandler = () => {
     const newWeightNum = parseInt(weightInput, 10);
     setWeight(newWeightNum);
@@ -107,12 +110,13 @@ function Edit_person ({navigation}) {
     const newCycleNum = parseInt(text_cycle, 10);
     setCycle(newCycleNum);
   };
+  */
 
   const editPerson = () => {
-    addWeightHandler();
-    addTempHandler();
-    addGoalHandler();
-    addCycleHandler();
+    //addWeightHandler();
+    //addTempHandler();
+    //addGoalHandler();
+    //addCycleHandler();
     console.log(
       nickname + " / " 
       + weightInput + " / " 
@@ -122,7 +126,7 @@ function Edit_person ({navigation}) {
       + goalInput + " / "
       + text_cycle);
 
-      axios.post("http://35.212.138.86/editmemberinfo", {
+      axios.post("http://35.212.138.86/member/editmemberinfo", {
         nickname : nickname,
         weight : weightInput,
         wakeup_time : wakeup,
@@ -131,12 +135,12 @@ function Edit_person ({navigation}) {
         intake_goal : goalInput,
         cycle : text_cycle
       }).then(function(response) {
-        console.log(response.data);
+        //console.log(response.data);
         navigation.goBack();
       }).catch(function (error) {
         console.log(error);
       }).then(function() {
-        console.log("^^");
+        //console.log("^^");
       });
   };
   
@@ -154,7 +158,7 @@ function Edit_person ({navigation}) {
              onChangeText={setNickname}
              value={nickname}
              style={styles.inputField}
-             placeholder = "Nickname"
+             placeholder = {nickname}
              placeholderTextColor="gray"/>
           </View>
           <View style={styles.eachLine}>
@@ -165,7 +169,7 @@ function Edit_person ({navigation}) {
                 <TextInput 
                  onChangeText={setWeightInput}
                  value={weightInput}
-                 placeholder = "Weight"
+                 placeholder = {weightInput}
                  placeholderTextColor = "gray"
                  keyboardType="number-pad"/>
                 <Text>kg</Text>
@@ -178,7 +182,7 @@ function Edit_person ({navigation}) {
             <TouchableOpacity onPress={showWakeupTimePicker} style={styles.inputField}>
               <TextInput
               pointerEvent="none"
-              placeholder="Wake-up Time"
+              placeholder={text_wakeup}
               placeholderTextColor="gray"
               editable={false}
               value={text_wakeup}
@@ -200,7 +204,7 @@ function Edit_person ({navigation}) {
             <TouchableOpacity onPress={showSleepTimePicker} style={styles.inputField}>
               <TextInput
               pointerEvent="none"
-              placeholder="Bed Time"
+              placeholder={text_sleep}
               placeholderTextColor="gray"
               editable={false}
               value={text_sleep}
@@ -223,7 +227,7 @@ function Edit_person ({navigation}) {
                 <TextInput 
                 onChangeText={setTempInput}
                 value={tempInput}
-                placeholder = "Water Temperature"
+                placeholder = {tempInput}
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
                 <Text>°C</Text>
@@ -237,7 +241,7 @@ function Edit_person ({navigation}) {
                 <TextInput 
                 onChangeText={setGoalInput}
                 value={goalInput}
-                placeholder = "Water Intake Goal"
+                placeholder = {goalInput}
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>
                 <Text>mL</Text>
@@ -252,18 +256,18 @@ function Edit_person ({navigation}) {
             style={styles.inputField}>
                 <RNPickerSelect
                 placeholder={{
-                    label:"Water Intake Cycle",
+                    label : text_cycle,
                     color : "gray",
                 }}
                 value={text_cycle}
                 onValueChange={(value)=>setText_cycle(value)}
                 items={[
-                    {label : '30분', value : 30},
-                    {label : '1시간', value : 60},
-                    {label : '1시간 30분', value : 90},
-                    {label : '2시간', value : 120},
-                    {label : '2시간 30분', value : 150},
-                    {label : '3시간', value : 180},
+                    {label : '30분', value : "30"},
+                    {label : '1시간', value : "60"},
+                    {label : '1시간 30분', value : "90"},
+                    {label : '2시간', value : "120"},
+                    {label : '2시간 30분', value : "150"},
+                    {label : '3시간', value : "180"},
                 ]}/>
             </TouchableOpacity>
           </View>

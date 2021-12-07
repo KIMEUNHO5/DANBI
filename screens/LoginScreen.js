@@ -54,7 +54,7 @@ const LoginScreen = ({ navigation }) => {
   }, [list])
 
   const confirm = async() => {
-    axios.post("http://35.212.138.86/login", {
+    axios.post("http://35.212.138.86/auth/login", {
       email : email,
       pw : pw
     })

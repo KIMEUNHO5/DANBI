@@ -125,7 +125,7 @@ const Registration_person = ({navigation}) => {
   
   const registerPerson = async() => {
     
-    axios.post("http://35.212.138.86/registration", {
+    axios.post("http://35.212.138.86/member/registration", {
       email: account_email,
       nickname: nickname,
       member_type: "1",

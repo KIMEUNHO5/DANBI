@@ -60,56 +60,58 @@ function MainListScreen({ navigation }) {
 
     useEffect(() => { // 계정 정보 확인 -> 멤버 리스트 업데이트
         if (isFocused) {
-            axios.post("http://35.212.138.86/login", {
+            axios.post("http://35.212.138.86/auth/login", {
                 email : account_email,
                 pw : account_pw
               })
               .then(function(response) {
                 setList(response.data.result);
-                console.log(list);
+                //console.log(list);
               }).catch(function(error) {
-                console.log("account loading failed");
+                //console.log("account loading failed");
                 console.log(error);
               }).then(function() {
-                console.log("^^");
+                //console.log("^^");
               }); 
         }
     }, [isFocused]);
 
     useEffect(() => { // 멤버 선택시 개인 생체 정보 저장
+        
         if(!memberInfo==[]) {
             sendInfo = memberInfo;
-            sendInfo.forEach((value, index, array) => {
-            if (value.member_type == 1) {
-                value.img = require('../Source/person_inactivated.png');
-            } else if (value.member_type == 2) {
-                value.img = require('../Source/pet_inactivated.png');
-            } else if (value.member_type == 3) {
-                value.img = require('../Source/plant_inactivated.png');
+            console.log(sendInfo);
+            //console.log("sendInfo here");
+            //console.log(sendInfo);
+            if (memberInfo.member_type == 1) {
+                memberInfo.img = require('../Source/person_inactivated.png');
+            } else if (memberInfo.member_type == 2) {
+                memberInfo.img = require('../Source/pet_inactivated.png');
+            } else if (memberInfo.member_type == 3) {
+                memberInfo.img = require('../Source/plant_inactivated.png');
             }
-          })
         }
     }, [memberInfo]);
 
 
     const selectMember = async(info) => {
         setSelectedID(info.id);
-        axios.post("http://35.212.138.86/specification", {
+        axios.post("http://35.212.138.86/member/specification", {
             member_id : info.id
         }).then(function(response) {
             //console.log("selectedID : ", selectedID);
-            console.log("response data here");
-            console.log(response.data);
-            setMemberInfo(response.data.result);
+            //console.log("response data here");
+            //console.log(response.data);
+            setMemberInfo(response.data.result[0]);
             //console.log("memberInfo in main");
             //console.log(memberInfo);
             //console.log("sendInfo in main");
             //console.log(sendInfo); 
             navigation.navigate('Spec');
         }).catch(function(error) {
-            console.log("ㅗ");
+            console.log(error);
         }).then(function() {
-            console.log("^^");
+            //console.log("^^");
         });
     };
     

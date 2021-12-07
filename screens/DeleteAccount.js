@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {StackActions} from '@react-navigation/native';
 import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import { useState } from "react";
+import axios from 'axios';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +13,7 @@ const DeleteAccountScreen = ({navigation}) => {
     const [PW, setPW] = useState("");
 
     const confirm = async() => {
-        axios.post("http://35.212.138.86/accountdelete", {
+        axios.post("http://35.212.138.86/auth/accountdelete", {
             // email : 이메일
             pw : PW
         }).then(function(response) {

@@ -14,7 +14,7 @@ const [checkPW, setCheckPW] = useState("");
 const confirm = async() => {
     navigation.navigate('Login');
     if (newPW == checkPW) {
-        axios.post("http://35.212.138.86/changepw", {
+        axios.post("http://35.212.138.86/auth/changepw", {
         // email: 이메일
         pw: currentPW,
         newpw: newPW

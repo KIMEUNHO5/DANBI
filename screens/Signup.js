@@ -14,7 +14,7 @@ const SignupScreen = ({navigation}) => {
     const [pw, setPw] = useState("");
 
     const confirm = async() => {
-        axios.post("http://35.212.138.86/signup", {
+        axios.post("http://35.212.138.86/auth/signup", {
             email:email,
             pw:pw,
             name:name,

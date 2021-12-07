@@ -47,25 +47,25 @@ const SpecificationScreen = ({navigation}) => {
     const [notiArray, setNotiArray] = useState([]);
 
     useEffect(()=> { 
-        if (memberInfo[0].member_type == 1) {
-            memberInfo[0].img = require('../Source/person_inactivated.png');
-        } else if (memberInfo[0].member_type == 2) {
-            memberInfo[0].img = require('../Source/pet_inactivated.png');
-        } else if (memberInfo[0].member_type == 3) {
-            memberInfo[0].img = require('../Source/plant_inactivated.png');
+        if (memberInfo.member_type == 1) {
+            memberInfo.img = require('../Source/person_inactivated.png');
+        } else if (memberInfo.member_type == 2) {
+            memberInfo.img = require('../Source/pet_inactivated.png');
+        } else if (memberInfo.member_type == 3) {
+            memberInfo.img = require('../Source/plant_inactivated.png');
         }
-        console.log("memberInfo in spec");
-        console.log(memberInfo);
-        console.log("memberinfo.nickname");
-        console.log(memberInfo[0].nickname);
+        //console.log("memberInfo in spec");
+        //console.log(memberInfo);
+        //console.log("memberinfo.nickname");
+        //console.log(memberInfo.nickname);
     
     }, [memberInfo]);
 
     const showNotification = async() => {
-        axios.post("http://35.212.138.86/notification", {
+        axios.post("http://35.212.138.86/notification/notification", {
              member_id : currentID
          }).then(function(response) {
-           console.log(response.data);
+           //console.log(response.data);
            //setNotiArray(response.data.result[0]);
            Notifications.scheduleNotificationAsync({
             content: {
@@ -77,19 +77,19 @@ const SpecificationScreen = ({navigation}) => {
             },
         });
          }).catch(function(error) {
-           console.log(error);
+           //console.log(error);
          }).then(function() {
-           console.log("^^");;
+           //console.log("^^");;
          });
         
     };
 
     const pressEdit = async() => {
-        if (memberInfo[0].member_type == 1) {
+        if (memberInfo.member_type == 1) {
             navigation.navigate('Edit_person');
-        } else if (memberInfo[0].member_type == 2) {
+        } else if (memberInfo.member_type == 2) {
             navigation.navigate('Edit_pet');
-        } else if (memberInfo[0].member_type == 3) {
+        } else if (memberInfo.member_type == 3) {
             navigation.navigate('Edit_plant');
         }
     }
@@ -111,10 +111,10 @@ const SpecificationScreen = ({navigation}) => {
                 <View style={styles.user}>
                     <Image
                         style={styles.userLogo}
-                        source={memberInfo[0].img}
+                        source={memberInfo.img}
                     />
                     <View style={styles.username}>
-                    <Text style={{fontSize:20}}>{memberInfo[0].nickname}</Text>
+                    <Text style={{fontSize:20}}>{memberInfo.nickname}</Text>
                     </View>
                 </View>
                 <Button

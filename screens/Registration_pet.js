@@ -117,7 +117,7 @@ const Registration_pet = ({navigation}) =>{
       + goalInput + " / "
       + cycleInput);
     
-    axios.post("http://35.212.138.86/registration", {
+    axios.post("http://35.212.138.86/member/registration", {
       email: account_email,
       nickname: nickname,
       pet_type:type,
