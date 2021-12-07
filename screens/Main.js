@@ -107,6 +107,7 @@ function MainListScreen({ navigation }) {
             //console.log(memberInfo);
             //console.log("sendInfo in main");
             //console.log(sendInfo); 
+            console.log(response.data);
             navigation.navigate('Spec');
         }).catch(function(error) {
             console.log(error);
