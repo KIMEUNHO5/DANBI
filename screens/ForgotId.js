@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -16,10 +16,11 @@ const ForgotIdScreen = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <ImageBackground source = {require('../Source/login_background_2.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
-        <Text style={styles.signup_title}>
-        ID 찾기
-        </Text>
+            <Text style={styles.signup_title}>
+            ID 찾기
+            </Text>
             <View style={styles.input_container}>
                 <TextInput
                     placeholder={"Name"}
@@ -40,7 +41,8 @@ const ForgotIdScreen = ({navigation}) => {
                 Next
                 </Text>
             </TouchableOpacity>
-    </View>
+            </View>
+        </ImageBackground>
 
     </TouchableWithoutFeedback>
   );
@@ -54,32 +56,39 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-        backgroundColor: "white",
+        //backgroundColor: "white",
+    },
+    backgroundimage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
     },
     signup_title:{
-        fontSize: 45,
-        fontWeight: "700",
-        marginTop: 90,
+        alignSelf: "stretch",
+        fontSize: 35,
+        fontWeight: "800",
+        marginHorizontal: 60,
+        marginTop: 300,
     },
     input_container:{
-        marginTop: 100,
-        margin: 50
+        marginTop: 6,
+        margin: 40
     },
     input:{
-        borderBottomColor: "#C1C1C1",
+        borderBottomColor: "#9Ac2F6",
         borderBottomWidth: 3,
         fontSize: 18,
         height: 30,
-        width: 250,
+        width: 220,
         marginTop: 30,
     },
     GetIdButton:{
-        width: 280,
+        width: 230,
         height: 40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor: "#C1C1C1",
-        padding: 10,
+        backgroundColor: "#9Ac2F6",
+        //padding: 10,
         borderRadius: 10,
     },
 });

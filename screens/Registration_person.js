@@ -3,8 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
-import * as Notifications from 'expo-notifications';
 import { 
+  ImageBackground,
   StyleSheet, 
   Text, 
   View, 
@@ -149,6 +149,7 @@ const Registration_person = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <ImageBackground source = {require('../Source/reg_background.png')} style = {styles.backgroundimage}>
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.list}>
@@ -277,43 +278,36 @@ const Registration_person = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
-            <Button title="등록" onPress={registerPerson}/>
-            <Button
-              title="알림"
-              onPress={() => {
-                Notifications.scheduleNotificationAsync({
-                  content: {
-                    title: "물 마실 시간입니다.",
-                    body: '마시세요',
-                  },
-                  trigger: {
-                    seconds: 1, //onPress가 클릭이 되면 1초 뒤에 알람이 발생합니다.
-                  },
-                });
-              }}></Button>
+            <TouchableOpacity
+              onPress={registerPerson}
+              style={styles.regibutton}>
+              <Text style={styles.regibutton_text}>
+                등록
+              </Text>
+
+            </TouchableOpacity>
 
           </View>
         </View>
       </View>
     </View>
+    </ImageBackground>
     </TouchableWithoutFeedback>
   );
 }
 
 export default Registration_person;
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: false,
-    shouldSetBadge: false,
-  }),
-});
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  backgroundimage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   header: {
     flex : 3,
@@ -340,31 +334,16 @@ const styles = StyleSheet.create({
   },
   body : {
     flex : 15,
-    backgroundColor : "white",
     paddingTop: 30,
     paddingBottom : 30,
     paddingLeft : 20,
     paddingRight : 20
   },
-  text : {
-      fontSize : 28,
-      color : "black",
-  },
-  logo : {
-    height : 200,
-    width: 200, 
-    resizeMode : 'contain'
-  },
-  btnText: {
-    fontSize : 24,
-    fontWeight : "600",
-  },
   list: {
-    backgroundColor : "white",
     flex : 1,
     paddingTop : 30,
     paddingBottom : 20,
-    paddingHorizontal : 20
+    paddingHorizontal : 30
   },
   eachLine: {
     flex:1,
@@ -375,18 +354,31 @@ const styles = StyleSheet.create({
     justifyContent:"center",
   },
   contentText: {
-    fontSize : 20,
+    fontSize : 18,
+    fontWeight: "500",
   },
   inputTag: {
     flex:1,
-    backgroundColor: "white",
     justifyContent : "center"
   },
   inputField: {
     flex:1,
-    backgroundColor:"white",
     justifyContent: "center",
     borderBottomColor: "gray",
     borderBottomWidth: 1
+  },
+  regibutton: {
+    marginTop: 20,
+    width: 50,
+    height: 30,
+    color: "white",
+    backgroundColor: "white",
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  regibutton_text:{
+    fontSize: 15,
+    fontWeight: "400",
   }
 });

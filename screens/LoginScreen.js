@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, ColorPropType, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { ImageBackground, StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, ColorPropType, TouchableWithoutFeedback, Keyboard } from "react-native";
 import * as Google from "expo-google-app-auth";
 import axios from "axios";
 import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
@@ -76,15 +76,16 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <ImageBackground source = {require('../Source/login_background.png')} style = {styles.backgroundimage}>
       <View style={styles.container}>
-      <Image
+      {/* <Image
         style={styles.logo}
         source={require('../Source/DANBI_Logo.png')}
-      />
-      <Image
+      /> */}
+      {/* <Image
         style={styles.name}
         source={require('../Source/DANBI_Name.png')}
-      />
+      /> */}
       <View style={styles.TextLoginContainer}>
         <Text
           style={styles.TextLogin}>
@@ -148,6 +149,7 @@ const LoginScreen = ({ navigation }) => {
         </View>
       </View>
     </View>
+    </ImageBackground>
     </TouchableWithoutFeedback>
     
     
@@ -162,7 +164,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingHorizontal: 20,
-    backgroundColor: "white",
+    //backgroundColor: "white",
+    //backgroundColor :"#C1E3ED",
+    //backgroundColor: "#F0FBFF"
+  },
+  backgroundimage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   logo: {
     width: 120,
@@ -178,30 +187,34 @@ const styles = StyleSheet.create({
   },
   TextLoginContainer:{
     alignSelf: "stretch",
-    marginHorizontal: 30,
+    marginTop: 315,
+    marginBottom: 20,
+    marginHorizontal: 40,
   },
   TextLogin:{
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: "800",
+    //color: "white",
   },
   InputAndButton:{
     alignSelf: "stretch",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 30,
+    marginHorizontal: 40,
     //backgroundColor: "orange",
-    marginBottom: 70,
+    //marginBottom: 60,
 
   },
   Inputcontainer:{
     flexDirection: "column",
   },
   Input:{
-    borderBottomColor: "#C1C1C1",
+    //borderBottomColor: "#C1C1C1",
+    borderBottomColor: "#9Ac2F6",
     borderBottomWidth: 3,
     fontSize: 18,
     height: 30,
-    width: 180,
+    width: 160,
     marginTop: 13,
   },
   LoginButton:{
@@ -209,7 +222,9 @@ const styles = StyleSheet.create({
     height: 90,
     alignItems:"center",
     justifyContent:"center",
-    backgroundColor: "#C1C1C1",
+    //backgroundColor: "#C1C1C1",
+    //backgroundColor :"#78AED3",
+    backgroundColor: "#9AC2F6",
     padding: 10,
     borderRadius: 10,
   },
@@ -218,8 +233,9 @@ const styles = StyleSheet.create({
     width:"100%",
     position: 'absolute', 
     bottom: 30,
-    borderTopColor: "#C1C1C1",
-    borderTopWidth: 3,
+    //borderTopColor: "#C1C1C1",
+    //borderTopColor: "#9AC2F6",
+    //borderTopWidth: 3,
   },
   login_btn:{
     width: 50,
@@ -232,6 +248,9 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   sign:{
+     borderTopColor: "#C1C1C1",
+    borderTopColor: "#9AC2F6",
+    borderTopWidth: 3,
     justifyContent: 'flex-end',
     justifyContent:"space-evenly",
     flexDirection: "row",

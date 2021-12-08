@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import axios from "axios";
 
 const Stack = createStackNavigator();
@@ -34,6 +34,7 @@ const SignupScreen = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <ImageBackground source = {require('../Source/signup_background.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
         <Text style={styles.signup_title}>
         Sign up
@@ -96,6 +97,7 @@ const SignupScreen = ({navigation}) => {
             </View>
         </View>
     </View>
+    </ImageBackground>
 
     </TouchableWithoutFeedback>
   );
@@ -109,7 +111,12 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-        backgroundColor: "white",
+        //backgroundColor: "white",
+    },
+    backgroundimage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
     },
     signup_title:{
         fontSize: 45,
@@ -117,22 +124,22 @@ const styles = StyleSheet.create({
         marginTop: 90,
     },
     input_container:{
-        margin: 45,
+        margin: 40,
     },
     input:{
-        borderBottomColor: "#C1C1C1",
+        borderBottomColor: "#9Ac2F6",
         borderBottomWidth: 3,
         fontSize: 18,
         height: 30,
-        width: 250,
+        width: 230,
         marginTop: 30,
     },
     SignupButton:{
-        width: 280,
+        width: 240,
         height: 40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor: "#C1C1C1",
+        backgroundColor: "#9Ac2F6",
         padding: 10,
         borderRadius: 10,
     },
@@ -140,9 +147,7 @@ const styles = StyleSheet.create({
         height:120,
         width:"100%",
         position: 'absolute', 
-        bottom: 30,
-        borderTopColor: "#C1C1C1",
-        borderTopWidth: 3,
+        bottom: 15,
     },
     signup_btn:{
         width: 50,

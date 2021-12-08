@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +17,7 @@ const ForgotPwScreen = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <ImageBackground source = {require('../Source/login_background_2.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
         <Text style={styles.signup_title}>
         비밀번호 찾기
@@ -42,6 +43,7 @@ const ForgotPwScreen = ({navigation}) => {
                 </Text>
             </TouchableOpacity>
     </View>
+    </ImageBackground>
 
     </TouchableWithoutFeedback>
   );
@@ -55,32 +57,39 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-        backgroundColor: "white",
+        //backgroundColor: "white",
+    },
+    backgroundimage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
     },
     signup_title:{
-        fontSize: 40,
-        fontWeight: "700",
-        marginTop: 90,
+        alignSelf: "stretch",
+        fontSize: 33,
+        fontWeight: "900",
+        marginHorizontal: 60,
+        marginTop: 300,
     },
     input_container:{
-        marginTop: 107,
-        margin: 50
+        marginTop: 6,
+        margin: 40
     },
     input:{
-        borderBottomColor: "#C1C1C1",
+        borderBottomColor: "#9Ac2F6",
         borderBottomWidth: 3,
         fontSize: 18,
         height: 30,
-        width: 250,
+        width: 220,
         marginTop: 30,
     },
     GetPwButton:{
-        width: 280,
+        width: 230,
         height: 40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor: "#C1C1C1",
-        padding: 10,
+        backgroundColor: "#9Ac2F6",
+        //padding: 10,
         borderRadius: 10,
     },
 });

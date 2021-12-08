@@ -4,6 +4,7 @@ import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import { 
+  ImageBackground,
   StyleSheet, 
   Text, 
   View, 
@@ -159,6 +160,7 @@ const Registration_plant = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <ImageBackground source = {require('../Source/reg_background.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
             <View style={styles.body}>
                 <View style={styles.list}>
@@ -307,11 +309,19 @@ const Registration_plant = ({navigation}) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.eachLine}>
-                        <Button title="등록" onPress={registerPlant}/>
+                      <TouchableOpacity
+                      onPress={registerPlant}
+                       style={styles.regibutton}>
+                     <Text style={styles.regibutton_text}>
+                     등록
+                     </Text>
+
+                    </TouchableOpacity>
                     </View>
                 </View>
             </View>
         </View>
+    </ImageBackground>
     </TouchableWithoutFeedback>
   );
 }
@@ -321,6 +331,11 @@ export default Registration_plant;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  backgroundimage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   header: {
     flex : 3,
@@ -347,31 +362,16 @@ const styles = StyleSheet.create({
   },
   body : {
     flex : 15,
-    backgroundColor : "white",
     paddingTop: 30,
     paddingBottom : 30,
     paddingLeft : 20,
     paddingRight : 20
   },
-  text : {
-      fontSize : 28,
-      color : "black",
-  },
-  logo : {
-    height : 200,
-    width: 200, 
-    resizeMode : 'contain'
-  },
-  btnText: {
-    fontSize : 24,
-    fontWeight : "600",
-  },
   list: {
-    backgroundColor : "white",
     flex : 1,
     paddingTop : 30,
     paddingBottom : 20,
-    paddingHorizontal : 20
+    paddingHorizontal : 30,
   },
   eachLine: {
     flex:1,
@@ -382,18 +382,31 @@ const styles = StyleSheet.create({
     justifyContent:"center",
   },
   contentText: {
-    fontSize : 20,
+    fontSize : 18,
+    fontWeight: "500",
   },
   inputTag: {
     flex:1,
-    backgroundColor: "white",
     justifyContent : "center"
   },
   inputField: {
     flex:1,
-    backgroundColor:"white",
     justifyContent: "center",
     borderBottomColor: "gray",
     borderBottomWidth: 1
+  },
+  regibutton: {
+    marginTop: 20,
+    width: 50,
+    height: 30,
+    color: "white",
+    backgroundColor: "white",
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  regibutton_text:{
+    fontSize: 15,
+    fontWeight: "400",
   }
 });

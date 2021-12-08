@@ -130,6 +130,8 @@ const StackNavigator = () =>{
           headerStyle:{
             height:100
           },
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
         }}   />
         <Stack.Screen 
         name="Main" 
@@ -154,6 +156,8 @@ const StackNavigator = () =>{
           headerTitle : () => (
             <Image style = {{ width: 125, height : 25 }} source = {require('./Source/DANBI_LogoName.png')}/>
           ),
+          headerBackTitleVisible: false,
+          headerBackImage: BackBtn,
         }} />
         <Stack.Screen 
         name="Signup" 
