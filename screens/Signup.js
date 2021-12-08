@@ -33,8 +33,9 @@ const SignupScreen = ({navigation}) => {
     };
 
   return (
+      
+    <ImageBackground source = {require('../Source/signup_background.png')} style = {styles.backgroundimage}>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <ImageBackground source = {require('../Source/signup_background.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
         <Text style={styles.signup_title}>
         Sign up
@@ -97,9 +98,10 @@ const SignupScreen = ({navigation}) => {
             </View>
         </View>
     </View>
-    </ImageBackground>
 
     </TouchableWithoutFeedback>
+    
+    </ImageBackground>
   );
 };
 

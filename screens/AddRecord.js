@@ -1,25 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import RNPickerSelect from 'react-native-picker-select';
 import { 
   ImageBackground,
   StyleSheet, 
   Text, 
-  View, 
-  Image, 
-  ScrollView, 
+  View,
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
-  SliderComponent
 } from "react-native";
 import axios from "axios";
 import {currentID} from './Main.js';
-import { SectionList } from "native-base";
-import { NavigationContainer } from "@react-navigation/native";
 
 Date.prototype.format = function(f) {
     if(!this.valueOf()) return " ";
@@ -50,7 +42,7 @@ Date.prototype.format = function(f) {
   function AddRecord({navigation}) {
     const placeholder = "input time";
     const [isWaterIntakeTimePickerVisible, setWaterIntakeTimePickerVisibility] = useState(false);
-    const [time_text, setTime_text] = useState(""); // 얜 걍 문자임
+    const [time_text, setTime_text] = useState("");
   
     const showWaterIntakeTimePicker = () => {
       setWaterIntakeTimePickerVisibility(true);
@@ -60,7 +52,7 @@ Date.prototype.format = function(f) {
       setWaterIntakeTimePickerVisibility(false);
     };
   
-    const handleConfirm_WaterIntake = (date) => { // 얜 진짜 데이터임
+    const handleConfirm_WaterIntake = (date) => {
       setTime(date);
       hideWaterIntakeTimePicker();
       setTime_text(date.format("a/p hh:mm"));
@@ -81,7 +73,6 @@ Date.prototype.format = function(f) {
     };
 
     const confirm = async()=> {
-      //addAmountHandler();
       console.log(currentID, time, amountInput);
       axios.post("http://35.212.138.86/record/record", {
         member_id : currentID,
@@ -99,8 +90,8 @@ Date.prototype.format = function(f) {
 
 
     return (
+      <ImageBackground source = {require('../Source/addrecord_background.png')} style = {styles.backgroundimage}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <ImageBackground source = {require('../Source/addrecord_background.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
         <View style={styles.body}>
         <View style={styles.list}>
@@ -149,8 +140,8 @@ Date.prototype.format = function(f) {
         </View>
       </View>
       </View>
-    </ImageBackground>
     </TouchableWithoutFeedback>
+    </ImageBackground>
     ); 
 }
 

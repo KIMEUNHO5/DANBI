@@ -129,8 +129,9 @@ function Edit_plant() {
 
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    
     <ImageBackground source = {require('../Source/reg_background.png')} style = {styles.backgroundimage}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
             <View style={styles.body}>
                 <View style={styles.list}>
@@ -290,8 +291,9 @@ function Edit_plant() {
                 </View>
             </View>
         </View>
-    </ImageBackground>
+        
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 }
 
@@ -338,9 +340,9 @@ const styles = StyleSheet.create({
   },
   list: {
     flex : 1,
-    paddingTop : 40,
+    paddingTop : 50,
     paddingBottom : 30,
-    paddingHorizontal : 30
+    paddingHorizontal : 50,
   },
   eachLine: {
     flex:1,

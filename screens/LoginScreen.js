@@ -71,17 +71,10 @@ const LoginScreen = ({ navigation }) => {
   }, [list]);
 
   return (
+    
+    <ImageBackground source = {require('../Source/login_background.png')} style = {styles.backgroundimage}>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <ImageBackground source = {require('../Source/login_background.png')} style = {styles.backgroundimage}>
       <View style={styles.container}>
-      {/* <Image
-        style={styles.logo}
-        source={require('../Source/DANBI_Logo.png')}
-      /> */}
-      {/* <Image
-        style={styles.name}
-        source={require('../Source/DANBI_Name.png')}
-      /> */}
       <View style={styles.TextLoginContainer}>
         <Text
           style={styles.TextLogin}>
@@ -145,8 +138,9 @@ const LoginScreen = ({ navigation }) => {
         </View>
       </View>
     </View>
-    </ImageBackground>
+    
     </TouchableWithoutFeedback>
+    </ImageBackground>
     
     
   );
@@ -160,9 +154,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingHorizontal: 20,
-    //backgroundColor: "white",
-    //backgroundColor :"#C1E3ED",
-    //backgroundColor: "#F0FBFF"
   },
   backgroundimage: {
     flex: 1,
@@ -183,29 +174,25 @@ const styles = StyleSheet.create({
   },
   TextLoginContainer:{
     alignSelf: "stretch",
-    marginTop: 315,
+    marginTop: 360,
     marginBottom: 20,
     marginHorizontal: 40,
   },
   TextLogin:{
     fontSize: 35,
     fontWeight: "800",
-    //color: "white",
   },
   InputAndButton:{
     alignSelf: "stretch",
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 40,
-    //backgroundColor: "orange",
-    //marginBottom: 60,
 
   },
   Inputcontainer:{
     flexDirection: "column",
   },
   Input:{
-    //borderBottomColor: "#C1C1C1",
     borderBottomColor: "#9Ac2F6",
     borderBottomWidth: 3,
     fontSize: 18,
@@ -218,8 +205,6 @@ const styles = StyleSheet.create({
     height: 90,
     alignItems:"center",
     justifyContent:"center",
-    //backgroundColor: "#C1C1C1",
-    //backgroundColor :"#78AED3",
     backgroundColor: "#9AC2F6",
     padding: 10,
     borderRadius: 10,
@@ -229,9 +214,6 @@ const styles = StyleSheet.create({
     width:"100%",
     position: 'absolute', 
     bottom: 30,
-    //borderTopColor: "#C1C1C1",
-    //borderTopColor: "#9AC2F6",
-    //borderTopWidth: 3,
   },
   login_btn:{
     width: 50,

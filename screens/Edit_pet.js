@@ -139,8 +139,9 @@ function Edit_pet() {
   
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    
     <ImageBackground source = {require('../Source/reg_background.png')} style = {styles.backgroundimage}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.list}>
@@ -281,8 +282,9 @@ function Edit_pet() {
         </View>
       </View>
     </View>
-    </ImageBackground>
+    
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 }
 

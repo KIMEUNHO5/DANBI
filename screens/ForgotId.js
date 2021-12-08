@@ -15,8 +15,9 @@ const ForgotIdScreen = ({navigation}) => {
     }
 
   return (
+      
+    <ImageBackground source = {require('../Source/login_background_2.png')} style = {styles.backgroundimage}>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <ImageBackground source = {require('../Source/login_background_2.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
             <Text style={styles.signup_title}>
             ID 찾기
@@ -42,9 +43,10 @@ const ForgotIdScreen = ({navigation}) => {
                 </Text>
             </TouchableOpacity>
             </View>
-        </ImageBackground>
+        
 
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 };
 

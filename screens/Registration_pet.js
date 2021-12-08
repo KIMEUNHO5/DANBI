@@ -140,8 +140,9 @@ const Registration_pet = ({navigation}) =>{
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    
     <ImageBackground source = {require('../Source/reg_background.png')} style = {styles.backgroundimage}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.list}>
@@ -283,8 +284,9 @@ const Registration_pet = ({navigation}) =>{
         </View>
       </View>
     </View>
-    </ImageBackground>
+    
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 }
 

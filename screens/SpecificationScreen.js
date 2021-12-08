@@ -5,6 +5,7 @@ import { useIsFocused } from '@react-navigation/native';
 import * as Permissions from 'expo-permissions';
 import * as Linking from 'expo-linking';
 import { 
+  ImageBackground,
   StyleSheet, 
   Text, 
   View, 
@@ -63,6 +64,7 @@ const SpecificationScreen = ({navigation}) => {
             reaction : "2"
           })
           .then(function (response) {
+            //setPuriArray(response.data.result);
             console.log(response.data);
           }).catch(function (error) {
             console.log("ㅗ");
@@ -92,9 +94,14 @@ const SpecificationScreen = ({navigation}) => {
             memberInfo.result[0].img = require('../Source/plant_inactivated.png');
         }
         
-        memberInfo.record.forEach((value, index, array) => {
-          value.id = index+1;
-        })
+        if (memberInfo.record == null){
+          memberInfo.record = {};
+        }else{
+          memberInfo.record.forEach((value, index, array) => {
+            value.id = index+1;
+          });
+        }
+        
 
         memberInfo.rate = parseInt(memberInfo.today_intake/memberInfo.result[0].intake_goal*100);
 
@@ -220,6 +227,7 @@ const SpecificationScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
+          <ImageBackground source = {require('../Source/spec_background.png')} style = {styles.backgroundimage}>
             <View style={styles.setting}>
                 <View style={styles.user}>
                     <Image
@@ -227,12 +235,14 @@ const SpecificationScreen = ({navigation}) => {
                         source={memberInfo.result[0].img}
                     />
                     <View style={styles.username}>
-                    <Text style={{fontSize:20}}>{memberInfo.result[0].nickname}</Text>
+                      <Text style={{fontSize:20, fontWeight:"500",}}>{memberInfo.result[0].nickname}</Text>
                     </View>
                 </View>
-                <Button
-                        title="알림" 
-                        onPress={showNotification}></Button>
+                    <TouchableOpacity onPress={showNotification}>
+                        <Text>
+                          알림
+                        </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={pressEdit}>
                         <Image 
                             style={styles.edit}
@@ -243,13 +253,13 @@ const SpecificationScreen = ({navigation}) => {
             </View>
             <View style={styles.body}>
                 <View style={styles.waterStatus}>
-                  <Text style={{fontSize : 30, paddingBottom : 20}}>{memberInfo.rate}%</Text>
+                  <Text style={{fontSize : 30, paddingBottom : 20, fontWeight:"700"}}>{memberInfo.rate}%</Text>
                     <Image
                         style={styles.intakeImage}
                         source={memberInfo.cup_img}
                     />
                 </View>
-                <View style={{flexDirection:'row', paddingLeft : 30, paddingRight: 380}}>
+                <View style={{flexDirection:'row', paddingLeft : 92, paddingRight: 380}}>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Calend')}>
                         <Image
@@ -280,6 +290,7 @@ const SpecificationScreen = ({navigation}) => {
                     </SafeAreaView> 
                 </View>
             </View>
+          </ImageBackground>
         </View>
     );
 }
@@ -328,14 +339,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "white",
     },
+    backgroundimage: {
+      flex: 1,
+      resizeMode: 'cover',
+      justifyContent: 'center',
+    },
     setting : {
-        backgroundColor: "white",
         flex: 1,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 20,
-        paddingHorizontal: 20,
+        marginTop: 37,
+        paddingHorizontal: 58,
     },
     userLogo : {
         flexDirection: "row",
@@ -344,13 +359,14 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     user : {
+        width: 150,
         flexDirection: "row",
         alignItems: "center",
     },
     username : {
         flexDirection: "row",
         alignItems: "center",
-        paddingLeft: 10,
+        paddingHorizontal: 8,
     },
     edit : {
         flexDirection: "row",
@@ -359,16 +375,14 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
     },
     body : {
-        backgroundColor: "white",
         flex: 7,
         alignItems: "center",
         justifyContent: "center",
         paddingHorizontal: 20,
-        borderColor: "black",
-        borderBottomWidth: 2,
     },
     waterStatus : {
         flex: 5,
+        marginTop: 30,
         justifyContent: "center",
         alignItems: "center",
         paddingHorizontal: 10,
@@ -383,31 +397,26 @@ const styles = StyleSheet.create({
         alignSelf:"stretch",
     },
     stamp : {
-        width: 40,
-        height: 40,
-        paddingBottom: 60,
+        width: 35,
+        height: 35,
+        paddingBottom: 70,
         resizeMode: "contain",
     },
     record : {
-        backgroundColor: "white",
         flex: 4,
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: 20,
+        marginBottom: 40,
     },
     recordTable : {
         flex: 1,
         width: 300,
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: 10,
+        marginBottom: 15,
         padding: 10,
-        borderWidth:StyleSheet.hairlineWidth,
-        //backgroundColor: "#C1C1C1",
-        borderRadius: 10,
     },
     item : {
         flex:0.3,
-        //borderBottomWidth: StyleSheet.hairlineWidth,
         padding: 5,
         flexDirection:'row',
         justifyContent : "center",
@@ -415,7 +424,6 @@ const styles = StyleSheet.create({
     },
     next_item : {
       flex:0.2,
-      //borderBottomWidth: StyleSheet.hairlineWidth,
       padding: 10,
       flexDirection:'row',
       justifyContent : "center",

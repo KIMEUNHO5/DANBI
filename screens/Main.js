@@ -182,10 +182,6 @@ const styles = StyleSheet.create({
         height: 600,
         marginBottom:10,
         padding: 10,
-        borderWidth : 1,
-        borderColor :"black",
-        backgroundColor: "white",
-        borderRadius: 10,
     },
     item: {
         borderBottomWidth: StyleSheet.hairlineWidth,
