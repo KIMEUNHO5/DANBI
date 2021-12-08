@@ -1,11 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {StackActions} from '@react-navigation/native';
-<<<<<<< Updated upstream
-import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
-=======
-import { StyleSheet, Text, View, Button, TouchableWithoutFeedback,Keyboard } from 'react-native';
->>>>>>> Stashed changes
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Stack = createStackNavigator();
 

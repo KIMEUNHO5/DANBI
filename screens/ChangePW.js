@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-<<<<<<< Updated upstream
-import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
-=======
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback,Keyboard, Alert} from 'react-native';
->>>>>>> Stashed changes
+import { ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback,Keyboard } from 'react-native';
 import axios from "axios";
 
 const Stack = createStackNavigator();

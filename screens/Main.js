@@ -70,8 +70,40 @@ function MainListScreen({ navigation }) {
     }, [isFocused]);
 
     useEffect(() => { // 멤버 선택시 개인 생체 정보 저장. 
-        if(!memberInfo==[]) {
+        if(memberInfo!=[]) {
             sendInfo = memberInfo;
+            if (sendInfo.record == null){ // 인덱스 
+                sendInfo.record = {};
+              }else{
+                sendInfo.record.forEach((value, index, array) => {
+                  value.id = index+1;
+                });
+              }
+            /*
+            console.log(sendInfo);
+            console.log("Before", sendInfo.next_intake);
+            if (sendInfo.result[0].member_type == 1) { // 이미지 넣고 시간 포맷 변경
+                sendInfo.result[0].img = require('../Source/person_inactivated.png');
+                sendInfo.next_intake = sendInfo.next_intake.slice(11,16);
+              sendInfo.record.forEach((value, index, array) => {
+                value.date = value.date.slice(11,16);
+              })
+            } else if (sendInfo.result[0].member_type == 2) {
+                sendInfo.result[0].img = require('../Source/pet_inactivated.png');
+                sendInfo.next_intake = sendInfo.next_intake.slice(11,16);
+              sendInfo.record.forEach((value, index, array) => {
+                value.date = value.date.slice(11,16);
+              })
+            } else if (sendInfo.result[0].member_type == 3) {
+                sendInfo.result[0].img = require('../Source/plant_inactivated.png');
+                sendInfo.next_intake = sendInfo.next_intake.slice(0,10);
+                sendInfo.record.forEach((value, index, array) => {
+                value.date = value.date.slice(0,10);
+              })
+            }
+            console.log("After", sendInfo.next_intake);
+            */
+        
         }
     }, [memberInfo]);
 
@@ -82,6 +114,8 @@ function MainListScreen({ navigation }) {
             member_id : info.id
         }).then(function(response) {
             setMemberInfo(response.data);
+            console.log("memberInfo get in main");
+            console.log(memberInfo);
             navigation.navigate('Spec');
         }).catch(function(error) {
             console.log("select member error \n" + error);

@@ -1,11 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {StackActions} from '@react-navigation/native';
-<<<<<<< Updated upstream
-import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
-=======
-import { StyleSheet, Text, View, Button, TextInput, TouchableWithoutFeedback,Keyboard } from 'react-native';
->>>>>>> Stashed changes
+import { ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback,Keyboard } from 'react-native';
 import { useState } from "react";
 import axios from 'axios';
 
@@ -21,6 +17,7 @@ const DeleteAccountScreen = ({navigation}) => {
             // email : 이메일
             pw : PW
         }).then(function(response) {
+            navigation.dispatch(StackActions.popToTop())
         }).catch(function(error) {
         }).then(function() {
         });
@@ -43,7 +40,7 @@ const DeleteAccountScreen = ({navigation}) => {
                         returnKeyType="done"
                     />  
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.dispatch(StackActions.popToTop())}>
+                <TouchableOpacity style={styles.button} onPress={confirm}>
                      <Text style={styles.text}>
                          계정 삭제하기
                      </Text>

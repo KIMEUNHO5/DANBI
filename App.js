@@ -2,7 +2,6 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-//import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, Text, View, Button, StyleSheet } from 'react-native';
 import { CommonActions, DrawerActions, StackActions} from '@react-navigation/native';
 
@@ -10,7 +9,6 @@ const Stack = createStackNavigator();
 
 // Screens
 import LoginScreen from "./screens/LoginScreen";
-import ProfileScreen from "./screens/ProfileScreen";
 import MainListScreen from "./screens/Main";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import SignupScreen from "./screens/Signup";
@@ -24,7 +22,6 @@ import DeleteAccountScreen from "./screens/DeleteAccount";
 import Edit_person from "./screens/Edit_person";
 import Edit_pet from "./screens/Edit_pet";
 import Edit_plant from "./screens/Edit_plant";
-import Notification from "./screens/Notification";
 import PurifierScreen from "./screens/Purifier";
 
 //React Navigation Setup
@@ -68,16 +65,6 @@ const StackNavigator = () =>{
         options={{
           headerShown:false
         }}  />
-        <Stack.Screen 
-        name="Profile" 
-        component={ProfileScreen}
-        options={{
-          headerStyle:{
-            height:100
-          },
-          headerBackTitleVisible: false,
-          headerBackImage: BackBtn,
-        }}   />
         <Stack.Screen 
         name="Main" 
         component={MainListScreen}
@@ -238,18 +225,6 @@ const StackNavigator = () =>{
           headerBackImage: BackBtn,
         }}  />
         <Stack.Screen 
-        name="Notification" 
-        component={Notification}
-        options={{
-          headerStyle:{
-            height:100
-          },headerTitle : () => (
-            <Image style = {{ width: 125, height : 25}} source = {require('./Source/DANBI_LogoName.png')}/>
-          ),
-          headerBackTitleVisible: false,
-          headerBackImage: BackBtn,
-        }}  />
-        <Stack.Screen 
         name="Purifier" 
         component={PurifierScreen}
         options={{
@@ -279,11 +254,9 @@ export default App;
 
 const styles = StyleSheet.create({
   logo_My: {
-    //backgroundColor :"yellow",
     width : 40,
     height: 40,
     resizeMode: "contain",
-    //marginLeft :330
 
   },
 });

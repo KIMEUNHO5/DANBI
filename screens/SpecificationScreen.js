@@ -22,6 +22,10 @@ export let puriInfo = [];
 
 const SpecificationScreen = ({navigation}) => {
     const [memberInfo, setMemberInfo] = useState(sendInfo);
+    console.log("sendInfo in spec");
+    console.log(sendInfo);
+    console.log("memberInfo in spec");
+    console.log(memberInfo);
     const [puriArray, setPuriArray] = useState([]);
     const isFocused = useIsFocused();
 
@@ -72,34 +76,34 @@ const SpecificationScreen = ({navigation}) => {
           }
 
     useEffect(()=> { 
-        if (memberInfo.record == null){
+        if (memberInfo.record == null){ // 인덱스 
           memberInfo.record = {};
         }else{
           memberInfo.record.forEach((value, index, array) => {
             value.id = index+1;
           });
         }
-        if (memberInfo.result[0].member_type == 1) {
+        if (memberInfo.result[0].member_type == 1) { // 이미지 넣고 시간 포맷 변경
             memberInfo.result[0].img = require('../Source/person_inactivated.png');
-            memberInfo.next_intake = memberInfo.next_intake.slice(11,16);
+            memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
           memberInfo.record.forEach((value, index, array) => {
             value.date = value.date.slice(11,16);
           })
         } else if (memberInfo.result[0].member_type == 2) {
             memberInfo.result[0].img = require('../Source/pet_inactivated.png');
-            memberInfo.next_intake = memberInfo.next_intake.slice(11,16);
+            memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
           memberInfo.record.forEach((value, index, array) => {
             value.date = value.date.slice(11,16);
           })
         } else if (memberInfo.result[0].member_type == 3) {
             memberInfo.result[0].img = require('../Source/plant_inactivated.png');
-            memberInfo.next_intake = memberInfo.next_intake.slice(0,10);
+            memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
             memberInfo.record.forEach((value, index, array) => {
             value.date = value.date.slice(0,10);
           })
         }
         
-        if (memberInfo.today_intake == 0) { 
+        if (memberInfo.today_intake == 0) { // 도식화
           memberInfo.cup_img = require('../Source/cup_0.png');
         } else if (memberInfo.today_intake <= 25) {
           memberInfo.cup_img = require("../Source/cup_25.png");
@@ -201,10 +205,6 @@ const SpecificationScreen = ({navigation}) => {
         } else if (memberInfo.result[0].member_type == 3) {
             navigation.navigate('Edit_plant');
         }
-    }
-
-    function dateForPlant ({dateString}) {
-      return dateString.slice(0,11);
     }
     
 
