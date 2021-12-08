@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+<<<<<<< Updated upstream
 import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+=======
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback,Keyboard, Alert} from 'react-native';
+>>>>>>> Stashed changes
 import axios from "axios";
 
 const Stack = createStackNavigator();
@@ -19,15 +23,12 @@ const confirm = async() => {
         pw: currentPW,
         newpw: newPW
         }).then(function(response) {
-            // 비밀번호 변경
             navigation.navigate('Login');
         }).catch(function(error) {
-            console.log('error');
         }).then(function() {
-            console.log("^^");
         });
     } else {
-        console.log("비밀번호가 일치하지 않습니다");
+        Alert.alert("비밀번호가 일치하지 않습니다");
     }
 }
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { StatusBar } from "expo-status-bar";
-import React, { useState, Component } from "react";
+
+import React, { useState } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import {account_email} from './LoginScreen.js';
@@ -9,10 +9,7 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Image, 
-  ScrollView, 
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
@@ -83,40 +80,13 @@ const Registration_pet = ({navigation}) =>{
 
   const [nickname, setNickname] = useState("");
   const [type, setType] = useState("");
-  const [weight, setWeight] = useState(0);
   const [weightInput, setWeightInput] = useState("");
   const [wakeup, setWakeup] = useState(null);
   const [bedtime, setBedtime] = useState(null);
-  const [goal, setGoal] = useState(0);
   const [goalInput, setGoalInput] = useState("");
-  const [cycle, setCycle] = useState(0);
-  const [cycleInput, setCycleInput] = useState("");
-  
-  const addWeightHandler = () => {
-    const newWeightNum = parseInt(weightInput, 10);
-    setWeight(newWeightNum);
-  };
-  const addGoalHandler = () => {
-    const newGoalNum = parseInt(goalInput, 10);
-    setGoal(newGoalNum);
-  };
-  const addCycleHandler = () => {
-    const newCycleNum = parseInt(text_cycle, 10);
-    setCycle(newCycleNum);
-  };
+
 
   const registerPet = () => {
-    //addWeightHandler();
-    //addGoalHandler();
-    //addCycleHandler();
-    console.log(
-      nickname + " / " 
-      + type + " / "
-      + weightInput + " / " 
-      + wakeup + " / " 
-      + bedtime + " / " 
-      + goalInput + " / "
-      + cycleInput);
     
     axios.post("http://35.212.138.86/member/registration", {
       email: account_email,
@@ -130,12 +100,10 @@ const Registration_pet = ({navigation}) =>{
       cycle: text_cycle,
     })
     .then(function (response) {
-      console.log(response.data);
       navigation.navigate('Main');
     }).catch(function (error) {
-      console.log("error");
+      console.log(error);
     }).then(function() {
-      console.log("^^");
     }); 
   }
 

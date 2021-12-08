@@ -1,7 +1,11 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {StackActions} from '@react-navigation/native';
+<<<<<<< Updated upstream
 import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+=======
+import { StyleSheet, Text, View, Button, TextInput, TouchableWithoutFeedback,Keyboard } from 'react-native';
+>>>>>>> Stashed changes
 import { useState } from "react";
 import axios from 'axios';
 
@@ -17,11 +21,8 @@ const DeleteAccountScreen = ({navigation}) => {
             // email : 이메일
             pw : PW
         }).then(function(response) {
-            // 계정 삭제
         }).catch(function(error) {
-            console.log("error");
         }).then(function() {
-            console.log("^^");
         });
     }
 

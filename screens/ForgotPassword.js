@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-        //backgroundColor: "white",
     },
     backgroundimage: {
         flex: 1,
@@ -89,7 +88,6 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         backgroundColor: "#9Ac2F6",
-        //padding: 10,
         borderRadius: 10,
     },
 });

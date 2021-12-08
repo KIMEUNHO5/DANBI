@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
@@ -9,10 +8,7 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Image, 
-  ScrollView, 
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
@@ -85,45 +81,20 @@ function Edit_plant() {
   const [type, setType] = useState("");
   const [supplyDate, setSupplyDate] = useState(null);
   const [supplyTime, setSupplyTime] = useState(null);
-  const [amount, setAmount] = useState(0);
   const [amountInput, setAmountInput] = useState("");
-  const [cycle, setCycle] = useState(0);
-  const [cycleInput, setCycleInput] = useState("");
-
-  const addAmountHandler = () => {
-    const newAmountNum = parseInt(amountInput, 10);
-    setAmount(newAmountNum);
-  };
-  const addCycleHandler = () => {
-    const newCycleNum = parseInt(text_cycle, 10);
-    setCycle(newCycleNum);
-  };
 
   const editPlant = () => {
-    addAmountHandler();
-    addCycleHandler();
-    console.log(
-      nickname + " / " 
-      + type + " / "
-      + supplyDate + " / " 
-      + supplyTime + " / " 
-      + amountInput + " / "
-      + text_cycle);
-
       axios.post("http://35.212.138.86/member/editmemberinfo", {
         nickname : nickname,
         supply_time : supplyTime,
         intake_goal : amountInput,
         last_supply_date : supplyDate,
         supply_time : supplyTime,
-        cycle : cycle
+        cycle : text_cycle
       }).then(function(response) {
-        console.log(response.data);
         navigation.goBack();
       }).catch(function (error) {
-        console.log(error);
       }).then(function() {
-        console.log("^^");
       });
   }
 

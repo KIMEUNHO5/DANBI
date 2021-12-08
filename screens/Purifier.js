@@ -3,8 +3,6 @@ import { ImageBackground, StyleSheet, Text, View, Image } from "react-native";
 import {puriInfo} from './SpecificationScreen.js';
 
 const PurifierScreen = ({ navigation }) => {
-    console.log("puriInfo here");
-    console.log(puriInfo);
     const mention_person = puriInfo.nickname + "님이 마실\n" + puriInfo.water_type + "°C의 물이\n" + puriInfo.actual_intake + "ml 출수되고 있습니다.";
     const mention_others = puriInfo.nickname + "님이 마실 정수가\n" + puriInfo.actual_intake + "ml 출수되고 있습니다.";
     var mention;

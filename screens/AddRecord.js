@@ -73,18 +73,14 @@ Date.prototype.format = function(f) {
     };
 
     const confirm = async()=> {
-      console.log(currentID, time, amountInput);
       axios.post("http://35.212.138.86/record/record", {
         member_id : currentID,
         date : time, 
         actual_intake : amountInput
       }).then(function(response) {
-        console.log(response.data);
         navigation.goBack();
       }).catch(function(error) {
-        console.log(error);
       }).then(function() {
-        console.log("^^");
       });
     };
 

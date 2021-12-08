@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback,Keyboard } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-        //backgroundColor: "white",
     },
     backgroundimage: {
         flex: 1,
@@ -90,7 +89,6 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         backgroundColor: "#9Ac2F6",
-        //padding: 10,
         borderRadius: 10,
     },
 });

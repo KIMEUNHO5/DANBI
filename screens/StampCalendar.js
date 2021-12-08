@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {View} from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
 import {LocaleConfig} from 'react-native-calendars';
 
 LocaleConfig.locales['fr'] = {
@@ -41,8 +41,6 @@ class StampCalendar extends Component {
             disableArrowLeft={false}
             disableArrowRight={false}
             disableAllTouchEventsForDisabledDays={true}
-
-            //renderHeader={(date) => {/*Return JSX*/}}
 
             enableSwipeMonths={true}
 

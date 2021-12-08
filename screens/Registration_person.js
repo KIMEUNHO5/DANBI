@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
@@ -8,18 +7,12 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Image, 
-  ScrollView, 
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
 import {account_email} from './LoginScreen.js';
-import DateTimePicker from "react-native-modal-datetime-picker";
-import { StackActions, CommonActions } from '@react-navigation/native';
-// import { useEffect } from 'react/cjs/react.development';
 
 Date.prototype.format = function(f) {
   if(!this.valueOf()) return " ";
@@ -102,25 +95,7 @@ const Registration_person = ({navigation}) => {
 
   const defaultWeight = () => {
     setWeight(parseInt(weightInput, 10));
-    console.log("weightInput", weightInput, "weight", weight, "goal", goal);
   }
-/*
-  const addWeightHandler = () => {
-    const newWeightNum = parseInt(weightInput, 10);
-    setWeight(newWeightNum);
-  };
-  const addTempHandler = () => {
-    const newTempNum = parseInt(tempInput, 10);
-    setTemperature(newTempNum);
-  };
-  const addGoalHandler = () => {
-    const newGoalNum = parseInt(goalInput, 10);
-    setGoal(newGoalNum);
-  };
-  const addCycleHandler = () => {
-    const newCycleNum = parseInt(text_cycle, 10);
-    setCycle(newCycleNum);
-  }; */
   
   const registerPerson = async() => {
     
@@ -136,12 +111,10 @@ const Registration_person = ({navigation}) => {
       cycle: text_cycle,
     })
     .then(function (response) {
-      console.log(response.data);
       navigation.navigate('Main');
     }).catch(function (error) {
-      console.log("ㅗ");
+      console.log(error);
     }).then(function() {
-      console.log("^^");
     });
   }
   

@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import {sendInfo, currentID} from './Main.js'
@@ -8,16 +7,12 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Image, 
-  ScrollView, 
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
 import axios from "axios";
-import { NavigationContainer } from "@react-navigation/native";
 
 Date.prototype.format = function(f) {
   if(!this.valueOf()) return " ";
@@ -80,51 +75,15 @@ function Edit_person ({navigation}) {
     onChangeText_sleep(date.format("a/p hh:mm"));
   };
 
-  console.log(new Date("Wed Dec 08 2021 " + sendInfo.result[0].wakeup_time.slice(0,8) + " GMT+0900 (KST)"));
   const [nickname, setNickname] = useState(sendInfo.result[0].nickname);
-  const [weight, setWeight] = useState(0);
   const [weightInput, setWeightInput] = useState(String(sendInfo.result[0].weight));
   const [wakeup, setWakeup] = useState("Wed Dec 08 2021 " + sendInfo.result[0].wakeup_time.slice(0,8) + " GMT+0900 (KST)");
   const [bedtime, setBedtime] = useState("Wed Dec 08 2021 " + sendInfo.result[0].bed_time.slice(0,8) + " GMT+0900 (KST)");
-  const [temperature, setTemperature] = useState(0);
   const [tempInput, setTempInput] = useState(String(sendInfo.result[0].temperature));
-  const [goal, setGoal] = useState(0);
   const [goalInput, setGoalInput] = useState(String(sendInfo.result[0].intake_goal));
-  //const [cycle, setCycle] = useState(0);
   const [text_cycle, setText_cycle] = useState(String(sendInfo.result[0].cycle));
 
-  /*
-  const addWeightHandler = () => {
-    const newWeightNum = parseInt(weightInput, 10);
-    setWeight(newWeightNum);
-  };
-  const addTempHandler = () => {
-    const newTempNum = parseInt(tempInput, 10);
-    setTemperature(newTempNum);
-  };
-  const addGoalHandler = () => {
-    const newGoalNum = parseInt(goalInput, 10);
-    setGoal(newGoalNum);
-  };
-  const addCycleHandler = () => {
-    const newCycleNum = parseInt(text_cycle, 10);
-    setCycle(newCycleNum);
-  };
-  */
-
   const editPerson = () => {
-    //addWeightHandler();
-    //addTempHandler();
-    //addGoalHandler();
-    //addCycleHandler();
-    console.log(
-      nickname + " / " 
-      + weightInput + " / " 
-      + wakeup + " / " 
-      + bedtime + " / " 
-      + tempInput+ " / "  
-      + goalInput + " / "
-      + text_cycle);
 
       axios.post("http://35.212.138.86/member/editmemberinfo", {
         member_id : currentID,
@@ -136,12 +95,9 @@ function Edit_person ({navigation}) {
         intake_goal : goalInput,
         cycle : text_cycle
       }).then(function(response) {
-        console.log(response.data);
         navigation.goBack();
       }).catch(function (error) {
-        console.log(error);
       }).then(function() {
-        //console.log("^^");
       });
   };
   

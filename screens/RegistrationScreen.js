@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, Image} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import {Image} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Reg_person from './Registration_person';
 import Reg_pet from './Registration_pet';

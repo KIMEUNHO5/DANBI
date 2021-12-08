@@ -1,18 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import React,{ useState, Component, useEffect, useRef} from "react";
+import React,{ useState, useEffect, useRef} from "react";
 import * as Notifications from 'expo-notifications';
 import { useIsFocused } from '@react-navigation/native';
-import * as Permissions from 'expo-permissions';
-import * as Linking from 'expo-linking';
 import { 
   ImageBackground,
   StyleSheet, 
   Text, 
   View, 
   Image, 
-  ScrollView, 
-  Button,
-  TextInput,
   TouchableOpacity,
   SafeAreaView,
   FlatList,
@@ -28,12 +22,9 @@ export let puriInfo = [];
 
 const SpecificationScreen = ({navigation}) => {
     const [memberInfo, setMemberInfo] = useState(sendInfo);
-    const [notiArray, setNotiArray] = useState([]);
     const [puriArray, setPuriArray] = useState([]);
     const isFocused = useIsFocused();
 
-    console.log("memberInfo in spec");
-    console.log(memberInfo);
     useEffect(() => {
       if (!puriArray==[]) {
         puriInfo = puriArray;
@@ -49,13 +40,12 @@ const SpecificationScreen = ({navigation}) => {
             member_id : currentID,
             reaction : "1"
           })
-          .then(function (response) { //nickname actualintake watertype 변수
+          .then(function (response) { 
             setPuriArray(response.data.result);
             navigation.navigate('Purifier');
           }).catch(function (error) {
             console.log("마시기 error\n" + error);
           }).then(function() {
-            console.log("^^");
           });}
 
       const react2 = () => {
@@ -64,12 +54,9 @@ const SpecificationScreen = ({navigation}) => {
             reaction : "2"
           })
           .then(function (response) {
-            //setPuriArray(response.data.result);
-            console.log(response.data);
           }).catch(function (error) {
-            console.log("ㅗ");
+            console.log(error);
           }).then(function() {
-            console.log("^^");
           });}
 
         const react3 = () => {
@@ -78,22 +65,13 @@ const SpecificationScreen = ({navigation}) => {
               reaction : "3"
             })
             .then(function (response) {
-              console.log(response.data);
             }).catch(function (error) {
-              console.log("ㅗ");
+              console.log(error);
             }).then(function() {
-              console.log("^^");
-            });}
+            });
+          }
 
     useEffect(()=> { 
-        if (memberInfo.result[0].member_type == 1) {
-            memberInfo.result[0].img = require('../Source/person_inactivated.png');
-        } else if (memberInfo.result[0].member_type == 2) {
-            memberInfo.result[0].img = require('../Source/pet_inactivated.png');
-        } else if (memberInfo.result[0].member_type == 3) {
-            memberInfo.result[0].img = require('../Source/plant_inactivated.png');
-        }
-        
         if (memberInfo.record == null){
           memberInfo.record = {};
         }else{
@@ -101,17 +79,33 @@ const SpecificationScreen = ({navigation}) => {
             value.id = index+1;
           });
         }
+        if (memberInfo.result[0].member_type == 1) {
+            memberInfo.result[0].img = require('../Source/person_inactivated.png');
+            memberInfo.next_intake = memberInfo.next_intake.slice(11,16);
+          memberInfo.record.forEach((value, index, array) => {
+            value.date = value.date.slice(11,16);
+          })
+        } else if (memberInfo.result[0].member_type == 2) {
+            memberInfo.result[0].img = require('../Source/pet_inactivated.png');
+            memberInfo.next_intake = memberInfo.next_intake.slice(11,16);
+          memberInfo.record.forEach((value, index, array) => {
+            value.date = value.date.slice(11,16);
+          })
+        } else if (memberInfo.result[0].member_type == 3) {
+            memberInfo.result[0].img = require('../Source/plant_inactivated.png');
+            memberInfo.next_intake = memberInfo.next_intake.slice(0,10);
+            memberInfo.record.forEach((value, index, array) => {
+            value.date = value.date.slice(0,10);
+          })
+        }
         
-
-        memberInfo.rate = parseInt(memberInfo.today_intake/memberInfo.result[0].intake_goal*100);
-
-        if (memberInfo.rate == 0) { 
+        if (memberInfo.today_intake == 0) { 
           memberInfo.cup_img = require('../Source/cup_0.png');
-        } else if (memberInfo.rate <= 25) {
+        } else if (memberInfo.today_intake <= 25) {
           memberInfo.cup_img = require("../Source/cup_25.png");
-        } else if (memberInfo.rate <= 50) {
+        } else if (memberInfo.today_intake <= 50) {
           memberInfo.cup_img = require("../Source/cup_50.png");
-        } else if (memberInfo.rate <= 75) {
+        } else if (memberInfo.today_intake <= 75) {
           memberInfo.cup_img = require("../Source/cup_75.png");
         } else {
           memberInfo.cup_img = require("../Source/cup_100.png");
@@ -126,12 +120,9 @@ const SpecificationScreen = ({navigation}) => {
             })
             .then(function(response) {
               setMemberInfo(response.data);
-              //console.log(list);
             }).catch(function(error) {
-              console.log("account loading failed");
               console.log(error);
             }).then(function() {
-              //console.log("^^");
             }); 
       }
   }, [isFocused]);
@@ -168,9 +159,8 @@ const SpecificationScreen = ({navigation}) => {
                 );
           console.log("OK")
          }).catch(function(error) {
-           //console.log(error);
+           console.log(error);
          }).then(function() {
-           //console.log("^^");;
          });
             
         
@@ -199,7 +189,6 @@ const SpecificationScreen = ({navigation}) => {
          }).catch(function(error) {
            console.log(error);
          }).then(function() {
-           //console.log("^^");;
          });
         
     };
@@ -214,13 +203,18 @@ const SpecificationScreen = ({navigation}) => {
         }
     }
 
+    function dateForPlant ({dateString}) {
+      return dateString.slice(0,11);
+    }
+    
+
     
 
     const renderItem = ({ item }) => {
 
         return (
             <View style={styles.item}>
-                <View style={{justifyContent:"center", alignItems:"center", flex:1}}><Text style={styles.itemName}>{item.date.slice(11,16)}</Text></View>
+                <View style={{justifyContent:"center", alignItems:"center", flex:1}}><Text style={styles.itemName}>{item.date}</Text></View>
                 <View style={{justifyContent:"center", alignItems:"center", flex:1}}><Text style={styles.itemName}>{item.actual_intake}mL</Text></View>
             </View>
     );}
@@ -253,7 +247,7 @@ const SpecificationScreen = ({navigation}) => {
             </View>
             <View style={styles.body}>
                 <View style={styles.waterStatus}>
-                  <Text style={{fontSize : 30, paddingBottom : 20, fontWeight:"700"}}>{memberInfo.rate}%</Text>
+                  <Text style={{fontSize : 30, paddingBottom : 20, fontWeight:"700"}}>{memberInfo.today_intake}%</Text>
                     <Image
                         style={styles.intakeImage}
                         source={memberInfo.cup_img}
@@ -275,7 +269,7 @@ const SpecificationScreen = ({navigation}) => {
                         <FlatList style={{flex:5}} data={memberInfo.record} renderItem={renderItem} keyExtractor={item => item.id} />
                         <View style={styles.next_item}>
                           <View style={{justifyContent:"center", alignItems:"center", flex:1}}>
-                            <Text style={styles.nextItemName}>{memberInfo.next_intake.slice(11,16)}</Text>
+                            <Text style={styles.nextItemName}>{memberInfo.next_intake}</Text>
                           </View>
                           <View style={{justifyContent:"center", alignItems:"center", flex:1}}>
                             <Text style={styles.nextItemName}>{memberInfo.result[0].intake_once}mL</Text>
@@ -318,7 +312,6 @@ Notifications.setNotificationHandler({
         return;
       }
       token = (await Notifications.getExpoPushTokenAsync()).data;
-      //console.log(token);
     } else {
       alert('Must use physical device for Push Notifications');
     }
@@ -430,11 +423,9 @@ const styles = StyleSheet.create({
       alignItems:"center",
       borderTopWidth : StyleSheet.hairlineWidth,
       borderTopColor : "lightgray",
-      //borderStyle : "dashed"
       
   },
     itemName : {
-        //width: 100,
         height: 20,
         fontSize: 17,
         fontWeight: "400",
@@ -442,7 +433,6 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     nextItemName : {
-      //width: 100,
       height: 20,
       fontSize: 17,
       fontWeight: "400",

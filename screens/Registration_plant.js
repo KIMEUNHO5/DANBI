@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { StatusBar } from "expo-status-bar";
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import { 
@@ -8,10 +7,7 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Image, 
-  ScrollView, 
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
@@ -79,26 +75,12 @@ const Registration_plant = ({navigation}) => {
     setDate_text(date.format("yyyy/MM/dd"))
   };
 
-  const [text_cycle, setText_cycle] = useState("");
-
   const [nickname, setNickname] = useState("");
   const [type, setType] = useState("");
   const [supplyDate, setSupplyDate] = useState(null);
   const [supplyTime, setSupplyTime] = useState(null);
-  const [amount, setAmount] = useState(0);
   const [amountInput, setAmountInput] = useState("");
   const [cycle, setCycle] = useState(1);
-  //const [cycleInput, setCycleInput] = useState("");
-
-  const addAmountHandler = () => {
-    const newAmountNum = parseInt(amountInput, 10);
-    setAmount(newAmountNum);
-  };
-  
-  /*const addCycleHandler = () => {
-    const newCycleNum = parseInt(text_cycle, 10);
-    setCycle(newCycleNum);
-  };*/ 
 
   const setPlant = (value) => {
     setType(value);
@@ -128,15 +110,6 @@ const Registration_plant = ({navigation}) => {
   }
 
   const registerPlant = () => {
-    addAmountHandler();
-    console.log(
-      nickname + " / " 
-      + type + " / "
-      + supplyDate + " / " 
-      + supplyTime + " / " 
-      + amountInput + " / "
-      + cycle);
-
 
     axios.post("http://35.212.138.86/member/registration", {
     email: account_email,
@@ -149,12 +122,10 @@ const Registration_plant = ({navigation}) => {
     cycle: cycle,
     })
     .then(function (response) {
-      console.log(response.data);
       navigation.navigate('Main');
     }).catch(function (error) {
-      console.log("error");
+      console.log(error);
     }).then(function() {
-      console.log("^^");
     });
   }
 

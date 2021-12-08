@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground, StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, ColorPropType, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { ImageBackground, StyleSheet, View, Button, Image, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import * as Google from "expo-google-app-auth";
 import axios from "axios";
-import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
-// import { response } from "express";
-//import logo from './Source/DANBI_Logo.png'; 
 export let sendList = [];
 export let account_email = "";
 export let account_pw = "";
@@ -16,7 +13,6 @@ const LoginScreen = ({ navigation }) => {
   const [pw, setPw] = useState("");
   
   const signInAsync = async () => {
-    console.log("LoginScreen.js 6 | loggin in");
     try {
       const { type, user } = await Google.logInAsync({
         iosClientId: `99932479259-algvl2fhdk9qvvq398vi7gj6qrv87vrs.apps.googleusercontent.com`,
@@ -24,8 +20,6 @@ const LoginScreen = ({ navigation }) => {
       });
 
       if (type === "success") {
-        // Then you can use the Google REST API
-        console.log("LoginScreen.js 17 | success, navigating to profile");
         navigation.navigate("Profile", { user });
       }
     } catch (error) {
@@ -49,7 +43,6 @@ const LoginScreen = ({ navigation }) => {
     }).catch(function(error) {
       console.log("Login error\n" + error);
     }).then(function() {
-      console.log("^^");
     });
   };
 

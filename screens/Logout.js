@@ -1,11 +1,13 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {StackActions} from '@react-navigation/native';
+<<<<<<< Updated upstream
 import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+=======
+import { StyleSheet, Text, View, Button, TouchableWithoutFeedback,Keyboard } from 'react-native';
+>>>>>>> Stashed changes
 
 const Stack = createStackNavigator();
-
-
 
 const LogoutScreen = ({navigation}) => {
 

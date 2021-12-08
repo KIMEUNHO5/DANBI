@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Image, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback,Keyboard } from 'react-native';
 import axios from "axios";
 
 const Stack = createStackNavigator();
@@ -21,14 +21,12 @@ const SignupScreen = ({navigation}) => {
             mobile:pn
         })
         .then(function(response) {
-            console.log(response.data);
             if (response.statusCode = 200) {
                 navigation.navigate('Login');
             }
         }).catch(function(error) {
-            console.log("error");
+            console.log(error);
         }).then(function() {
-            console.log("^^");
         });
     };
 

@@ -1,12 +1,10 @@
 import React, {useState} from "react";
-import { ImageBackground ,SafeAreaView, StyleSheet, Alert, Text, View, FlatList, TouchableOpacity, Pressable, Image } from "react-native";
+import { ImageBackground ,SafeAreaView, StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from "react-native";
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, CommonActions, useIsFocused } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Login, { sendList, account_email, account_pw } from './LoginScreen';
-import Signup from './Signup';
+import { sendList, account_email, account_pw } from './LoginScreen';
 import ChangePW from './ChangePW';
-import StackNavigator from '../App';
 import Logout from "./Logout";
 import DeleteAccountScreen from "./DeleteAccount";
 import axios from "axios";
@@ -38,7 +36,6 @@ function MainListScreen({ navigation }) {
     const isFocused = useIsFocused();
     const [selectedID, setSelectedID] = useState(0); 
     const [memberInfo, setMemberInfo] = useState([]); // 개인 상세 정보
-    const [selectedItem, setSelectedItem] = useState([]); // 개인 단순 정보
 
     useEffect(()=> { // 계정 내 멤버 reload
         list.forEach((value, index, array) => {
@@ -50,7 +47,6 @@ function MainListScreen({ navigation }) {
               value.img = require('../Source/plant_activated.png');
           }
         })
-        //console.log(list);
     
     }, [list]);
 
@@ -66,12 +62,9 @@ function MainListScreen({ navigation }) {
               })
               .then(function(response) {
                 setList(response.data.result);
-                //console.log(list);
               }).catch(function(error) {
-                console.log("account loading failed");
                 console.log(error);
               }).then(function() {
-                //console.log("^^");
               }); 
         }
     }, [isFocused]);
@@ -79,19 +72,6 @@ function MainListScreen({ navigation }) {
     useEffect(() => { // 멤버 선택시 개인 생체 정보 저장. 
         if(!memberInfo==[]) {
             sendInfo = memberInfo;
-            /*
-            if (memberInfo.result[0].member_type == 1) {
-                memberInfo.result[0].img = require('../Source/person_inactivated.png');
-            } else if (memberInfo.result[0].member_type == 2) {
-                memberInfo.result[0].img = require('../Source/pet_inactivated.png');
-            } else if (sendInfo.result[0].member_type == 3) {
-                sendInfo.result[0].img = require('../Source/plant_inactivated.png');
-            }
-            sendInfo.record.forEach((value, index, array) => {
-                value.id = index+1;
-                console.log(value.id + "th record");
-            }) */
-            console.log(sendInfo);
         }
     }, [memberInfo]);
 
@@ -106,7 +86,6 @@ function MainListScreen({ navigation }) {
         }).catch(function(error) {
             console.log("select member error \n" + error);
         }).then(function() {
-            //console.log("^^");
         });
     };
     

@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
@@ -9,10 +8,7 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Image, 
-  ScrollView, 
   TouchableOpacity,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
@@ -83,40 +79,14 @@ function Edit_pet() {
 
   const [nickname, setNickname] = useState("");
   const [type, setType] = useState("");
-  const [weight, setWeight] = useState(0);
   const [weightInput, setWeightInput] = useState("");
   const [wakeup, setWakeup] = useState(null);
   const [bedtime, setBedtime] = useState(null);
-  const [goal, setGoal] = useState(0);
   const [goalInput, setGoalInput] = useState("");
-  const [cycle, setCycle] = useState(0);
-  const [cycleInput, setCycleInput] = useState("");
   
-  const addWeightHandler = () => {
-    const newWeightNum = parseInt(weightInput, 10);
-    setWeight(newWeightNum);
-  };
-  const addGoalHandler = () => {
-    const newGoalNum = parseInt(goalInput, 10);
-    setGoal(newGoalNum);
-  };
-  const addCycleHandler = () => {
-    const newCycleNum = parseInt(text_cycle, 10);
-    setCycle(newCycleNum);
-  };
+
 
   const editPet = () => {
-    addWeightHandler();
-    addGoalHandler();
-    addCycleHandler();
-    console.log(
-      nickname + " / " 
-      + type + " / "
-      + weightInput + " / " 
-      + wakeup + " / " 
-      + bedtime + " / " 
-      + goalInput + " / "
-      + text_cycle);
 
       axios.post("http://35.212.138.86/member/editmemberinfo", {
         member_id : currentID,
@@ -127,16 +97,11 @@ function Edit_pet() {
         intake_goal : goalInput,
         cycle : text_cycle
       }).then(function(response) {
-        console.log(response.data);
         navigation.goBack();
       }).catch(function (error) {
-        console.log(error);
       }).then(function() {
-        console.log("^^");
       });
   }
-
-  
 
   return (
     
