@@ -50,8 +50,8 @@ Number.prototype.zf = function(len){return this.toString().zf(len);};
 const Registration_person = ({navigation}) => {
 
   useEffect(()=> {
-    defaultWeight();
-  }, [weightInput]); 
+    setGoalInput(String(weight*30));
+  }, [weight]); 
    
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
@@ -102,7 +102,6 @@ const Registration_person = ({navigation}) => {
 
   const defaultWeight = () => {
     setWeight(parseInt(weightInput, 10));
-    setGoalInput(String(weight*30));
     console.log("weightInput", weightInput, "weight", weight, "goal", goal);
   }
 /*
@@ -172,9 +171,7 @@ const Registration_person = ({navigation}) => {
                 <TextInput 
                 onChangeText={setWeightInput}
                 value={weightInput}
-                onEndEditing={()=>{
-                  defaultWeight();
-                }}
+                onEndEditing={defaultWeight}
                 placeholder = "Weight"
                 placeholderTextColor = "gray"
                 keyboardType="number-pad"/>

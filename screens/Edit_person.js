@@ -49,8 +49,8 @@ function Edit_person ({navigation}) {
   const placeholder = "input time";
   const [isWakeupTimePickerVisible, setWakeupTimePickerVisibility] = useState(false);
   const [isSleepTimePickerVisible, setSleepTimePickerVisibility] = useState(false);
-  const [text_wakeup, onChangeText_wakeup] = useState(new Date("Wed Dec 08 2021 " + sendInfo.wakeup_time.slice(0,8) + " GMT+0900 (KST)").format("a/p hh:mm"));
-  const [text_sleep, onChangeText_sleep] = useState(new Date("Wed Dec 08 2021 " + sendInfo.bed_time.slice(0,8) + " GMT+0900 (KST)").format("a/p hh:mm"));
+  const [text_wakeup, onChangeText_wakeup] = useState(new Date("Wed Dec 08 2021 " + sendInfo.result[0].wakeup_time.slice(0,8) + " GMT+0900 (KST)").format("a/p hh:mm"));
+  const [text_sleep, onChangeText_sleep] = useState(new Date("Wed Dec 08 2021 " + sendInfo.result[0].bed_time.slice(0,8) + " GMT+0900 (KST)").format("a/p hh:mm"));
 
   const showWakeupTimePicker = () => {
     setWakeupTimePickerVisibility(true);
@@ -80,18 +80,18 @@ function Edit_person ({navigation}) {
     onChangeText_sleep(date.format("a/p hh:mm"));
   };
 
-  console.log(new Date("Wed Dec 08 2021 " + sendInfo.wakeup_time.slice(0,8) + " GMT+0900 (KST)"));
-  const [nickname, setNickname] = useState(sendInfo.nickname);
+  console.log(new Date("Wed Dec 08 2021 " + sendInfo.result[0].wakeup_time.slice(0,8) + " GMT+0900 (KST)"));
+  const [nickname, setNickname] = useState(sendInfo.result[0].nickname);
   const [weight, setWeight] = useState(0);
-  const [weightInput, setWeightInput] = useState(String(sendInfo.weight));
-  const [wakeup, setWakeup] = useState("Wed Dec 08 2021 " + sendInfo.wakeup_time.slice(0,8) + " GMT+0900 (KST)");
-  const [bedtime, setBedtime] = useState("Wed Dec 08 2021 " + sendInfo.bed_time.slice(0,8) + " GMT+0900 (KST)");
+  const [weightInput, setWeightInput] = useState(String(sendInfo.result[0].weight));
+  const [wakeup, setWakeup] = useState("Wed Dec 08 2021 " + sendInfo.result[0].wakeup_time.slice(0,8) + " GMT+0900 (KST)");
+  const [bedtime, setBedtime] = useState("Wed Dec 08 2021 " + sendInfo.result[0].bed_time.slice(0,8) + " GMT+0900 (KST)");
   const [temperature, setTemperature] = useState(0);
-  const [tempInput, setTempInput] = useState(String(sendInfo.temperature));
+  const [tempInput, setTempInput] = useState(String(sendInfo.result[0].temperature));
   const [goal, setGoal] = useState(0);
-  const [goalInput, setGoalInput] = useState(String(sendInfo.intake_goal));
+  const [goalInput, setGoalInput] = useState(String(sendInfo.result[0].intake_goal));
   //const [cycle, setCycle] = useState(0);
-  const [text_cycle, setText_cycle] = useState(String(sendInfo.cycle));
+  const [text_cycle, setText_cycle] = useState(String(sendInfo.result[0].cycle));
 
   /*
   const addWeightHandler = () => {
@@ -122,7 +122,7 @@ function Edit_person ({navigation}) {
       + weightInput + " / " 
       + wakeup + " / " 
       + bedtime + " / " 
-      + tempInput+ " / "
+      + tempInput+ " / "  
       + goalInput + " / "
       + text_cycle);
 

@@ -4,7 +4,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 //import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image, Text, View, Button, StyleSheet } from 'react-native';
-import { CommonActions, DrawerActions, StackActions } from '@react-navigation/native';
+import { CommonActions, DrawerActions, StackActions} from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
@@ -61,6 +61,9 @@ const HeaderRight = () => {
 }
 
 function HomeScreen({ navigation }) {
+  navigation.navigate('Login');
+  return(null);
+  /*
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
@@ -98,30 +101,36 @@ function HomeScreen({ navigation }) {
       />
 
     </View>
-  );
+  );*/
 }
 
-const StackNavigator = () =>{
-  return (
-    <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen 
+/*
+<Stack.Screen 
         name="Home" 
         component={HomeScreen}
         options={{
-          headerStyle:{
-            height:100,
-          },
+          headerShown:false
+        }}  />
+        */
+const StackNavigator = () =>{
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{
+          headerShown:false
         }}  />
         <Stack.Screen 
         name="Login" 
         component={LoginScreen}
         options={{
+          //headerShown:false,
           headerStyle:{
             height:100
           },
-          title:'',
+          title:'home',
           headerBackTitleVisible: false,
-          headerBackImage: BackBtn,
         }}  />
         <Stack.Screen 
         name="Profile" 

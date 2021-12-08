@@ -198,11 +198,11 @@ const SpecificationScreen = ({navigation}) => {
     };
 
     const pressEdit = async() => {
-        if (memberInfo.member_type == 1) {
+        if (memberInfo.result[0].member_type == 1) {
             navigation.navigate('Edit_person');
-        } else if (memberInfo.member_type == 2) {
+        } else if (memberInfo.result[0].member_type == 2) {
             navigation.navigate('Edit_pet');
-        } else if (memberInfo.member_type == 3) {
+        } else if (memberInfo.result[0].member_type == 3) {
             navigation.navigate('Edit_plant');
         }
     }
