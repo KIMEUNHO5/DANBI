@@ -334,15 +334,15 @@ const styles = StyleSheet.create({
   },
   body : {
     flex : 15,
-    paddingTop: 30,
+    paddingTop: 15,
     paddingBottom : 30,
     paddingLeft : 20,
     paddingRight : 20
   },
   list: {
     flex : 1,
-    paddingTop : 30,
-    paddingBottom : 20,
+    paddingTop : 40,
+    paddingBottom : 30,
     paddingHorizontal : 30
   },
   eachLine: {

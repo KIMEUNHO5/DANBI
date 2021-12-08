@@ -331,8 +331,8 @@ const styles = StyleSheet.create({
   },
   list: {
     flex : 1,
-    paddingTop : 30,
-    paddingBottom : 20,
+    paddingTop : 40,
+    paddingBottom : 30,
     paddingHorizontal : 30
   },
   eachLine: {
@@ -353,9 +353,9 @@ const styles = StyleSheet.create({
   },
   inputField: {
     flex:1,
-    backgroundColor:"white",
+    justifyContent: "center",
     borderBottomColor: "gray",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   regibutton: {
     marginTop: 20,

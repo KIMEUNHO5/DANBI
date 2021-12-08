@@ -4,6 +4,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import {sendInfo, currentID} from './Main.js'
 import { 
+  ImageBackground,
   StyleSheet, 
   Text, 
   View, 
@@ -147,6 +148,7 @@ function Edit_person ({navigation}) {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <ImageBackground source = {require('../Source/reg_background.png')} style = {styles.backgroundimage}>
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.list}>
@@ -272,11 +274,18 @@ function Edit_person ({navigation}) {
             </TouchableOpacity>
           </View>
           <View style={styles.eachLine}>
-            <Button title="수정" onPress={editPerson}/>
+          <TouchableOpacity
+              onPress={editPerson}
+              style={styles.editbutton}>
+              <Text style={styles.editbutton_text}>
+                수정
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
     </View>
+    </ImageBackground>
     </TouchableWithoutFeedback>
   );
 }
@@ -286,6 +295,11 @@ export default Edit_person;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  backgroundimage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   header: {
     flex : 3,
@@ -312,31 +326,16 @@ const styles = StyleSheet.create({
   },
   body : {
     flex : 15,
-    backgroundColor : "white",
-    paddingTop: 30,
+    paddingTop: 15,
     paddingBottom : 30,
     paddingLeft : 20,
     paddingRight : 20
   },
-  text : {
-      fontSize : 28,
-      color : "black",
-  },
-  logo : {
-    height : 200,
-    width: 200, 
-    resizeMode : 'contain'
-  },
-  btnText: {
-    fontSize : 24,
-    fontWeight : "600",
-  },
   list: {
-    backgroundColor : "white",
     flex : 1,
-    paddingTop : 30,
-    paddingBottom : 20,
-    paddingHorizontal : 20
+    paddingTop : 40,
+    paddingBottom : 30,
+    paddingHorizontal : 30
   },
   eachLine: {
     flex:1,
@@ -347,18 +346,31 @@ const styles = StyleSheet.create({
     justifyContent:"center",
   },
   contentText: {
-    fontSize : 20,
+    fontSize : 18,
+    fontWeight: "500",
   },
   inputTag: {
     flex:1,
-    backgroundColor: "white",
     justifyContent : "center"
   },
   inputField: {
     flex:1,
-    backgroundColor:"white",
     justifyContent: "center",
     borderBottomColor: "gray",
     borderBottomWidth: 1
+  },
+  editbutton: {
+    marginTop: 10,
+    width: 50,
+    height: 30,
+    color: "white",
+    backgroundColor: "white",
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  editbutton_text:{
+    fontSize: 15,
+    fontWeight: "400",
   }
 });

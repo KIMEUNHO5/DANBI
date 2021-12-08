@@ -3,6 +3,7 @@ import React, { useState, Component } from "react";
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import RNPickerSelect from 'react-native-picker-select';
 import { 
+  ImageBackground,
   StyleSheet, 
   Text, 
   View, 
@@ -97,6 +98,7 @@ Date.prototype.format = function(f) {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <ImageBackground source = {require('../Source/addrecord_background.png')} style = {styles.backgroundimage}>
         <View style={styles.container}>
         <View style={styles.body}>
         <View style={styles.list}>
@@ -139,12 +141,13 @@ Date.prototype.format = function(f) {
           </View>
           <View style={styles.eachLine}>
             <TouchableOpacity style={styles.button} onPress={confirm}>
-              <Text style = {{fontSize:20}}>등록</Text>
+              <Text style = {{fontSize:18, color: "white"}}>등록</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
       </View>
+    </ImageBackground>
     </TouchableWithoutFeedback>
     ); 
 }
@@ -155,23 +158,26 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    backgroundimage: {
+      flex: 1,
+      resizeMode: 'cover',
+      justifyContent: 'center',
+    },
     body : {
         flex : 50,
         justifyContent : "center",
-        backgroundColor : "white",
         paddingTop: 150,
         paddingBottom : 150,
         paddingLeft : 30,
         paddingRight : 30
     },
     list: {
-        backgroundColor : "white",
         justifyContent : "center",
         alignItems : "center",
         flex : 3,
         paddingTop : 120,
         paddingBottom : 120,
-        paddingHorizontal : 20
+        paddingHorizontal : 30,
     },
     eachLine: {
         flex:1,
@@ -185,25 +191,22 @@ const styles = StyleSheet.create({
       flex:1,
       paddingTop : 10,
       paddingBottom : 10,
-      paddingHorizontal:100,
       width:80,
       height:50,
       justifyContent:"center",
       alignItems:"center",
-      backgroundColor:"lightskyblue",
+      backgroundColor:"#9AC2F6",
       borderRadius:10
   },
     inputTag: {
         flex:3,
-        backgroundColor: "white",
         justifyContent : "center",
     },
     contentText: {
         fontSize : 15,
     },
     inputField: {
-        flex:4,
-        backgroundColor:"white",
+        flex:3,
         justifyContent: "center",
         borderBottomColor: "gray",
         borderBottomWidth: 1,

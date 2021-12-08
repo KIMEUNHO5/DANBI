@@ -369,9 +369,9 @@ const styles = StyleSheet.create({
   },
   list: {
     flex : 1,
-    paddingTop : 30,
-    paddingBottom : 20,
-    paddingHorizontal : 30,
+    paddingTop : 40,
+    paddingBottom : 30,
+    paddingHorizontal : 30
   },
   eachLine: {
     flex:1,

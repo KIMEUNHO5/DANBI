@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { SafeAreaView, StyleSheet, Alert, Text, View, FlatList, TouchableOpacity, Pressable, Image } from "react-native";
+import { ImageBackground ,SafeAreaView, StyleSheet, Alert, Text, View, FlatList, TouchableOpacity, Pressable, Image } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, CommonActions, useIsFocused } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -125,8 +125,10 @@ function MainListScreen({ navigation }) {
             </View>
         </TouchableOpacity>
     );}
+
     return (
         <View style={styles.container}>
+        <ImageBackground source = {require('../Source/main_background.png')} style = {styles.backgroundimage}>
         <StatusBar style="auto" />
         <View style={styles.body}>
             <View style={styles.memberListbg}>
@@ -144,6 +146,7 @@ function MainListScreen({ navigation }) {
                 </View>
             </View>
         </View>
+        </ImageBackground>
     </View>
     );
   }
@@ -159,40 +162,22 @@ const styles = StyleSheet.create({
     container : {
         flex: 1,
     },
+    backgroundimage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+    },
     header : {
         flex : 1,
         flexDirection:"column",
         backgroundColor : 'white',
     },
-    // logo_DANBI: {
-    //     flex : 10,
-    //     //backgroundColor: "green",
-    //     resizeMode: "cover", 
-    //     height: 130,
-    //     alignContent : "center",
-    //     justifyContent : "center"
-    //   },
     logobg_My: {
         flex : 1,
         flexDirection : "row",
-        //backgroundColor :"blue",
         alignSelf: "flex-end",
-        //marginVertical : 10,
-        //marginLeft :10,
-        
-      },
-    logo_My: {
-        flex : 1,
-        //backgroundColor :"yellow",
-        width : 47,
-        height: 47,
-        resizeMode: "contain",
-        margin: 10,
-        //marginLeft :330
-
       },
     body : {
-        backgroundColor :"#C1E3ED",
         flex : 9,
         justifyContent : "center",
         alignItems: "center",
@@ -201,7 +186,7 @@ const styles = StyleSheet.create({
         flex:0.8,
         width: 300,
         height: 600,
-        marginHorizontal: 30,
+        marginBottom:10,
         padding: 10,
         borderWidth : 1,
         borderColor :"black",
@@ -214,14 +199,12 @@ const styles = StyleSheet.create({
         flexDirection:'row'
     },
     itemImg :{
-        //backgroundColor: "red",
         width:50,
         height:50,
         marginRight:10,
         resizeMode: "contain",
     },
     itemName :{
-        //backgroundColor :"blue",
         fontSize:20,
         fontWeight: "300",
         justifyContent :"center",
