@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Image, Text, View, Button, TextInput, TouchableOpacity, ScrollView,TouchableWithoutFeedback,Keyboard } from 'react-native';
 import axios from "axios";
 
 const Stack = createStackNavigator();
@@ -33,12 +33,13 @@ const confirm = async() => {
 
 
   return (
+    <ImageBackground source = {require('../Source/login_background_2.png')} style = {styles.backgroundimage}>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.container}>
         <Text style={styles.signup_title}>
         비밀번호 변경
         </Text>
-            <View style={styles.input_container}>
+            <View>
                 <TextInput
                     placeholder={"현재 비밀번호"}
                     onChangeText={setCurrentPW}
@@ -58,7 +59,7 @@ const confirm = async() => {
                     style={styles.input}
                 />
             </View>
-            <TouchableOpacity style={styles.GetPwButton} onPress={confirm}>
+            <TouchableOpacity style={styles.ChangeButton} onPress={confirm}>
                 <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
                 Next
                 </Text>
@@ -66,6 +67,7 @@ const confirm = async() => {
     </View>
 
     </TouchableWithoutFeedback>
+    </ImageBackground>
   );
 };
 
@@ -77,32 +79,33 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-        backgroundColor: "white",
+    },
+    backgroundimage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
     },
     signup_title:{
-        fontSize: 40,
+        fontSize: 30,
         fontWeight: "700",
-        marginTop: 90,
-    },
-    input_container:{
-        marginTop: 80,
-        margin: 50
+        marginTop: 300,
     },
     input:{
-        borderBottomColor: "#C1C1C1",
+        borderBottomColor: "#9AC2F6",
         borderBottomWidth: 3,
-        fontSize: 18,
+        fontSize: 17,
         height: 30,
-        width: 250,
-        marginTop: 30,
+        width: 230,
+        marginTop: 25,
     },
-    GetPwButton:{
-        width: 280,
+    ChangeButton:{
+        width: 230,
         height: 40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor: "#C1C1C1",
+        backgroundColor: "#9AC2F6",
         padding: 10,
         borderRadius: 10,
+        marginTop: 25,
     },
 });

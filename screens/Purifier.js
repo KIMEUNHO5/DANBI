@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Image } from "react-native";
 import {puriInfo} from './SpecificationScreen.js';
 
 const PurifierScreen = ({ navigation }) => {
@@ -16,6 +16,7 @@ const PurifierScreen = ({ navigation }) => {
     }
 
     return(
+        <ImageBackground source = {require('../Source/purifier_background.png')} style = {styles.backgroundimage}>
         <View style = {styles.container}>
             <Text style = {styles.text}>
                 {mention}
@@ -25,6 +26,7 @@ const PurifierScreen = ({ navigation }) => {
             source={require('../Source/purifier.gif')}
             />
         </View>
+        </ImageBackground>
     )
 };
 
@@ -34,20 +36,23 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         alignItems: "center",
-        justifyContent: "center",
         paddingHorizontal: 20,
-        backgroundColor: "white",
+    },
+    backgroundimage: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+    },
+    text:{  
+        marginTop: 160,
+        fontSize: 20,
+        fontWeight: "700",
+        lineHeight: 30,
     },
     image: {
-        width: 300,
-        height: 300,
-        marginTop: 40,
+        width: 205,
+        height: 205,
+        marginTop: 110,
         resizeMode: "contain",
     },
-    text:{
-        
-    fontSize: 20,
-    fontWeight: "800",
-    }
-
 });
