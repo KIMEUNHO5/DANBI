@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
     flex : 1,
     paddingTop : 40,
     paddingBottom : 30,
-    paddingHorizontal : 30
+    paddingHorizontal : 40
   },
   eachLine: {
     flex:1,

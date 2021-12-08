@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
     flex : 1,
     paddingTop : 40,
     paddingBottom : 30,
-    paddingHorizontal : 30
+    paddingHorizontal : 40
   },
   eachLine: {
     flex:1,
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   regibutton: {
-    marginTop: 20,
+    marginTop: 30,
     width: 50,
     height: 30,
     color: "white",

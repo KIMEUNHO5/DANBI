@@ -341,8 +341,8 @@ const styles = StyleSheet.create({
   list: {
     flex : 1,
     paddingTop : 50,
-    paddingBottom : 30,
-    paddingHorizontal : 50,
+    paddingBottom : 40,
+    paddingHorizontal : 40
   },
   eachLine: {
     flex:1,
