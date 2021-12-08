@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React,{ useState, Component, useEffect, useRef} from "react";
 import * as Notifications from 'expo-notifications';
+import { useIsFocused } from '@react-navigation/native';
 import * as Permissions from 'expo-permissions';
 import * as Linking from 'expo-linking';
 import { 
@@ -22,31 +23,21 @@ import axios from 'axios';
 import Constants from 'expo-constants';
 
 
-const DATA = [
-    {
-         id: '1',
-         name: '1st log',
-    },
-    {
-        id: '2',
-        name: '2nd log',
-    },
-    {
-        id: '3',
-        name: '3rd log',
-    },
-  ];
-
-const Item = ({ title }) => (
-    <DataView>
-        <Text>{title}</Text>
-    </DataView>
-  );
+export let puriInfo = [];
 
 const SpecificationScreen = ({navigation}) => {
     const [memberInfo, setMemberInfo] = useState(sendInfo);
     const [notiArray, setNotiArray] = useState([]);
+    const [puriArray, setPuriArray] = useState([]);
+    const isFocused = useIsFocused();
 
+    console.log("memberInfo in spec");
+    console.log(memberInfo);
+    useEffect(() => {
+      if (!puriArray==[]) {
+        puriInfo = puriArray;
+      }
+    }, [puriArray])
     //noti
     const [expoPushToken, setExpoPushToken] = useState('');
     const [notification, setNotification] = useState(false);
@@ -57,10 +48,11 @@ const SpecificationScreen = ({navigation}) => {
             member_id : currentID,
             reaction : "1"
           })
-          .then(function (response) {
-            console.log("되어라");
+          .then(function (response) { //nickname actualintake watertype 변수
+            setPuriArray(response.data.result);
+            navigation.navigate('Purifier');
           }).catch(function (error) {
-            console.log("ㅗ");
+            console.log("마시기 error\n" + error);
           }).then(function() {
             console.log("^^");
           });}
@@ -90,20 +82,52 @@ const SpecificationScreen = ({navigation}) => {
             }).then(function() {
               console.log("^^");
             });}
+
     useEffect(()=> { 
-        if (memberInfo.member_type == 1) {
-            memberInfo.img = require('../Source/person_inactivated.png');
-        } else if (memberInfo.member_type == 2) {
-            memberInfo.img = require('../Source/pet_inactivated.png');
-        } else if (memberInfo.member_type == 3) {
-            memberInfo.img = require('../Source/plant_inactivated.png');
+        if (memberInfo.result[0].member_type == 1) {
+            memberInfo.result[0].img = require('../Source/person_inactivated.png');
+        } else if (memberInfo.result[0].member_type == 2) {
+            memberInfo.result[0].img = require('../Source/pet_inactivated.png');
+        } else if (memberInfo.result[0].member_type == 3) {
+            memberInfo.result[0].img = require('../Source/plant_inactivated.png');
         }
-        //console.log("memberInfo in spec");
-        //console.log(memberInfo);
-        //console.log("memberinfo.nickname");
-        //console.log(memberInfo.nickname);
-    
+        
+        memberInfo.record.forEach((value, index, array) => {
+          value.id = index+1;
+        })
+
+        memberInfo.rate = parseInt(memberInfo.today_intake/memberInfo.result[0].intake_goal*100);
+
+        if (memberInfo.rate == 0) { 
+          memberInfo.cup_img = require('../Source/cup_0.png');
+        } else if (memberInfo.rate <= 25) {
+          memberInfo.cup_img = require("../Source/cup_25.png");
+        } else if (memberInfo.rate <= 50) {
+          memberInfo.cup_img = require("../Source/cup_50.png");
+        } else if (memberInfo.rate <= 75) {
+          memberInfo.cup_img = require("../Source/cup_75.png");
+        } else {
+          memberInfo.cup_img = require("../Source/cup_100.png");
+        }
+
     }, [memberInfo]);
+
+    useEffect(() => { // 계정 정보 확인 -> 멤버 리스트 업데이트
+      if (isFocused) {
+          axios.post("http://35.212.138.86/member/specification", {
+              member_id : currentID
+            })
+            .then(function(response) {
+              setMemberInfo(response.data);
+              //console.log(list);
+            }).catch(function(error) {
+              console.log("account loading failed");
+              console.log(error);
+            }).then(function() {
+              //console.log("^^");
+            }); 
+      }
+  }, [isFocused]);
 
     //noti
     useEffect(() => {
@@ -156,9 +180,6 @@ const SpecificationScreen = ({navigation}) => {
         axios.post("http://35.212.138.86/notification/notification", {
              member_id : currentID
          }).then(function(response) {
-           //console.log(response.data);
-           //setNotiArray(response.data.result[0]);
-           
            Notifications.scheduleNotificationAsync({
             content: {
                 title: response.data.result[0].nickname + "님의 수분 섭취 시간입니다.",
@@ -169,7 +190,7 @@ const SpecificationScreen = ({navigation}) => {
             },
         });
          }).catch(function(error) {
-           //console.log(error);
+           console.log(error);
          }).then(function() {
            //console.log("^^");;
          });
@@ -189,12 +210,12 @@ const SpecificationScreen = ({navigation}) => {
     
 
     const renderItem = ({ item }) => {
+
         return (
-        <TouchableOpacity >
-            <View style={ styles.item}>
-                <Text style={styles.itemName}>{currentID}</Text>
+            <View style={styles.item}>
+                <View style={{justifyContent:"center", alignItems:"center", flex:1}}><Text style={styles.itemName}>{item.date.slice(11,16)}</Text></View>
+                <View style={{justifyContent:"center", alignItems:"center", flex:1}}><Text style={styles.itemName}>{item.actual_intake}mL</Text></View>
             </View>
-        </TouchableOpacity>
     );}
 
     return (
@@ -203,14 +224,14 @@ const SpecificationScreen = ({navigation}) => {
                 <View style={styles.user}>
                     <Image
                         style={styles.userLogo}
-                        source={memberInfo.img}
+                        source={memberInfo.result[0].img}
                     />
                     <View style={styles.username}>
-                    <Text style={{fontSize:20}}>{memberInfo.nickname}</Text>
+                    <Text style={{fontSize:20}}>{memberInfo.result[0].nickname}</Text>
                     </View>
                 </View>
                 <Button
-                        title="알림"
+                        title="알림" 
                         onPress={showNotification}></Button>
                     <TouchableOpacity onPress={pressEdit}>
                         <Image 
@@ -222,9 +243,10 @@ const SpecificationScreen = ({navigation}) => {
             </View>
             <View style={styles.body}>
                 <View style={styles.waterStatus}>
+                  <Text style={{fontSize : 30, paddingBottom : 20}}>{memberInfo.rate}%</Text>
                     <Image
                         style={styles.intakeImage}
-                        source={require('../Source/waterIntakePicTest.png')}
+                        source={memberInfo.cup_img}
                     />
                 </View>
                 <View style={{flexDirection:'row', paddingLeft : 30, paddingRight: 380}}>
@@ -239,12 +261,21 @@ const SpecificationScreen = ({navigation}) => {
             </View>
             <View style={styles.record}>
                 <View style={styles.recordTable}>
-                    <SafeAreaView style>
-                        <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.id} />
+                    <SafeAreaView style={{flex:1}}>
+                        <FlatList style={{flex:5}} data={memberInfo.record} renderItem={renderItem} keyExtractor={item => item.id} />
+                        <View style={styles.next_item}>
+                          <View style={{justifyContent:"center", alignItems:"center", flex:1}}>
+                            <Text style={styles.nextItemName}>{memberInfo.next_intake.slice(11,16)}</Text>
+                          </View>
+                          <View style={{justifyContent:"center", alignItems:"center", flex:1}}>
+                            <Text style={styles.nextItemName}>{memberInfo.result[0].intake_once}mL</Text>
+                          </View>
+                        </View>
+                      
                         <View style={styles.pluscontainer}>
-                            <TouchableOpacity onPress={() => navigation.navigate('AddRecord')}>
-                                <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
-                            </TouchableOpacity>
+                          <TouchableOpacity onPress={() => navigation.navigate('AddRecord')}>
+                            <Image style={styles.plusicon} source={require('../Source/plus.png')}/>
+                          </TouchableOpacity>
                         </View>
                     </SafeAreaView> 
                 </View>
@@ -276,7 +307,7 @@ Notifications.setNotificationHandler({
         return;
       }
       token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log(token);
+      //console.log(token);
     } else {
       alert('Must use physical device for Push Notifications');
     }
@@ -338,15 +369,14 @@ const styles = StyleSheet.create({
     },
     waterStatus : {
         flex: 5,
-        flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
     },
     intakeImage : {
         flexDirection: "row",
-        width: 250,
-        height: 250,
+        width: 150,
+        height: 150,
         resizeMode: "contain",
     },
     stampcontainer:{
@@ -371,25 +401,53 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         padding: 10,
-        backgroundColor: "#C1C1C1",
+        borderWidth:StyleSheet.hairlineWidth,
+        //backgroundColor: "#C1C1C1",
         borderRadius: 10,
     },
     item : {
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        padding: 10,
+        flex:0.3,
+        //borderBottomWidth: StyleSheet.hairlineWidth,
+        padding: 5,
         flexDirection:'row',
+        justifyContent : "center",
+        alignItems:"center"
     },
+    next_item : {
+      flex:0.2,
+      //borderBottomWidth: StyleSheet.hairlineWidth,
+      padding: 10,
+      flexDirection:'row',
+      justifyContent : "center",
+      alignItems:"center",
+      borderTopWidth : StyleSheet.hairlineWidth,
+      borderTopColor : "lightgray",
+      //borderStyle : "dashed"
+      
+  },
     itemName : {
-        width: 250,
+        //width: 100,
         height: 20,
-        fontSize: 13,
-        fontWeight: "900",
-        justifyContent: "center",
+        fontSize: 17,
+        fontWeight: "400",
         paddingLeft: 10,
         marginTop: 5,
     },
+    nextItemName : {
+      //width: 100,
+      height: 20,
+      fontSize: 17,
+      fontWeight: "400",
+      color:"lightgray",
+      paddingLeft: 10,
+      marginTop: 5,
+  },
     pluscontainer:{
+        borderTopWidth : StyleSheet.hairlineWidth,
+        borderTopColor : "lightgray",
+        flex:0.2,
         height: 40,
+        paddingTop:10,
         justifyContent: "center",
         alignItems: "center",
     },

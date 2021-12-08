@@ -11,6 +11,8 @@ export let account_pw = "";
 const LoginScreen = ({ navigation }) => {
 
   const [list, setList] = useState([]);
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
   
   const signInAsync = async () => {
     console.log("LoginScreen.js 6 | loggin in");
@@ -30,11 +32,28 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
+  const confirm = async() => {
+    axios.post("http://35.212.138.86/auth/login", {
+      email : email,
+      pw : pw
+    })
+    .then(function(response) {
+      if (response.data.success == true) {
+        setList(response.data.result);
+        navigation.navigate('Main');
+      }
+      else {
+        Alert.alert('Login failed');
+      }
+    }).catch(function(error) {
+      console.log("Login error\n" + error);
+    }).then(function() {
+      console.log("^^");
+    });
+  };
 
   useEffect(()=> {
-    if(!list==[]) {
+    if (!list.length==0) {
       sendList=list;
       account_email = email;
       account_pw = pw;
@@ -47,32 +66,8 @@ const LoginScreen = ({ navigation }) => {
             value.img = require('../Source/plant_activated.png');
         }
       })
-      //console.log(sendList);
-      //console.log("I'm checking account_~ ", account_email, account_pw);
     }
-
-  }, [list])
-
-  const confirm = async() => {
-    axios.post("http://35.212.138.86/auth/login", {
-      email : email,
-      pw : pw
-    })
-    .then(function(response) {
-      if (response.data.success == true) {
-        console.log("login success");
-        setList(response.data.result);
-        navigation.navigate('Main');
-      }
-      else {
-        Alert.alert('Login failed');
-      }
-    }).catch(function(error) {
-      console.log("ㅗ");
-    }).then(function() {
-      console.log("^^");
-    });
-  };
+  }, [list]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>

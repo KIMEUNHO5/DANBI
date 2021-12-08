@@ -19,6 +19,7 @@ import {
 import axios from "axios";
 import {currentID} from './Main.js';
 import { SectionList } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
 
 Date.prototype.format = function(f) {
     if(!this.valueOf()) return " ";
@@ -46,7 +47,7 @@ Date.prototype.format = function(f) {
   String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
   Number.prototype.zf = function(len){return this.toString().zf(len);};
   
-  function AddRecord() {
+  function AddRecord({navigation}) {
     const placeholder = "input time";
     const [isWaterIntakeTimePickerVisible, setWaterIntakeTimePickerVisibility] = useState(false);
     const [time_text, setTime_text] = useState(""); // 얜 걍 문자임
@@ -88,6 +89,7 @@ Date.prototype.format = function(f) {
         actual_intake : amountInput
       }).then(function(response) {
         console.log(response.data);
+        navigation.goBack();
       }).catch(function(error) {
         console.log(error);
       }).then(function() {

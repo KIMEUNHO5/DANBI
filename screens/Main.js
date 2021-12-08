@@ -68,7 +68,7 @@ function MainListScreen({ navigation }) {
                 setList(response.data.result);
                 //console.log(list);
               }).catch(function(error) {
-                //console.log("account loading failed");
+                console.log("account loading failed");
                 console.log(error);
               }).then(function() {
                 //console.log("^^");
@@ -76,20 +76,22 @@ function MainListScreen({ navigation }) {
         }
     }, [isFocused]);
 
-    useEffect(() => { // 멤버 선택시 개인 생체 정보 저장
-        
+    useEffect(() => { // 멤버 선택시 개인 생체 정보 저장. 
         if(!memberInfo==[]) {
             sendInfo = memberInfo;
-            console.log(sendInfo);
-            //console.log("sendInfo here");
-            //console.log(sendInfo);
-            if (memberInfo.member_type == 1) {
-                memberInfo.img = require('../Source/person_inactivated.png');
-            } else if (memberInfo.member_type == 2) {
-                memberInfo.img = require('../Source/pet_inactivated.png');
-            } else if (memberInfo.member_type == 3) {
-                memberInfo.img = require('../Source/plant_inactivated.png');
+            /*
+            if (memberInfo.result[0].member_type == 1) {
+                memberInfo.result[0].img = require('../Source/person_inactivated.png');
+            } else if (memberInfo.result[0].member_type == 2) {
+                memberInfo.result[0].img = require('../Source/pet_inactivated.png');
+            } else if (sendInfo.result[0].member_type == 3) {
+                sendInfo.result[0].img = require('../Source/plant_inactivated.png');
             }
+            sendInfo.record.forEach((value, index, array) => {
+                value.id = index+1;
+                console.log(value.id + "th record");
+            }) */
+            console.log(sendInfo);
         }
     }, [memberInfo]);
 
@@ -99,18 +101,10 @@ function MainListScreen({ navigation }) {
         axios.post("http://35.212.138.86/member/specification", {
             member_id : info.id
         }).then(function(response) {
-            //console.log("selectedID : ", selectedID);
-            //console.log("response data here");
-            //console.log(response.data);
-            setMemberInfo(response.data.result[0]);
-            //console.log("memberInfo in main");
-            //console.log(memberInfo);
-            //console.log("sendInfo in main");
-            //console.log(sendInfo); 
-            console.log(response.data);
+            setMemberInfo(response.data);
             navigation.navigate('Spec');
         }).catch(function(error) {
-            console.log(error);
+            console.log("select member error \n" + error);
         }).then(function() {
             //console.log("^^");
         });
