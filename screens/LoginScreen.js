@@ -9,7 +9,7 @@ export let sendList = [];
 export let account_email = "";
 export let account_pw = "";
 
-export function LoginScreen({ navigation }) {
+const LoginScreen = ({ navigation }) => {
 
   const [list, setList] = useState([]);
   const [email, setEmail] = useState("");
@@ -109,7 +109,7 @@ export function LoginScreen({ navigation }) {
           />             
         </View>
         <TouchableOpacity style={styles.LoginButton}
-          onPress={()=>confirm}>
+          onPress={confirm}>
             <Text style={{color: "#FFFFFF", fontSize: 16, fontWeight: "600"}}>
               Login
             </Text>

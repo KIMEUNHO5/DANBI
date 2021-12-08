@@ -14,7 +14,6 @@ import ProfileScreen from "./screens/ProfileScreen";
 import MainListScreen from "./screens/Main";
 import RegistrationScreen from "./screens/RegistrationScreen";
 import SignupScreen from "./screens/Signup";
-import entryScreen from "./screens/entry";
 import ForgotIdScreen from "./screens/ForgotId";
 import ForgotPwScreen from "./screens/ForgotPassword";
 import SpecificationScreen from "./screens/SpecificationScreen";
@@ -60,77 +59,14 @@ const HeaderRight = () => {
   )
 }
 
-function HomeScreen({ navigation }) {
-  navigation.navigate('Login');
-  return(null);
-  /*
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate('Login')}
-      />
-      <Button
-        title="Go to Entry"
-        onPress={() => navigation.navigate('Entry')}
-      />
-      <Button
-        title="Go to Spec."
-        onPress={() => navigation.navigate('Spec')}
-      />
-      <Button
-        title="Go to Edit person."
-        onPress={() => navigation.navigate('Edit_person')}
-      />
-      <Button
-        title="Go to Edit pet."
-        onPress={() => navigation.navigate('Edit_pet')}
-      />
-      <Button
-        title="Go to Edit plant."
-        onPress={() => navigation.navigate('Edit_plant')}
-      />
-      <Button
-        title="Go to Notification."
-        onPress={() => navigation.navigate('Notification')}
-      />
-      <Button
-        title="Go to Puricare."
-        onPress={() => navigation.navigate('Purifier')}
-      />
-
-    </View>
-  );*/
-}
-
-/*
-<Stack.Screen 
-        name="Home" 
-        component={HomeScreen}
-        options={{
-          headerShown:false
-        }}  />
-        */
 const StackNavigator = () =>{
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen 
-        name="Home" 
-        component={HomeScreen}
-        options={{
-          headerShown:false
-        }}  />
+    <Stack.Navigator initialRouteName="Login">
         <Stack.Screen 
         name="Login" 
         component={LoginScreen}
         options={{
-          //headerShown:false,
-          headerStyle:{
-            height:100
-          },
-          title:'home',
-          headerBackTitleVisible: false,
+          headerShown:false
         }}  />
         <Stack.Screen 
         name="Profile" 
@@ -180,14 +116,6 @@ const StackNavigator = () =>{
           headerBackTitleVisible: false,
           headerBackImage: BackBtn,
         }}  />
-        <Stack.Screen 
-        name="Entry" 
-        component={entryScreen}
-        options={{
-          headerStyle:{
-            height:100
-          },
-        }}   />
         <Stack.Screen 
         name="ForgotId" 
         component={ForgotIdScreen}
