@@ -60,6 +60,7 @@ const SignupScreen = ({navigation}) => {
                 keyboardType="email-address"
             />   
             <TextInput
+                secureTextEntry={true}
                 placeholder={"Password"}
                 onChangeText={setPw}
                 value={pw}

@@ -47,7 +47,20 @@ const LoginScreen = ({ navigation }) => {
   };
 
   useEffect(()=> {
-    if (!list.length==0) {
+    console.log(list);
+    var key, count = 0;
+    for(key in list){
+      if(list.hasOwnProperty(key)){
+        count++;
+      }
+    }
+    console.log(count);
+    if (!count){ 
+      sendList=list;
+      account_email = email;
+      account_pw = pw;
+    }
+    else{
       sendList=list;
       account_email = email;
       account_pw = pw;
@@ -59,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
         } else if (value.member_type == 3) {
             value.img = require('../Source/plant_activated.png');
         }
-      })
+      });
     }
   }, [list]);
 

@@ -73,10 +73,17 @@ const SpecificationScreen = ({navigation}) => {
               console.log(error);
             }).then(function() {
             });
-          }
+          };
 
     useEffect(()=> { 
-        if (memberInfo.record == null){ // 인덱스 
+        var key, count = 0;
+        for(key in memberInfo.record){
+          if(memberInfo.record.hasOwnProperty(key)){
+            count++;
+          }
+        }
+
+        if (!count){ // 인덱스 
           memberInfo.record = {};
         }else{
           memberInfo.record.forEach((value, index, array) => {
@@ -86,21 +93,27 @@ const SpecificationScreen = ({navigation}) => {
         if (memberInfo.result[0].member_type == 1) { // 이미지 넣고 시간 포맷 변경
             memberInfo.result[0].img = require('../Source/person_inactivated.png');
             memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
-          memberInfo.record.forEach((value, index, array) => {
-            value.date = value.date.slice(11,16);
-          })
+            if (memberInfo.record[0] == null){
+            }else{
+              memberInfo.record.forEach((value, index, array) => {
+              value.date = value.date.slice(11,16);
+            });}
         } else if (memberInfo.result[0].member_type == 2) {
             memberInfo.result[0].img = require('../Source/pet_inactivated.png');
             memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
-          memberInfo.record.forEach((value, index, array) => {
-            value.date = value.date.slice(11,16);
-          })
+            if (memberInfo.record[0] == null){
+            }else{
+              memberInfo.record.forEach((value, index, array) => {
+              value.date = value.date.slice(11,16);
+            });}
         } else if (memberInfo.result[0].member_type == 3) {
             memberInfo.result[0].img = require('../Source/plant_inactivated.png');
             memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
-            memberInfo.record.forEach((value, index, array) => {
-            value.date = value.date.slice(0,10);
-          })
+            if (memberInfo.record[0] == null){
+            }else{
+              memberInfo.record.forEach((value, index, array) => {
+              value.date = value.date.slice(0,10);
+            });}
         }
         
         if (memberInfo.today_intake == 0) { // 도식화

@@ -37,18 +37,41 @@ function MainListScreen({ navigation }) {
     const [selectedID, setSelectedID] = useState(0); 
     const [memberInfo, setMemberInfo] = useState([]); // 개인 상세 정보
 
-    useEffect(()=> { // 계정 내 멤버 reload
-        list.forEach((value, index, array) => {
-          if (value.member_type == 1) {
-              value.img = require('../Source/person_activated.png');
-          } else if (value.member_type == 2) {
-              value.img = require('../Source/pet_activated.png');
-          } else if (value.member_type == 3) {
-              value.img = require('../Source/plant_activated.png');
-          }
-        })
+    // useEffect(()=> { // 계정 내 멤버 reload
+    //     list.forEach((value, index, array) => {
+    //       if (value.member_type == 1) {
+    //           value.img = require('../Source/person_activated.png');
+    //       } else if (value.member_type == 2) {
+    //           value.img = require('../Source/pet_activated.png');
+    //       } else if (value.member_type == 3) {
+    //           value.img = require('../Source/plant_activated.png');
+    //       }
+    //     })
     
-    }, [list]);
+    // }, [list]);
+    useEffect(()=> {
+        console.log(list);
+        var key, count = 0;
+        for(key in list){
+          if(list.hasOwnProperty(key)){
+            count++;
+          }
+        }
+        console.log(count);
+        if (!count){
+        }
+        else{
+          sendList.forEach((value, index, array) => {
+            if (value.member_type == 1) {
+                value.img = require('../Source/person_activated.png');
+            } else if (value.member_type == 2) {
+                value.img = require('../Source/pet_activated.png');
+            } else if (value.member_type == 3) {
+                value.img = require('../Source/plant_activated.png');
+            }
+          });
+        }
+      }, [list]);
 
     useEffect(() => {
         currentID=selectedID;
