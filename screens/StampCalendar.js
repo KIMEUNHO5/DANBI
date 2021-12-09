@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View} from 'react-native';
+import {View, ImageBackground, StyleSheet} from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import {LocaleConfig} from 'react-native-calendars';
 
@@ -15,8 +15,9 @@ LocaleConfig.defaultLocale = 'fr';
 class StampCalendar extends Component {
     render() {
        return (
-        <View style={{ paddingTop: 50, flex: 1 }}>
-            <Calendar
+        <View style={{ flex: 1 }}>
+          <ImageBackground source = {require('../Source/calender_background.png')} style = {styles.backgroundimage}>
+            <Calendar style={{marginBottom: 100, marginHorizontal: 20, borderRadius: 20,}}
             current={'2021-12-10'}
             minDate={'2021-01-01'}
             maxDate={'2021-12-31'}
@@ -63,9 +64,22 @@ class StampCalendar extends Component {
               '2021-12-08': {disabled: true, startingDay: true, color: 'skyblue', endingDay: true, textColor: 'black'},
             }}
             />
-        </View>
-       )
-     }
-   }
+            
+         </ImageBackground> 
+      </View>
+     )
+  }
+}
+
+const styles = StyleSheet.create({
+  backgroundimage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+});
+
+
+  
   
   export default StampCalendar;
