@@ -1,6 +1,11 @@
 # 💧 DANBI
 
-DANBI, an application that helps to manage my family water intake.
+DANBI, a service that helps to manage my family water intake.
+
+
+## Abstract
+
+Now that humans, pets, and plants all live in a family, there are many things to care about and it is becoming difficult to manage them at once. We developed 'DANBI' that intuitively manages water intake information of all members of our family at once focusing on water, which is the basis of all life. DANBI is our water secretary which informs us when necessary with convenience through technical linkage with LG PuriCare water purifiers and NUGU speakers.
 
 
 ## Introduction
@@ -17,28 +22,38 @@ The water intake of pets and plants is also directly related to their life suppo
 
 Like welcome rain that falls on dry land, our DANBI will provide essential water intake information for humans, pets, and plants in our busy modern society.
 
+
 ## Main Function
 
-1. User can create an account and log in through membership registration.
+***# COMBINE***  
+**Managing human, pets and plants, everyone in our family's drink water at once at DANBI**  
+There is no longer a need to dirty your cell phone wallpaper with numerous apps. All members of our family can manage their water intake at once in **DANBI**.
 
-2. Based on the physiological information of each human, pet, and plant, the recommended amount of water intake and the interval of water intake are automatically calculated.
+***# AUTOMATE***  
+**Automatic water discharge and automatic water intake register**  
+**DANBI** automatically calculates the recommended amount of water intake and the interval between water intake based on each individual's physiological information. Notifications are provided when the set water intake time is reached. The user selects one of '물받기', '마시기', and '미루기'. It automatically updates water intake information according to the user's reaction. If the user selects '물받기' in response to the notification, the LG PuriCare water purifier automatically releases water according to the amount and temperature set by the user.
 
-3. Notification is provided by the application and NUGU speaker at water intake time.
+***# VISUALIZE***  
+**Check the water intake record visually**  
+**DANBI** provides visual data on the member's water intake status. In addition, when achieving the daily target amount, the calendar is stamped to encourage users to consume steady water.
 
-4. Record the amount of water intake at once according to the response to the notification.
+***# COMMUNICATE***  
+**Ask NUGU speaker about water intake**  
+When the user asks about the water intake information, the NUGU speaker, along with the nickname, guides the current water intake, the last water intake time, and the next water intake date and time.  
 
-5. If '물 받기' is selected in response to the notification, LG Puricare water purifier will be supply water according to the user's set temperature and amount.
 
-6. If user has additional water intake, user can manually input through the application.
+## Prototype
 
-7. The application provides the moisture intake status of the registrant in a visual picture.
+<img width="360" alt="prototype" src="https://user-images.githubusercontent.com/81215103/145391270-c286df1b-b2d6-4047-8f24-2b214e1a6722.png">
 
-8. If there is a user's question on NUGU speaker, the current amount of water intake and the date and time of last water intake are provided through voice.
 
-9. When achieving the daily target, take stamp to encourage constant water intake.
+
 
 ## Members
-__김은호(KIM EUN HO) Dept of. Information System__  
-__오지윤(OH JI YUN) Dept of. Information System__  
-__정효은(JEONG HYO EUN) Dept of. Information System__  
-__최수정(CHOI SOO JUNG) Dept of. Information System__
+
+|NAME|Dept.|TASK|
+|:---|:---|:---|
+|CHOI SOO JUNG|Information System|Front-end, Database|
+|JEONG HYO EUN|Information System|Front-end, Data processing|
+|KIM EUN HO|Information System|Front-end, Server develop|
+|OH JI YUN|Information System|Front-end, NUGU develop|
