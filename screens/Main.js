@@ -50,14 +50,12 @@ function MainListScreen({ navigation }) {
     
     // }, [list]);
     useEffect(()=> {
-        console.log(list);
         var key, count = 0;
         for(key in list){
           if(list.hasOwnProperty(key)){
             count++;
           }
         }
-        console.log(count);
         if (!count){
         }
         else{
@@ -138,7 +136,6 @@ function MainListScreen({ navigation }) {
         }).then(function(response) {
             setMemberInfo(response.data);
             console.log("memberInfo get in main");
-            console.log(memberInfo);
             navigation.navigate('Spec');
         }).catch(function(error) {
             console.log("select member error \n" + error);

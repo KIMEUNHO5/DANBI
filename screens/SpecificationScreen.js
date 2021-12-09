@@ -22,10 +22,6 @@ export let puriInfo = [];
 
 const SpecificationScreen = ({navigation}) => {
     const [memberInfo, setMemberInfo] = useState(sendInfo);
-    console.log("sendInfo in spec");
-    console.log(sendInfo);
-    console.log("memberInfo in spec");
-    console.log(memberInfo);
     const [puriArray, setPuriArray] = useState([]);
     const isFocused = useIsFocused();
 
@@ -75,14 +71,13 @@ const SpecificationScreen = ({navigation}) => {
             });
           };
 
-    useEffect(()=> { 
+    useEffect(()=> {
         var key, count = 0;
         for(key in memberInfo.record){
           if(memberInfo.record.hasOwnProperty(key)){
             count++;
           }
         }
-
         if (!count){ // 인덱스 
           memberInfo.record = {};
         }else{
@@ -92,27 +87,25 @@ const SpecificationScreen = ({navigation}) => {
         }
         if (memberInfo.result[0].member_type == 1) { // 이미지 넣고 시간 포맷 변경
             memberInfo.result[0].img = require('../Source/person_inactivated.png');
-            memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
             if (memberInfo.record[0] == null){
             }else{
               memberInfo.record.forEach((value, index, array) => {
-              value.date = value.date.slice(11,16);
+              //value.date = value.date.slice(11,16);
+              //console.log(value.date);
             });}
         } else if (memberInfo.result[0].member_type == 2) {
             memberInfo.result[0].img = require('../Source/pet_inactivated.png');
-            memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
             if (memberInfo.record[0] == null){
             }else{
               memberInfo.record.forEach((value, index, array) => {
-              value.date = value.date.slice(11,16);
+              //value.date = value.date.slice(11,16);
             });}
         } else if (memberInfo.result[0].member_type == 3) {
             memberInfo.result[0].img = require('../Source/plant_inactivated.png');
-            memberInfo.next_intake = sendInfo.next_intake.slice(11,16);
             if (memberInfo.record[0] == null){
             }else{
               memberInfo.record.forEach((value, index, array) => {
-              value.date = value.date.slice(0,10);
+              //value.date = value.date.slice(0,10);
             });}
         }
         
@@ -282,7 +275,7 @@ const SpecificationScreen = ({navigation}) => {
                         <FlatList style={{flex:5}} data={memberInfo.record} renderItem={renderItem} keyExtractor={item => item.id} />
                         <View style={styles.next_item}>
                           <View style={{justifyContent:"center", alignItems:"center", flex:1}}>
-                            <Text style={styles.nextItemName}>{memberInfo.next_intake}</Text>
+                            <Text style={styles.nextItemName}>{(memberInfo.result[0].member_type==3) ? new Date(sendInfo.next_intake).toISOString().slice(0,10) : String(sendInfo.next_intake).slice(16,21)}</Text>
                           </View>
                           <View style={{justifyContent:"center", alignItems:"center", flex:1}}>
                             <Text style={styles.nextItemName}>{memberInfo.result[0].intake_once}mL</Text>
@@ -339,7 +332,7 @@ Notifications.setNotificationHandler({
     }
   
     return token;
-  } 
+} 
 const styles = StyleSheet.create({
     container : {
         flex: 1,
