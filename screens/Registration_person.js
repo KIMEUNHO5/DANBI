@@ -95,6 +95,8 @@ const Registration_person = ({navigation}) => {
 
   const defaultWeight = () => {
     setWeight(parseInt(weightInput, 10));
+    setGoal(weight*30);
+    setGoalInput(String(goal));
   }
   
   const registerPerson = async() => {
